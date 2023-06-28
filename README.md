@@ -1,4 +1,4 @@
-Nombre: ByteBazaar
+Nombre: TechBox
 
 Servicios: Venta de Hardware a distancia
 
