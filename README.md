@@ -24,9 +24,9 @@ Joaquin Aragon
 ## Referentes del Mercado:
 1. https://www.razer.com/ Por su diseño, paleta de colores y animaciones.
 2. https://www.fullh4rd.com.ar/ Porque son lideres en la venta de hardware.
-3. 
-4.
-5.
+3. https://pcpartpicker.com/ Por su comunidad y ayuda al cliente al armar su propia PC.
+4. https://www.tomshardware.com/ Por sus noticias y reseñas.
+5. https://www.mercadolibre.com.ar/ Por su carrito y sistema de venta en general.
 
 --- 
 
