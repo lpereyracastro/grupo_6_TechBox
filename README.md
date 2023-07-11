@@ -10,7 +10,7 @@ Franco Di Pizio
 
 Leonel Tejedor
 
-Roman Fontana: Soy un entusiasta de la programación, dedico tiempo a estudiar y expandir mis conocimientos en este campo. Mi objetivo es postularse a trabajos en el área IT en el futuro. También tengo como hobby un interés en la industria y el desarrollo de juegos.
+Roman Fontana: Soy un entusiasta de la programación, dedico tiempo a estudiar y expandir mis conocimientos en este campo. Mi objetivo es postularse a trabajos en el área IT en el futuro. También tengo como hobby un interés en la industria y el desarrollo de juegos..
 
 Jorgelina Schaf
 
