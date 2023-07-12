@@ -16,9 +16,9 @@ punto.forEach( ( cadaPunto , i )=> {
 
         punto.forEach( ( cadaPunto , i )=>{
 
-            punto[i].classList.remove('activo')
+            punto[i].classList.remove('active')
         })
-        punto[i].classList.add('activo')
+        punto[i].classList.add('active')
 
     })
 })

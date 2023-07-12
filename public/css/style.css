@@ -137,24 +137,24 @@ main{
 }
 .carrousel__puntos{
     width: 100%;
-    padding: 1rem;
-    background-color: blue;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
 .carrousel__punto{
-    width: 1rem;
-    height: 1rem;
-    background-color: red;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 100%;
+    background : transparent;
+    border: .5px solid var(--blanco-perla);
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 1rem;
 }
 .carrousel .carrousel__puntos .active{
-    background-color: rgb(206, 16, 196);
+    background-color: var(--verde-princ);
 }
 /* estilos productos destacados */
 .product{
