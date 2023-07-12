@@ -1,0 +1,10 @@
+:root{
+    --verde-princ:#25d33c;
+    --negro-princ:#0e0e0e;
+    --letra:''
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
