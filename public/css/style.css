@@ -21,6 +21,7 @@ body{
     background-color: var(--negro-princ);
     font-family: 'Titillium Web', sans-serif;
     color: var(--gris-claro);
+    overflow-x: hidden;
 }
     /* estilos del header */
 .header{
@@ -119,14 +120,41 @@ main{
     gap: 1rem;
 }
     /* estilos futuro carrusel */
-.carrusel{
+.carrousel{
     width: 100%;
-    height: 20vh;
-    border-bottom: 1px solid var(--verde-princ);
+    /* border-bottom: 1px solid var(--verde-princ); */
 }
-.carrusel img{
+.carrousel__slice{
+    width: 300%;
+    flex-flow: row nowrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all .5s ease;
+}
+.carrousel__img{
+    width: calc(100%/3);
+}
+.carrousel__puntos{
     width: 100%;
-    height: 100%;
+    padding: 1rem;
+    background-color: blue;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.carrousel__punto{
+    width: 1rem;
+    height: 1rem;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.carrousel .carrousel__puntos .active{
+    background-color: rgb(206, 16, 196);
 }
 /* estilos productos destacados */
 .product{
