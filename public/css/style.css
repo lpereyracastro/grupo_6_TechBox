@@ -194,3 +194,27 @@ main{
     font-weight: bold;
     border: none;
 }
+    /* Caja */
+.contenedor-img{
+    height: 650px;
+    overflow: hidden;
+}
+.imagenes-caja{
+    width: 150px;
+    margin: 0 25px;
+}
+.bloques_index{
+    margin: 50px 0 0 0;
+    display: flex;
+}
+.linkinfo {
+    margin-top: 25px;
+    margin-left: 50px;
+    padding: 10px 20px;
+    display: inline-block;
+    text-align: center;	
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 15px;
+    box-shadow: 0 9px rgba(1, 1, 1, 0.601);
+  }
