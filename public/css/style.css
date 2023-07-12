@@ -1,10 +1,168 @@
+    /* fuente */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Titillium+Web:wght@200&display=swap');
+    /* colores */
 :root{
-    --verde-princ:#25d33c;
+    --verde-princ:#34ff4f;
     --negro-princ:#0e0e0e;
-    --letra:''
+    --gris-claro: rgb(182, 182, 182);
+    --blanco-perla: rgb(214, 214, 214);
 }
+    /* estilos globales */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+    color: var(--verde-princ);
+}
+    /* color del cuerpo */
+body{
+    background-color: var(--negro-princ);
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--gris-claro);
+}
+    /* estilos del header */
+.header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid var(--verde-princ);
+}
+    /* estilos del menu */
+.header__menu-burger{
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__menu-burger-span{
+    width: 100%;
+    height: .01rem;
+    background-color: white;
+}
+    /* estilos del titulo */
+.header__title{
+    font-size: 1rem;
+}
+    /* estilos del logo (cubo) */
+.header__logo{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    animation: animete 30s linear infinite;
+    transform-style: preserve-3d;
+    background: transparent;
+}
+.header__logo-cubo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    transform-style: preserve-3d;
+    background-color: rgba(201, 1, 1, 0);
+}
+    /* animacion del logo (cubo) */
+@keyframes animete {
+    0%{
+        transform: rotateX(-40deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(-40deg) rotateY(360deg);
+    }
+}
+    /* posicionamientos de los span (cubo) */
+.header__logo-cubo span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(0,0,0),rgb(0, 200, 20));
+    transform: rotateY(calc(90deg * var(--i))) translateZ(15px);
+}
+    /* pared superior e inferior del cubo */
+.top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: #222222;
+    transform: rotateX(90deg) translateZ(14px);
+}
+.bottom{
+    content: "game";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: rgb(0, 200, 20);
+    transform: rotateX(90deg) translateZ(-25px);
+    filter: blur(20px); 
+    box-shadow: 0 0 10px rgba(0, 200, 20, 0.822),
+    0 0 20px rgba(0, 200, 20,0.8),
+    0 0 20px rgba(0, 200, 20,0.8),
+}
+    /* estilos main */
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+    /* estilos futuro carrusel */
+.carrusel{
+    width: 100%;
+    height: 20vh;
+    border-bottom: 1px solid var(--verde-princ);
+}
+.carrusel img{
+    width: 100%;
+    height: 100%;
+}
+/* estilos productos destacados */
+.product{
+    width: 15rem;
+    height: 24rem;
+    overflow: hidden;
+    border-bottom: 2px solid var(--verde-princ);
+    
+}
+.product__img{
+    width: 100%;
+    height: 65%;
+    border-bottom: 2px solid var(--blanco-perla);
+}
+.product-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    text-align: start;
+    flex-direction: column;
+    padding: .5rem;
+}
+.product__title{
+    color: var(--blanco-perla);
+}
+.product__compra{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product__buy{
+    width: 5rem;
+    height: 1.8rem;
+    background-color: var(--verde-princ);
+    color: #0e0e0e;
+    font-weight: bold;
+    border: none;
 }

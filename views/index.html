@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+
 <body>
     <!-- HISTORIA DE USUARIO -->
     <!-- 
@@ -13,16 +15,51 @@
 
         Como cliente quiero que el sitio funcione bien en mi teléfono celular para poder acceder en cualquier momento.
     -->
-    <header>
-
+    <header class="header">
+        <div class="header__menu-burger">
+            <span class="header__menu-burger-span"></span>
+            <span class="header__menu-burger-span"></span>
+            <span class="header__menu-burger-span"></span>
+        </div>
+        <h1 class="header__title">
+            techBox
+        </h1>
+        <div class="header__logo">
+            <div class="top"></div>
+            <div class="header__logo-cubo">
+                <span style="--i:0"></span>
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+            </div>
+            <div class="bottom">comprar</div>
+        </div>
     </header>
     <main>
-        
+            <!-- carrusel -->
+        <div class="carrusel">
+            <img src="img/publicidad-banner/logi.jpg" alt="">
+        </div>
+        <!-- productos destacados -->
+        <div class="product">
+            <img src="img/product/razer-blade-14.jpg" alt="" class="product__img">
+            <div class="product-detail">
+                <h4 class="product__title">
+                    RAZER HAMMERHEAD TRUE WIRELESS
+                </h4>
+                <p class="product__info">
+                    Ilumina tu inmersión
+                </p>
+                <div class="product__compra">
+                    <p class="product__price">$44.500</p>
+                    <button class="product__buy">comprar</button>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
-        
 
     </footer>
-
 </body>
+
 </html>
