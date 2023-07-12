@@ -231,14 +231,29 @@ footer {
     color: var(--blanco-perla);
     padding: 20px;
 }
-      
+footer{
+    display: block;
+}      
 .footer-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    text-align: center;
 }
-      
+.footer-info{
+    width: 50%;
+}
+a{
+    text-decoration: none;
+    color: var(--verde-princ);
+}           
+.copy{
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+}
 .redes-sociales {
-    display: flex;
+    width: 50%;
     gap: 10px;
 }
 .icono{
