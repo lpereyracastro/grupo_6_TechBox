@@ -15,7 +15,7 @@ Roman Fontana: Soy un entusiasta de la programación, dedico tiempo a estudiar y
 
 Jorgelina Schaf: Ssdf
 
-Jesus Herrera: Tengo 17 años y soy una persona intelectualmente curiosa, compasiva, perseverante y optimista. Mi deseo es aprender mas a profundidad de la programacion, ademas mi empatía y mi dedicación me convierten en alguien adapatable a distintos entornos.
+Jesus Herrera: Tengo 17 años, soy una persona intelectualmente curiosa, compasiva, perseverante y optimista. Mi deseo es aprender mas a profundidad de la programacion, ademas mi empatía y mi dedicación me convierten en alguien adapatable a distintos entornos.
 
 Lucas Pereyra Castro: 22 años, trabajando en una imprenta de diseño gráfico, con ganas de expandir y poder transmitir mis ideas a través de la programación.
 
