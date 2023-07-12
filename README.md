@@ -7,7 +7,7 @@
 ## **Integrantes del equipo:**
 
 ```
-Franco Di Pizio: HOLI
+Franco Di Pizio: HOLI SOY FRAN
 
 Leonel Tejedor
 
