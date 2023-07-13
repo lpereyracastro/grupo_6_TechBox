@@ -7,7 +7,7 @@
 ## **Integrantes del equipo:**
 
 ```
-Franco Di Pizio
+Franco Di Pizio: HOLI SOY FRAN
 
 Leonel Tejedor
 
@@ -15,11 +15,12 @@ Roman Fontana: Soy un entusiasta de la programación, dedico tiempo a estudiar y
 
 Jorgelina Schaf: tengo 25 años, soy estudiante de Licenciatura en Recursos humanos. En mi tiempo libre me dedico a explorar y aprender más sobre programación, ampliando así mis conocimientos en este campo.
 
-Jesus Herrera
+Jesus Herrera: Tengo 17 años, soy una persona intelectualmente curiosa, compasiva, perseverante y optimista. Mi deseo es aprender mas a profundidad de la programacion, ademas mi empatía y mi dedicación me convierten en alguien adapatable a distintos entornos.
 
 Lucas Pereyra Castro: 22 años, trabajando en una imprenta de diseño gráfico, con ganas de expandir y poder transmitir mis ideas a través de la programación.
 
-Joaquin Aragon
+Joaquin Aragon: Programador nato y autodidacta. Nunca hay que dejar de aprender incluso en los peores momentos. No rendirse y seguir aprendiendo es lo que me gusta.
+Dato curioso: prefiere el backend.
 ```
 
 ## Referentes del Mercado:
