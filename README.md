@@ -13,7 +13,7 @@ Leonel Tejedor
 
 Roman Fontana: Soy un entusiasta de la programación, dedico tiempo a estudiar y expandir mis conocimientos en este campo. Mi objetivo es postularse a trabajos en el área IT en el futuro. También tengo como hobby un interés en la industria y el desarrollo de juegos.
 
-Jorgelina Schaf: Ssdf
+Jorgelina Schaf: tengo 25 años, soy estudiante de Licenciatura en Recursos humanos. En mi tiempo libre me dedico a explorar y aprender más sobre programación, ampliando así mis conocimientos en este campo.
 
 Jesus Herrera
 
