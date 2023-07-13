@@ -19,7 +19,8 @@ Jesus Herrera: Tengo 17 años, soy una persona intelectualmente curiosa, compasi
 
 Lucas Pereyra Castro: 22 años, trabajando en una imprenta de diseño gráfico, con ganas de expandir y poder transmitir mis ideas a través de la programación.
 
-Joaquin Aragon
+Joaquin Aragon: Programador nato y autodidacta. Nunca hay que dejar de aprender incluso en los peores momentos. No rendirse y seguir aprendiendo es lo que me gusta.
+Dato curioso: prefiere el backend.
 ```
 
 ## Referentes del Mercado:
