@@ -21,7 +21,6 @@ body{
     background-color: var(--negro-princ);
     font-family: 'Titillium Web', sans-serif;
     color: var(--gris-claro);
-    overflow-x: hidden;
 }
     /* estilos del header */
 .header{
@@ -35,11 +34,12 @@ body{
     z-index: 1;
     position: sticky;
     top: 0;
+    position: relative;
 }
     /* estilos del menu */
 .header__menu-burger{
-    width: 30px;
-    height: 20px;
+    width: 40px;
+    height: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -50,6 +50,19 @@ body{
     height: .01rem;
     background-color: white;
     cursor:pointer;
+    transition: .2s ease-in;
+}
+.active .line-1{
+    transform-origin: 0px;
+    transform: rotate(45deg);
+}
+.active .line-2{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.active .line-3{
+    transform-origin: 0px;
+    transform: rotate(-45deg);
 }
     /* estilos del titulo */
 .header__title{
@@ -116,6 +129,76 @@ body{
     0 0 20px rgba(0, 200, 20,0.8),
     0 0 20px rgba(0, 200, 20,0.8),
 }
+    /* menu desplegable */
+
+.menu__desplegable{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--negro-princ);
+    transform: translateX(-100%);
+    transition: .3s ease-in;
+}
+.desplegado{
+    transform: translateX(0%);
+}
+.menu__desplegable-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--blanco-perla);
+    padding: .5rem;
+}
+.menu__desplegable-form input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--gris-claro);
+    font-size: 20px;
+}
+.menu__desplegable ul{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    padding: 1rem;
+    list-style: none;
+}
+.menu__desplegable li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-size: 23px;
+    position: relative;
+
+}
+.menu__desplegable li span{
+    width: 50%;
+    height: 2px;
+    background-color: var(--blanco-perla);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: .5s;
+    position: relative;
+    top: -46%;
+}
+.menu__desplegable a{
+    color: var(--blanco-perla);
+    text-align: start;
+}
+.menu__desplegable li:hover span{
+    transform: translateX(0);
+    opacity: 1;
+}
     /* estilos main */
 main{
     display: flex;
@@ -127,7 +210,7 @@ main{
     /* estilos futuro carrusel */
 .carrousel{
     width: 100%;
-    /* border-bottom: 1px solid var(--verde-princ); */
+    overflow-x: hidden;
 }
 .carrousel__slice{
     width: 300%;
