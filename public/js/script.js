@@ -71,6 +71,7 @@ function sliceRight(){
         contadorProducts = 0;
         operacionProducts = 0;
         carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
+        carrouselProductsSlice.style.transition = "none";
         return;
     }else{
         contadorProducts++;
@@ -79,17 +80,30 @@ function sliceRight(){
         carrouselProductsSlice.style.transition = "all ease .6s";
     }
 }
+// function sliceLeft() {
+//     contadorProducts--;
+//     if (contadorProducts < 0) {
+//         contadorProducts = product.length - 1;
+//         operacionProducts = tamañoSliceProducts * (product.length - 1);
+//         carrouselProductsSlice.style.transition = "none";
+//     } else {
+//         operacionProducts = (operacionProducts - tamañoSliceProducts + 100) % 100;
+//         carrouselProductsSlice.style.transition = "all ease .6s";
+//     }
+//     carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
+// }
+
 function sliceLeft(){
     contadorProducts--;
     if (contadorProducts < 0 ) {
         contadorProducts = product.length-1;
-        operacionProducts = tamañoSliceProducts * (product.length-1)
+        operacionProducts = tamañoSliceProducts * (product.length-1);
         carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
         carrouselProductsSlice.style.transition = "none";
-        return;
+        return
     } else{
         operacionProducts = operacionProducts - tamañoSliceProducts;
-        carrouselProductsSlice.style.style.transform = `translate(-${operacionProducts}%)`;
-        carrouselProductsSlice.style.style.transition = "all ease .6s"
+        carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
+        carrouselProductsSlice.style.transition = "all ease .6s"
     }
 }

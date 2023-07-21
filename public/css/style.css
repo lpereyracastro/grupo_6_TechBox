@@ -257,11 +257,13 @@ main{
     position: absolute;
     top: 50%;
     right: 1rem;
+    z-index: 50;
 }
 .arrow-left{
     position: absolute;
     top: 50%;
     left: 1rem;
+    z-index: 50;
 }
 .carrousel__products-slice{
     width: 300%;
