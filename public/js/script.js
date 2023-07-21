@@ -80,19 +80,6 @@ function sliceRight(){
         carrouselProductsSlice.style.transition = "all ease .6s";
     }
 }
-// function sliceLeft() {
-//     contadorProducts--;
-//     if (contadorProducts < 0) {
-//         contadorProducts = product.length - 1;
-//         operacionProducts = tamañoSliceProducts * (product.length - 1);
-//         carrouselProductsSlice.style.transition = "none";
-//     } else {
-//         operacionProducts = (operacionProducts - tamañoSliceProducts + 100) % 100;
-//         carrouselProductsSlice.style.transition = "all ease .6s";
-//     }
-//     carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
-// }
-
 function sliceLeft(){
     contadorProducts--;
     if (contadorProducts < 0 ) {
