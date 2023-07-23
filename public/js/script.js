@@ -6,6 +6,11 @@ const carrouselSection = document.querySelectorAll(".carrousel__section");
 // nodos menu
 const menu = document.querySelector(".header__menu-burger");
 const menuDesplegado = document.querySelector(".menu__desplegable");
+// nodos carruoselProduct destacados
+const carrouselProductsSlice = document.querySelector(".carrousel__products-slice");
+const arrowLeft = document.querySelector(".arrow-left");
+const arrowRight = document.querySelector(".arrow-right");
+const product = document.querySelectorAll(".product");
 
 // funcionalidad menu-desplegable
     menu.addEventListener("click",()=>{
@@ -19,10 +24,10 @@ setInterval(()=>{
     slice()
 },7000);
 
+// variables para el calculo de desplazamiento
 let operacion = 0;
 let contador = 0;
 let tamañoSlice = 100 / carrouselSection.length; 
-
 function slice(){
     if(contador >= carrouselSection.length-1){
         contador = 0;
@@ -36,7 +41,6 @@ function slice(){
         carrouselSlice.style.transition = "all ease .6s";
     };
 }
-
 // puntos para navegar en el carrusel
 carrousePunto.forEach( ( cadaPunto , i )=> {
     carrousePunto[i].addEventListener("click",()=>{
@@ -52,20 +56,17 @@ carrousePunto.forEach( ( cadaPunto , i )=> {
     })
 })
 
-
-
-const carrouselProductsSlice = document.querySelector(".carrousel__products-slice");
-const arrowLeft = document.querySelector(".arrow-left");
-const arrowRight = document.querySelector(".arrow-right");
-const product = document.querySelectorAll(".product");
 // funcionalidad carrouselProduct
+// evento de click para los deplazamientos le pasamos un callback con su respectiva funcionalidad
 arrowRight.addEventListener("click", e => sliceRight());
 arrowLeft.addEventListener("click", e => sliceLeft());
 
+// variables para el calculo de desplazamiento
     let operacionProducts = 0;
     let contadorProducts = 0;
     let tamañoSliceProducts = 100 / product.length; 
 
+// logica de desplazamiento carrousel flecha derecha
 function sliceRight(){
     if(contadorProducts >= product.length-1){
         contadorProducts = 0;
@@ -80,6 +81,7 @@ function sliceRight(){
         carrouselProductsSlice.style.transition = "all ease .6s";
     }
 }
+// logica de desplazamiento carrousel flecha izquierda
 function sliceLeft(){
     contadorProducts--;
     if (contadorProducts < 0 ) {
