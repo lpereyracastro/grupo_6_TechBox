@@ -149,7 +149,7 @@ body{
 .desplegado{
     position: absolute;
     transform: translateX(0%);
-    z-index: 10;
+    z-index: 100;
 }
 .menu__desplegable-form{
     display: flex;
@@ -495,6 +495,8 @@ a{
     border: 1px solid var(--verde-princ);
     border-radius: .3rem;
     padding: .5rem;
+    color: var(--blanco-perla);
+    outline: none;
 }
 .form__recuerdame{
     width: 70%;
@@ -556,7 +558,69 @@ a{
 .linkinfo{
     padding: 1rem;
 }
+/* ================================================== login ============================================ */
+.form{
+    width: 40%;
+    height: 90%;
+    gap: 1rem;
+    background-color: var(--grisOscuro);
+    border-radius: .5rem;
 }
+.form h2,h4{
+    color: var(--gris-claro);
+}
+.form__campos{
+    width: 80%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.form__campos input{
+    width: 90%;
+    height: 3.5rem;
+    background: transparent;
+    border: 1px solid var(--verde-princ);
+    border-radius: .3rem;
+    padding: .5rem;
+}
+.form__recuerdame{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-flow: column nowrap;
+}
+.form__link{
+    border-bottom: 1px solid var(--verde-princ);
+}
+.form__buttom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+.form__buttom button{
+    width: 70%;
+    height: 3.5rem;
+    background-color: var(--verde-princ);
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: .3rem;
+}
+.form__register-login{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 70%;
+    gap: .5rem;
+}
+}
+
 @media screen and (min-width: 769px) {
     /* productGenerales */
     .bloques_index{
