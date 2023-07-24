@@ -6,6 +6,7 @@
     --negro-princ:#0e0e0e;
     --gris-claro: rgb(182, 182, 182);
     --blanco-perla: rgb(214, 214, 214);
+    --grisOscuro: rgb(39, 39, 39);
 }
     /* estilos globales */
 *{
@@ -203,7 +204,7 @@ body{
     transform: translateX(0);
     opacity: 1;
 }
-/* estilos de home */
+/* ================================================== HOME ============================================ */
     /* estilos main */
 main{
     display: flex;
@@ -458,9 +459,79 @@ a{
     width: 5rem;
     color: var(--blanco-perla);
 }
+/* ================================================== login ============================================ */
+.form-login-register{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+}
+.form h2,h4{
+    color: var(--gris-claro);
+}
+.form__campos{
+    width: 80%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.form__campos input{
+    width: 90%;
+    height: 3.5rem;
+    background: transparent;
+    border: 1px solid var(--verde-princ);
+    border-radius: .3rem;
+    padding: .5rem;
+}
+.form__recuerdame{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-flow: column nowrap;
+}
+.form__link{
+    border-bottom: 1px solid var(--verde-princ);
+}
+.form__buttom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+.form__buttom button{
+    width: 70%;
+    height: 3.5rem;
+    background-color: var(--verde-princ);
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: .3rem;
+}
+.form__register-login{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 70%;
+    gap: .5rem;
+}
 /* response desing (tablet) */
 @media screen and (min-width: 380px) {
-    /* estilos de home */
+/* ================================================== HOME ============================================ */
     /* productGenerales */
 .bloques_index{
     height: 15rem;
