@@ -5,10 +5,10 @@
     --verde-princ:#34ff4f;
     --negro-princ:#0e0e0e;
     --gris-claro: rgb(182, 182, 182);
-    --blanco-perla: rgb(214, 214, 214);
+    --blanco-perla: rgb(245, 245, 245);
     --grisOscuro: rgb(39, 39, 39);
 }
-    /* estilos globales */
+/* ============================================== Estilos Globales ======================================== */
 *{
     margin: 0;
     padding: 0;
@@ -37,7 +37,7 @@ body{
     top: 0;
     position: relative;
 }
-    /* estilos del menu */
+/* ============================================== Estilos del Menu ======================================== */
 .header__menu-burger{
     width: 40px;
     height: 30px;
@@ -204,6 +204,83 @@ body{
     transform: translateX(0);
     opacity: 1;
 }
+/* ============================================== Footer ======================================== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.788);
+    color: var(--blanco-perla);
+    padding: 20px;
+}
+    footer{
+    width: 100%;
+    height: max-content;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}      
+.footer-content {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+.footer-info{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+.redes-sociales{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+.redes-sociales-red{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.redes-sociales-red a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.redes-sociales-red a i{
+    width: max-content;
+    height: max-content;
+}
+a{
+    text-decoration: none;
+    color: var(--verde-princ);
+}           
+.copy{
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+}
+.redes-sociales {
+    width: 50%;
+    gap: 10px;
+}
+.icono{
+    width: 5rem;
+    color: var(--blanco-perla);
+}    
 /* ================================================== HOME ============================================ */
     /* estilos main */
 main{
@@ -382,83 +459,6 @@ main{
     font-weight: bold;
     text-align: center;
 }
-    /* Footer */
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.788);
-    color: var(--blanco-perla);
-    padding: 20px;
-}
-footer{
-    width: 100%;
-    height: max-content;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}      
-.footer-content {
-    width: 100%;
-    height: 7rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-flow: row nowrap;
-}
-.footer-info{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-direction: column;
-}
-.redes-sociales{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    padding: 1rem;
-}
-.redes-sociales-red{
-    width: 100%;
-    height: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.redes-sociales-red a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.redes-sociales-red a i{
-    width: max-content;
-    height: max-content;
-}
-a{
-    text-decoration: none;
-    color: var(--verde-princ);
-}           
-.copy{
-    margin-top: 8px;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-}
-.redes-sociales {
-    width: 50%;
-    gap: 10px;
-}
-.icono{
-    width: 5rem;
-    color: var(--blanco-perla);
-}
 /* ================================================== login ============================================ */
 .form-login-register{
     width: 100vw;
@@ -531,9 +531,10 @@ a{
     width: 70%;
     gap: .5rem;
 }
-/* response desing (tablet) */
+
+/* =================================== response desing (tablet) ========================================= */
 @media screen and (min-width: 380px) {
-/* ================================================== HOME ============================================ */
+/* ============================================ HOME (Media) ============================================ */
     /* productGenerales */
 .bloques_index{
     height: 15rem;
@@ -558,7 +559,7 @@ a{
 .linkinfo{
     padding: 1rem;
 }
-/* ================================================== login ============================================ */
+/* =========================================== login (Media) ========================================== */
 .form{
     width: 40%;
     height: 90%;
@@ -620,7 +621,6 @@ a{
     gap: .5rem;
 }
 }
-
 @media screen and (min-width: 769px) {
     /* productGenerales */
     .bloques_index{
@@ -654,6 +654,7 @@ a{
         padding: 1rem;
     }
 }
+/* =================================== response desing (notebook) ========================================= */
 @media screen and (min-width: 1026px) {
     /* estilos de home */
     body{
