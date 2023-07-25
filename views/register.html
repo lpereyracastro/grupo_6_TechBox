@@ -16,9 +16,9 @@
     -->
     <header class="header">
         <div class="header__menu-burger">
-            <span class="header__menu-burger-span"></span>
-            <span class="header__menu-burger-span"></span>
-            <span class="header__menu-burger-span"></span>
+            <span class="header__menu-burger-span line-1"></span>
+            <span class="header__menu-burger-span line-2"></span>
+            <span class="header__menu-burger-span line-3"></span>
         </div>
         <h1 class="header__title">
             TechBox
@@ -34,6 +34,51 @@
             <div class="bottom">Comprar</div>
         </div>
     </header>
+    <nav class="contentMenu__desplegable">
+        <div class="menu__desplegable">
+            <form action="" class="menu__desplegable-form">
+                <input type="text" placeholder="Buscar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+            <ul>
+                <li>
+                    <div class="link">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="/">Inicio</a>
+                    </div>
+                    <span></span>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <a href="/misCompras">Mis compras</a>
+                    </div>
+                    <span></span>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="/favoritos">Favoritos</a>
+                    </div>
+                    <span></span>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa-solid fa-house"></i>
+                        <a href="/micuenta">Mi cuenta</a>
+                    </div>
+                    <span></span>
+                </li>
+                <li>
+                    <div class="link">
+                        <i class="fa-solid fa-user"></i>
+                        <a href="/login">Inicia sesión</a>
+                    </div>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="menu__desplegable">
         <form action="" class="menu__desplegable-form">
             <input type="text" placeholder="Buscar">
@@ -71,23 +116,57 @@
             <li>
                 <div class="link">
                     <i class="fa-solid fa-user"></i>
-                    <a href="/login">Inicia secion</a>
+                    <a href="/login">Inicia sesión</a>
                 </div>
                 <span></span>
             </li>
         </ul>
     </div>
     <main>
-
+        <article class="form-login-register">
+            <form action="/login" method="POST" class="form">
+                <h4>Crear una cuenta de</h4>
+                <h2>TechBox</h2>
+                <div class="form__campos">
+                    <input type="user" placeholder="User">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="text" placeholder="Apellido" required>
+                    <input type="email" name="Email" placeholder="Direccion de correo electronico" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form__recuerdame">
+                    <div class="form__recuerdame-campos">
+                        <input type="checkbox" name="recuerdame">
+                        <label for="recuerdame">Recuerdame</label>
+                    </div>
+                </div>
+                <div class="form__buttom">
+                    <button type="submit">Iniciar sesión ahora</button>
+                </div>
+            </form>
+        </article>
     </main>
     <footer>
         <div class="footer-content">
-            <p>Derechos de autor © 2023. Todos los derechos reservados.</p>
-            <div class="redes-sociales">
-                <a href="#"><i class="fab fa-facebook icono"></i></a>
-                <a href="#"><i class="fab fa-twitter icono"></i></a>
-                <a href="#"><i class="fab fa-instagram icono"></i></a>
+            <div class="footer-info">
+                <a href="">Como puedo pagar</a>
+                <a href="">Contactanos</a>
+                <a href="">Soporte</a>
+                <a href="">Ayuda</a>
             </div>
+            <div class="redes-sociales">
+                <div class="redes-sociales-red">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook icono"></i></a>
+                    <a href="https://twitter.com"><i class="fab fa-twitter icono"></i></a>
+                </div>
+                <div class="redes-sociales-red">
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram icono"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp icono"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copy">
+            <p>Derechos de autor © 2023. Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="js/script.js"></script>
