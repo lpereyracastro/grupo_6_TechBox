@@ -45,12 +45,12 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    cursor:pointer;
 }
 .header__menu-burger-span{
     width: 100%;
     height: 1px;
     background-color: white;
-    cursor:pointer;
     transition: .2s ease-in;
 }
 .active .line-1{
