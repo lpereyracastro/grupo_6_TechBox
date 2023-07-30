@@ -147,7 +147,7 @@ body{
     flex-direction: column;
     position: absolute;
     background-color: var(--negro-princ);
-    transform: translateX(-100%);
+    transform: translateX(-101%);
     transition: .3s ease-in;
     z-index: 10;
 }
@@ -221,7 +221,7 @@ footer{
     justify-content: center;
     align-items: center;
     margin: 1rem 0 1rem 0;
-    overflow-x: hidden;
+    overflow: hidden;
 }      
 .footer-content{
     width: 100%;
@@ -514,6 +514,8 @@ main{
 }
 .form__link{
     border-bottom: 1px solid var(--verde-princ);
+    text-decoration: none;
+    color: var(--verde-princ);
 }
 .form__buttom{
     width: 100%;
@@ -589,8 +591,9 @@ main{
     flex-flow: column nowrap;
     gap: .5rem;
 }
-.productoDetail ul{
-    list-style: circle;
+.productoPrice{
+    color: var(--verde-princ);
+    font-size: 1.2rem;
 }
 .producto-card{
     width: 100%;
