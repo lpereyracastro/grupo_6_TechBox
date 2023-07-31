@@ -7,7 +7,7 @@
 ## **Integrantes del equipo:**
 
 ```
-Franco Di Pizio: HOLI SOY FRAN
+Franco Di Pizio: Tengo 32 años, soy empleado de comercio a tiempo completo desde hace 11 años, siempre me gusto el mundo IT asique me animé a dar el salto hace algun tiempo empezando a estudiar diseño web, cuando no estoy trabajando, dedico mi tiempo a practicar y aprender acerca de este gran mundo.
 
 Leonel Tejedor
 

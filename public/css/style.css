@@ -86,8 +86,9 @@ body{
 }
 /* ============================================== Estilos del Menu ======================================== */
 .header__menu-burger{
-    width: 40px;
-    height: 30px;
+    width: 50px;
+    height: 40px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -116,7 +117,26 @@ body{
 }
     /* estilos del titulo */
 .header__title{
-    font-size: 1rem;
+    font-size: 2rem;
+    width: max-content;
+    cursor: pointer;
+    letter-spacing: 8px;
+    border-right: 3px solid var(--verde-princ);
+
+    animation: progressive-type 2s steps(8), indicador .5s step-end infinite alternate;
+}
+@keyframes progressive-type {
+    from {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+@keyframes indicador {
+    50% {
+        border-color: transparent;
+    }
 }
     /* estilos del logo (cubo) */
 .header__logo{
