@@ -43,8 +43,9 @@ body{
 }
 /* ============================================== Estilos del Menu ======================================== */
 .header__menu-burger{
-    width: 40px;
-    height: 30px;
+    width: 50px;
+    height: 40px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
