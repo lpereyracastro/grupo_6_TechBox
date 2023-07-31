@@ -37,6 +37,7 @@ body{
     position: absolute;
     z-index: -1;
     overflow: hidden;
+    display: none;
 }
 .particle{
     position: relative;
@@ -889,6 +890,9 @@ main{
 }
 /* =================================== response desing (notebook) ========================================= */
 @media screen and (min-width: 1024px) {
+    .particles__container{
+        display: block;
+    }
     /* estilos de home */
 body{
     overflow-x: hidden;
@@ -1128,4 +1132,5 @@ body{
 .cart__compra{
     width: 50%;
 }
+v
 }
