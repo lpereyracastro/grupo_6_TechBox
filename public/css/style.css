@@ -74,20 +74,23 @@ body{
 }
     /* estilos del titulo */
 .header__title{
-    font-size: 2rem;
-    width: max-content;
+    position: absolute;
+}
+.header__title h1{
+    position: relative;
+    font-size: 1rem;
+    letter-spacing: 6px;
+    width: 12ch;
+    white-space: nowrap;
     cursor: pointer;
-    letter-spacing: 8px;
     border-right: 3px solid var(--verde-princ);
+    overflow: hidden;
+    animation: progressive-type 3s steps(8) 1s, indicador .5s step-end infinite alternate;
 
-    animation: progressive-type 2s steps(8), indicador .5s step-end infinite alternate;
 }
 @keyframes progressive-type {
     from {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    }
-    to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        width: 0; 
     }
 }
 @keyframes indicador {
