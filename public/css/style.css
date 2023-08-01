@@ -77,11 +77,10 @@ body{
     width: 100%;
     height: 10vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid var(--verde-princ);
     z-index: 1;
-    position: sticky;
     top: 0;
     position: relative;
 }
@@ -95,6 +94,7 @@ body{
     justify-content: space-between;
     align-items: center;
     cursor:pointer;
+    margin-right: auto;
 }
 .header__menu-burger-span{
     width: 100%;
@@ -119,6 +119,8 @@ body{
     /* estilos del titulo */
 .header__title{
     position: absolute;
+    width: fit-content;
+    margin-right: 40px;
 }
 .header__title h1{
     position: relative;
@@ -150,6 +152,7 @@ body{
     animation: animete 30s linear infinite;
     transform-style: preserve-3d;
     background: transparent;
+    margin: 0 auto;
 }
 .header__logo-cubo{
     position: absolute;
