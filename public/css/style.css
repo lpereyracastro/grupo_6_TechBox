@@ -1,43 +1,138 @@
     /* fuente */
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Titillium+Web:wght@200&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Titillium+Web:wght@200&display=swap');
     /* colores */
-    :root {
-        --verde-princ: #34ff4f;
-        --verde-princ-o: #2ae443;
-        --negro-princ: #0e0e0e;
-        --gris-claro: rgb(182, 182, 182);
-        --blanco-perla: rgb(245, 245, 245);
-        --grisOscuro: rgb(39, 39, 39);
-    }
-
-    /* ============================================== Estilos Globales ======================================== */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: var(--verde-princ);
-    }
-
-    a {
-        text-decoration: none;
-    }
-
+:root{
+    --verde-princ:#34ff4f;
+    --verde-princ-o:#2ae443;
+    --negro-princ:#0e0e0e;
+    --gris-claro: rgb(182, 182, 182);
+    --blanco-perla: rgb(245, 245, 245);
+    --grisOscuro: rgb(39, 39, 39);
+}
+/* ============================================== Estilos Globales ======================================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+    color: var(--verde-princ);
+}
+a{
+    text-decoration: none;
+}
     /* color del cuerpo */
-    body {
-        background-color: var(--negro-princ);
-        font-family: 'Titillium Web', sans-serif;
-        color: var(--gris-claro);
+body{
+    background-color: var(--negro-princ);
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--gris-claro);
+}
+/* ============================================== Estilos de particulas ======================================== */
+.particles__container{
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    display: none;
+}
+.particle{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+.particle span{
+    position: relative;
+    width: .5rem;
+    height: .5rem;
+    background-color: var(--verde-princ-o);
+    margin: 0 .5rem;
+    border-radius: 50%;
+    animation : particleAnimation 15s linear infinite;
+    animation-duration: calc(60s / var(--i));
+    box-shadow: 0 0 0 1px var(--verde-princ);
+}
+.particle span:nth-child(even){
+    background-color: var(--verde-princ-o);
+    box-shadow: 0 0 0 1px var(--verde-princ-o);
+}
+@keyframes particleAnimation {
+    0%
+    {
+        transform: translateY(100vh) scale(0);
     }
+    100%
+    {
+        transform: translateY(-10vh) scale(1.1);
+    }
+}
+    /* estilos del header */
+.header{
+    background-color: var(--negro-princ);
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid var(--verde-princ);
+    z-index: 1;
+    top: 0;
+    position: relative;
+}
+/* ============================================== Estilos del Menu ======================================== */
+.header__menu-burger{
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+}
+.header__menu-burger-span{
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    transition: .2s ease-in;
+}
+.active .line-1{
+    transform-origin: 0px;
+    transform: rotate(45deg);
+    background-color: var(--verde-princ);
+}
+.active .line-2{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.active .line-3{
+    transform-origin: 0px;
+    transform: rotate(-45deg);
+    background-color: var(--verde-princ);
+}
+    /* estilos del titulo */
+.header__title{
+    position: absolute;
+    width: fit-content;
+    margin-right: 40px;
+}
+.header__title h1{
+    position: relative;
+    font-size: 1rem;
+    letter-spacing: 6px;
+    width: 12ch;
+    white-space: nowrap;
+    cursor: pointer;
+    border-right: 3px solid var(--verde-princ);
+    overflow: hidden;
+    animation: progressive-type 3s steps(8) 1s, indicador .5s step-end infinite alternate;
 
+}
     /* ============================================== Estilos de particulas ======================================== */
     .particles__container {
         top: 0;
@@ -183,7 +278,24 @@
         transform-style: preserve-3d;
         background-color: rgba(201, 1, 1, 0);
     }
-
+.header__logo{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    animation: animete 30s linear infinite;
+    transform-style: preserve-3d;
+    background: transparent;
+    margin: 0 auto;
+}
+.header__logo-cubo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    transform-style: preserve-3d;
+    background-color: rgba(201, 1, 1, 0);
+}
     /* animacion del logo (cubo) */
     @keyframes animete {
         0% {
@@ -1323,6 +1435,4 @@
         .cart__compra {
             width: 50%;
         }
-
-        v
     }
