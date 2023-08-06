@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Detalles del producto</title>
-    <script src="https://kit.fontawesome.com/b89af2b70f.js" crossorigin="anonymous"></script>
-</head>
+<%- include('./partials/head') %>
 
 <body>
     <!-- HISTORIA DE USUARIO -->
@@ -17,116 +11,7 @@
 
         Como cliente quiero poder agregar fácilmente el producto a mi carrito para poder comprarlo.
     -->
-    <header class="header">
-        <div class="header__menu-burger">
-            <span class="header__menu-burger-span line-1"></span>
-            <span class="header__menu-burger-span line-2"></span>
-            <span class="header__menu-burger-span line-3"></span>
-        </div>
-        <div class="header__title">
-            <h1>
-                TechBox.
-            </h1>
-        </div>
-        <div class="header__logo">
-            <div class="top"></div>
-            <div class="header__logo-cubo">
-                <span style="--i:0"></span>
-                <span style="--i:1"></span>
-                <span style="--i:2"></span>
-                <span style="--i:3"></span>
-            </div>
-            <div class="bottom">Comprar</div>
-        </div>
-    </header>
-    <div class="menu__desplegable">
-        <form action="" class="menu__desplegable-form">
-            <input type="text" placeholder="Buscar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </form>
-        <ul>
-            <li>
-                <div class="link">
-                    <i class="fa-solid fa-house"></i>
-                    <a href="/">Inicio</a>
-                </div>
-                <span></span>
-            </li>
-            <li>
-                <div class="link">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <a href="/misCompras">Mis compras</a>
-                </div>
-                <span></span>
-            </li>
-            <li>
-                <div class="link">
-                    <i class="fa-solid fa-heart"></i>
-                    <a href="/favoritos">Favoritos</a>
-                </div>
-                <span></span>
-            </li>
-            <li>
-                <div class="link">
-                    <i class="fa-solid fa-house"></i>
-                    <a href="/micuenta">Mi cuenta</a>
-                </div>
-                <span></span>
-            </li>
-            <li>
-                <div class="link">
-                    <i class="fa-solid fa-user"></i>
-                    <a href="/login">Inicia secion</a>
-                </div>
-                <span></span>
-            </li>
-        </ul>
-    </div>
-    <nav class="contentMenu__desplegable">
-        <div class="menu__desplegable">
-            <form action="" class="menu__desplegable-form">
-                <input type="text" placeholder="Buscar">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </form>
-            <ul>
-                <li>
-                    <div class="link">
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/">Inicio</a>
-                    </div>
-                    <span></span>
-                </li>
-                <li>
-                    <div class="link">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <a href="/misCompras">Mis compras</a>
-                    </div>
-                    <span></span>
-                </li>
-                <li>
-                    <div class="link">
-                        <i class="fa-solid fa-heart"></i>
-                        <a href="/favoritos">Favoritos</a>
-                    </div>
-                    <span></span>
-                </li>
-                <li>
-                    <div class="link">
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/micuenta">Mi cuenta</a>
-                    </div>
-                    <span></span>
-                </li>
-                <li>
-                    <div class="link">
-                        <i class="fa-solid fa-user"></i>
-                        <a href="/login">Inicia secion</a>
-                    </div>
-                    <span></span>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <%- include('./partials/header') %>
     <main class="productoDetail-content">
         <article class="producto">
             <div class="productoImage">
@@ -171,29 +56,7 @@
             </div>
         </article>
     </main>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <a href="">Como puedo pagar</a>
-                <a href="">Contactanos</a>
-                <a href="">Soporte</a>
-                <a href="">Ayuda</a>
-            </div>
-            <div class="redes-sociales">
-                <div class="redes-sociales-red">
-                    <a href="https://www.facebook.com/"><i class="fab fa-facebook icono"></i></a>
-                    <a href="https://twitter.com/"><i class="fab fa-twitter icono"></i></a>
-                </div>
-                <div class="redes-sociales-red">
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram icono"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp icono"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copy">
-            <p>Derechos de autor © 2023. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <%- include('./partials/footer') %>
     <script src="js/script.js"></script>
 </body>
 
