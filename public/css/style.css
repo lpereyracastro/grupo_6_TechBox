@@ -871,7 +871,7 @@ body{
         margin: 2rem;
     }
 
-    .form__buttom button {
+    .form__buttom input {
         width: 70%;
         height: 3.5rem;
         background-color: var(--verde-princ);

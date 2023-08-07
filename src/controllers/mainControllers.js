@@ -8,6 +8,9 @@ const mainControllers = {
     register : function(req,res){
         res.render("register")
     },
+    create : function(req,res){
+        res.send("funciona")
+    },
     productDetail : function(req,res){
         res.render("productDetail")
     },
