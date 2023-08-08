@@ -870,7 +870,6 @@ body{
         justify-content: center;
         margin: 2rem;
     }
-
     .form__buttom input {
         width: 70%;
         height: 3.5rem;
@@ -1195,7 +1194,18 @@ body{
             width: 100vw;
             height: 90vh;
         }
-
+        /* }>========================>>>    LOGIN    <<<==========================<{ */
+        .form__buttom input {
+            cursor: pointer;
+            transition: background-color 0.7s;
+        }
+        .form__buttom input:hover {
+            background-color: #2da43d;
+        }
+        .form__buttom input:focus {
+            color: #fff;
+        }
+        
         /* estilos productos destacados slider*/
         .arrow-right {
             right: 20%;
