@@ -233,15 +233,15 @@ body{
     }
 
     /* estilos del titulo */
-    .header__title {
-        font-size: 1em;
+    .header__title h1{
+        font-size: 20px;
         cursor: pointer;
-        width: 13ch;
-        letter-spacing: 0.8ch;
+        width: 8ch;
+        letter-spacing: 1px;
         border-right: 3px solid var(--verde-princ);
         overflow: hidden;
 
-        animation: progressive-type 2s steps(16), indicador .5s step-end infinite 2s;
+        animation: progressive-type 3s steps(8), indicador .5s step-end infinite 2s;
     }
 
     @keyframes progressive-type {
