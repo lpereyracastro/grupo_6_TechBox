@@ -11,6 +11,7 @@ router.post("/register", mainControllers.create)
 router.get("/productCart", mainControllers.productCart)
 router.get("/productDetail", mainControllers.productDetail)
 
+router.get("/admin", mainControllers.admin);
 
 
 module.exports = router

@@ -16,7 +16,10 @@ const mainControllers = {
     },
     productCart : function(req,res){
         res.render("productCart")
-    }
+    },
+    admin : function(req,res){
+        res.render("admin")
+    }    
 }
 
 module.exports = mainControllers;

@@ -959,6 +959,60 @@ body{
         margin-top: 1rem;
         border: none;
     }
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>< ADMIN FORM ><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    .admin__container {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 10px auto;
+        background-color: #0e0e0e;
+        border-radius: 5px;
+        border: 1px solid #34ff4f;
+        padding: 15px;
+    }
+    .admin__form-title {
+        display: flex;
+        margin: 10px auto 0;
+    }
+    .admin__form-title h1 {
+        display: inline-block;
+        text-align: center;
+        font-size: 20px;
+        color: #0e0e0e;
+        background-color: #34ff4f;
+        padding: 10px 20px;
+        border-radius: 3px;
+    }
+    
+    .product__admin-form label {
+        color: #fff;
+        display: block;
+        margin: 10px 0 5px 10px;
+        font-weight: bold;
+    }
+    
+    .product__admin-form input[type="text"],
+    .product__admin-form input[type="number"],
+    .product__admin-form textarea,
+    .product__admin-form select {
+        width: 100%;
+        padding: 10px;
+        
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .product__admin-form button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        color: #0e0e0e;
+        background-color: #34ff4f;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
 
     /* =================================== response desing (tablet) ========================================= */
 
@@ -1333,6 +1387,13 @@ body{
         .cart__product-button button {
             width: 6rem;
             height: 1.5rem;
+        }
+        /* ADMIN (PC DESKTOP)*/
+        .admin__container {
+            max-width: 700px;
+        }
+        .product__admin-form button:hover {
+        background-color:#2da43d;
         }
     }
 
