@@ -3,7 +3,7 @@
       "id": 1,
       "name": "RAZER HAMMERHEAD TRUE WIRELESS",
       "description": "Ilumina tu inmersión",
-      "image": "#",
+      "image": "img/product/razer-hammerhead.jpg",
       "category": "auriculares",
       "colors": "azul",
       "price": 25000
@@ -12,7 +12,7 @@
       "id": 2,
       "name": "RAZER HAMMERHEAD TRUE WIRELESS",
       "description": "Ilumina tu inmersión",
-      "image": "#",
+      "image": "img/product/razer-hammerhead.jpg",
       "category": "auriculares",
       "colors": "azul",
       "price": 25000
@@ -21,7 +21,25 @@
       "id": 3,
       "name": "RAZER HAMMERHEAD TRUE WIRELESS",
       "description": "Ilumina tu inmersión",
-      "image": "#",
+      "image": "img/product/razer-hammerhead.jpg",
+      "category": "auriculares",
+      "colors": "azul",
+      "price": 25000
+    },
+    {
+      "id": 4,
+      "name": "RAZER HAMMERHEAD TRUE WIRELESS",
+      "description": "Ilumina tu inmersión",
+      "image": "img/product/razer-hammerhead.jpg",
+      "category": "auriculares",
+      "colors": "azul",
+      "price": 25000
+    },
+    {
+      "id": 5,
+      "name": "RAZER HAMMERHEAD TRUE WIRELESS",
+      "description": "Ilumina tu inmersión",
+      "image": "img/product/razer-hammerhead.jpg",
       "category": "auriculares",
       "colors": "azul",
       "price": 25000
