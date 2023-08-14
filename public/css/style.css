@@ -1297,15 +1297,54 @@ body{
         }
 
         /* ================================================== carro compra ============================================ */
-        .cart__product {
-            width: 50%;
-            justify-content: space-between;
-        }
-
-        .cart__product-button button {
-            width: 6rem;
-            height: 1.5rem;
-        }
+                .cart {
+                    width: 100%;
+                    align-items: center;
+                }
+        
+                .cart__product {
+                    width: 50%;
+                    height: 12rem;
+                    justify-content: space-between;
+                }
+                .cart__product-title {
+                    font-size: 1rem;
+                }
+        
+                .cart__product-detail {
+                    font-size: 1rem;
+                    color: var(--blanco-perla);
+                }
+        
+                .cart__product-button {
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    width: 100%;
+                    margin-top: 1rem;
+                }
+        
+                .cart__product-button button {
+                    width: 6rem;
+                    height: 1.5rem;
+                    font-weight: bold;
+                    font-size: .7rem;
+                }
+        
+                .detailBuy {
+                    width: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 1rem;
+                }
+        
+                .detailBuy__product {
+                    width: 50%;
+                }
+        
+                .cart__compra {
+                    width: 50%;
+                }
         /* ADMIN (PC DESKTOP)*/
         .admin__container {
             max-width: 700px;
