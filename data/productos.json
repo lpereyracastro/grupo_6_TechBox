@@ -1,0 +1,20 @@
+[
+    {
+      "id": "intel-core-i3-12100",
+      "name": "Intel core i3 12100",
+      "description": "se encuadra en la gama baja, pero es un chip de nueva generación, lo que significa que utiliza la arquitectura Golden Cove, y que es compatible con memoria DDR5 a 4.800 MHz, y con memoria DDR4 a 3.200 MHz",
+      "image": "img/procesadores/core-i3/core-i3-12100/core-i3-12100F.jpg",
+      "category": "procesadores",
+      "colors": null,
+      "price": 25000
+    },
+    {
+        "id": "intel-core-i3-8350",
+        "name": "Intel core i3 8350",
+        "description": "se encuadra en la gama baja, pero es un chip de nueva generación, lo que significa que utiliza la arquitectura Golden Cove, y que es compatible con memoria DDR5 a 4.800 MHz, y con memoria DDR4 a 3.200 MHz",
+        "image": "img/procesadores/core-i3/core-i3-12100/core-i3-12100F.jpg",
+        "category": "procesadores",
+        "colors": null,
+        "price": 25000
+      }
+]
