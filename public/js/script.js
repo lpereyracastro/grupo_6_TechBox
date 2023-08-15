@@ -72,7 +72,7 @@ function sliceRight(){
         contadorProducts = 0;
         operacionProducts = 0;
         carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
-        carrouselProductsSlice.style.transition = "none";
+        carrouselProductsSlice.style.transition = "all ease .6s";
         return;
     }else{
         contadorProducts++;
@@ -88,7 +88,7 @@ function sliceLeft(){
         contadorProducts = product.length-1;
         operacionProducts = tamañoSliceProducts * (product.length-1);
         carrouselProductsSlice.style.transform = `translate(-${operacionProducts}%)`;
-        carrouselProductsSlice.style.transition = "none";
+        carrouselProductsSlice.style.transition = "all ease .6s";
         return
     } else{
         operacionProducts = operacionProducts - tamañoSliceProducts;

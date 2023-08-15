@@ -158,100 +158,26 @@
       </div>
       <!-- productos generales -->
       <article id="productGenerales">
-        <div class="bloques_index">
-          <div class="img__products">
-            <img
-              src="img/product/razer-hammerhead.jpg"
-              alt=""
-              class="imagenes__producst"
-            />
-          </div>
-          <div class="linkinfo">
-            <h3 class="product__title product__title-modify">
-              RAZER HAMMERHEAD TRUE WIRELESS
-            </h3>
-            <div class="product__info product__info-modify">
-              <p>Ilumina tu inmersión</p>
+          <% productos.forEach(producto => { %>
+            <div class="bloques_index">
+              <div class="img__products">
+                <img
+                  src= <%= producto.image %>
+                  alt=""
+                  class="imagenes__producst"
+                />
+              </div>
+              <div class="linkinfo">
+                <h3 class="product__title product__title-modify">
+                  <%= producto.name %>
+                </h3>
+                <div class="product__info product__info-modify">
+                  <p><%= producto.description %></p>
+                </div>
+                <a href="#" target="_blank">COMPRAR</a>
+              </div>
             </div>
-            <a href="#" target="_blank">COMPRAR</a>
-          </div>
-        </div>
-
-        <div class="bloques_index">
-          <div class="img__products">
-            <img
-              src="img/product/razer-hammerhead.jpg"
-              alt=""
-              class="imagenes__producst"
-            />
-          </div>
-          <div class="linkinfo">
-            <h3 class="product__title product__title-modify">
-              RAZER HAMMERHEAD TRUE WIRELESS
-            </h3>
-            <div class="product__info product__info-modify">
-              <p>Ilumina tu inmersión</p>
-            </div>
-            <a href="#" target="_blank">COMPRAR</a>
-          </div>
-        </div>
-
-        <div class="bloques_index">
-          <div class="img__products">
-            <img
-              src="img/product/razer-hammerhead.jpg"
-              alt=""
-              class="imagenes__producst"
-            />
-          </div>
-          <div class="linkinfo">
-            <h3 class="product__title product__title-modify">
-              RAZER HAMMERHEAD TRUE WIRELESS
-            </h3>
-            <div class="product__info product__info-modify">
-              <p>Ilumina tu inmersión</p>
-            </div>
-            <a href="#" target="_blank">COMPRAR</a>
-          </div>
-        </div>
-
-        <div class="bloques_index">
-          <div class="img__products">
-            <img
-              src="img/product/razer-hammerhead.jpg"
-              alt=""
-              class="imagenes__producst"
-            />
-          </div>
-          <div class="linkinfo">
-            <h3 class="product__title product__title-modify">
-              RAZER HAMMERHEAD TRUE WIRELESS
-            </h3>
-            <div class="product__info product__info-modify">
-              <p>Ilumina tu inmersión</p>
-            </div>
-            <a href="#" target="_blank">COMPRAR</a>
-          </div>
-        </div>
-
-        <div class="bloques_index">
-          <div class="img__products">
-            <img
-              src="img/product/razer-hammerhead.jpg"
-              alt=""
-              class="imagenes__producst"
-            />
-          </div>
-          <div class="linkinfo">
-            <h3 class="product__title product__title-modify">
-              RAZER HAMMERHEAD TRUE WIRELESS
-            </h3>
-            <div class="product__info product__info-modify">
-              <p>Ilumina tu inmersión</p>
-            </div>
-            <a href="#" target="_blank">COMPRAR</a>
-          </div>
-        </div>
+          <% }) %>
       </article>
     </main>
     <%- include('./partials/footer') %>
