@@ -11,7 +11,7 @@
             </h1>
         </div>
         <div class="admin__form-form">
-            <form class="product__admin-form">
+            <form method="POST" action="/admin" class="product__admin-form">
                 <label for="name">Nombre del producto:</label>
                 <input type="text" id="name" name="name" required>
                 
@@ -33,9 +33,9 @@
                 <input type="text" id="colors" name="colors">
                 
                 <label for="price">Precio:</label>
-                <input type="number" id="price" name="price" step="10" required>
+                 <input type="number" id="price" name="price" required> 
                 
-                <button type="submit" value="Guardar">Guardar</button>
+                <input type="submit" value="guardar">
             </form>
         </div>
     </div>

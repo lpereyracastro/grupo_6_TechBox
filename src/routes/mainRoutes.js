@@ -12,6 +12,7 @@ router.get("/productCart", mainControllers.productCart)
 router.get("/productDetail", mainControllers.productDetail)
 
 router.get("/admin", mainControllers.admin);
+router.post("/admin", mainControllers.productUpload);
 
 /* router.get("/products", );
 router.post("/products", );

@@ -19,7 +19,12 @@ const mainControllers = {
     },
     admin : function(req,res){
         res.render("admin")
-    }    
+    },  
+    productUpload : function(req, res){
+        
+        res.redirect('/')
+        
+    }
 }
 
 module.exports = mainControllers;
