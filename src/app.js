@@ -12,6 +12,10 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 
+
+app.use((req, res, next) => {
+    res.status(404).render('not-found');
+})
 // up server
 app.listen(3000,()=>{
     console.log("funcionanado en el puerto 3000");

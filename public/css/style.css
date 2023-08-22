@@ -931,6 +931,49 @@ body{
         cursor: pointer;
     }
     
+    .error-body {
+        background-color: #222222;
+    }
+    .container-404 {
+        border: 1px solid var(--verde-princ-o);
+        display: block;
+        border-radius: 5px;
+        margin: 10px 20px;
+        padding: 10px 0;
+        background: linear-gradient(90deg, rgba(75,82,69,1) 0%, rgba(133,232,17,1) 73%, rgba(233,252,69,1) 100%);
+        filter: drop-shadow(0 5px 10px #ffffff58);
+    }
+    .error-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+    .error-title h2 {
+        color: #222222;
+        font-size: 36px;
+    }
+    .error-content h4 {
+        color: #222222;
+        margin: 10px 0;
+        font-size: 20px;
+        text-align: center;
+        letter-spacing: 1.5px;
+    }
+    .error-btn button {
+        margin: 5px 0;
+        padding: 10px;
+        border: 1px solid #222222;
+        border-radius: 5px;
+        background-color: #222222;
+        transition: .3s all;
+    }
+    .error-btn button a {
+        color: var(--verde-princ-o);
+        padding: 10px 20px;
+        transition: .3s all;
+    }
+
 
     /* =================================== response desing (tablet) ========================================= */
 
@@ -1352,6 +1395,26 @@ body{
         .product__admin-form button:hover {
         background-color:#2da43d;
         }
+
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 404 ERROR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        .container-404 {
+            display: block;
+            position: absolute;
+            left: 30%;
+            right: 30%;
+            top: 10%;
+            padding: 10px 30px;
+            min-width: 400px;
+            max-width: 600px;
+        }
+        .error-btn button:hover {
+            background-color: #2da43d;
+            
+        }
+        .error-btn button a:hover{
+            color: #0e0e0e;
+        }
+
     }
 
     @media screen and (min-width: 1360px) {
@@ -1460,4 +1523,5 @@ body{
         .cart__compra {
             width: 50%;
         }
+        
     }
