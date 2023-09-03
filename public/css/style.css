@@ -4,7 +4,7 @@
 :root{
     --verde-princ:#34ff4f;
     --verde-princ-o:#2ae443;
-    --negro-princ:#0e0e0e;
+    --negro-princ:#000000;
     --gris-claro: rgb(182, 182, 182);
     --blanco-perla: rgb(245, 245, 245);
     --grisOscuro: rgb(39, 39, 39);
@@ -425,7 +425,54 @@ body{
         width: 5rem;
         color: var(--blanco-perla);
     }
+    /* ================================================== products page ============================================ */
 
+    .productsPage{
+        width: 100vw;
+        min-height: 100vh;
+        max-height: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+        padding: 1rem;
+    }
+    .productsPage_products{
+        width: 17rem;
+        min-height: 25rem;
+        background: transparent;
+        border-bottom: 1px solid var(--verde-princ);
+        overflow: hidden;
+    }
+    .productsPage__img{
+        width: 100%;
+        height: 40%;
+        border-bottom: 1px solid var(--verde-princ);
+    }
+    .productPage__detail{
+        width: 100%;
+        height: 60%;
+        padding: .3rem;
+    }
+    .productPage__detail h4{
+        color: var(--verde-princ);
+    }
+    .productPage__detail p{
+        font-size: 1rem;
+    }
+    .productPage__buttons{
+        width: 100%;
+        height: max-content;
+        padding: .5rem;
+    }
+    .productPage__link{
+        text-align: center;
+        text-decoration: none;
+        color: var(--negro-princ);
+        background-color: var(--verde-princ);
+        text-align: center;
+    }
     /* ================================================== carro compra ============================================ */
     .ContentCart {
         width: 100vw;

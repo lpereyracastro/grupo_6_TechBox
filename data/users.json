@@ -5,7 +5,7 @@
       "lastName": "primero",
       "email": "jajameloinvente@gmail.com",
       "password": 12,
-      "image": "#"
+      "image": "default.jpg"
     },
     {
       "id": 2,
@@ -13,7 +13,7 @@
       "lastName": "Herrera",
       "email": "meloinvente@gmail.com",
       "password": 123,
-      "image": "#"
+      "image": "default.jpg"
     },
     {
       "id": 3,
@@ -21,7 +21,7 @@
       "lastName": "segundo",
       "email": "jajameloinvente1@gmail.com",
       "password": 1234,
-      "image": "#"
+      "image": "default.jpg"
     },
     {
       "id": 4,
@@ -29,6 +29,6 @@
       "lastName": "tercero",
       "email": "jajameloinvente2@gmail.com",
       "password": 12345,
-      "image": "#"
+      "image": "default.jpg"
     }
 ]
