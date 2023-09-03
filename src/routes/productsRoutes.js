@@ -6,7 +6,7 @@ router.get("/",productsControllers.products)
 router.get("/cart", productsControllers.productCart)
 router.get("/detail", productsControllers.productDetail)
 
-router.get("/admin", productsControllers.admin);
-router.post("/admin", productsControllers.productUpload);
+router.get("/loadProduct", productsControllers.loadProduct);
+router.post("/loadProduct", productsControllers.storeLoadProduct);
 
 module.exports = router;

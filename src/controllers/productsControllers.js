@@ -1,4 +1,5 @@
 const path = require("path");
+const productJson = path.join(__dirname, "../../data/productos.json");
 const productos = require(path.join(__dirname, "../../data/productos.json"));
 const productsControllers = {
     products : function(req,res){
@@ -10,11 +11,13 @@ const productsControllers = {
     productCart : function(req,res){
         res.render("productCart");
     },
-    admin : function(req,res){
-        res.render("admin");
+    loadProduct : function(req,res){
+        res.render("loadProduct");
     },  
-    productUpload : function(req, res){
-        res.redirect('/');
+    storeLoadProduct : function(req, res){
+        console.log(req)
+        res.send(req)
+        //res.redirect('/');
     }
 }
 
