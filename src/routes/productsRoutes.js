@@ -34,5 +34,9 @@ router.get("/loadProduct", productsControllers.loadProduct);
 // ruta post para manejar los campos del formulario y la imagen que procesamos con multer
 router.post("/loadProduct", upload.single("image"),productsControllers.storeLoadProduct);
 
+// vista del formulario de edicion del producto
+router.get("/:id/edit", productsControllers.edit);
+router.put("/:id/edit", upload.single("image"),productsControllers.storeEdit);
+
 // exportamos router para trabajarlo en app
 module.exports = router;

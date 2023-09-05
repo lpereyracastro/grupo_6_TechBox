@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+<body>
+
+    <%- include('./partials/header') %>
+    <main>
+        <article class="form-login-register">
+            <form action="/products/<%= product.id %>/edit?_method=PUT" method="POST" class="form" enctype="multipart/form-data">
+                <h4>Editar un producto</h4>
+                <h2>TechBox</h2>
+                <div class="form__campos">
+                    <input type="text" name="productname" placeholder="<%= product.name %>" required>
+                    <input type="text" name="description" placeholder="<%= product.description %>" required>
+                    <input type="number" name="price" placeholder="<%= product.price %>" required>
+                    <select name="category" id="category">
+                        <option value="hardware" selected><%= product.category %></option>
+                        <option value="software">software</option>
+                        <option value="perifericos">perifericos</option>
+                    </select>
+                    <input type="file" name="image" placeholder="Imagen del producto" required>
+                </div>
+                <div class="form__buttom">
+                    <input type="submit" value="Cargar Producto"></input>
+                </div>
+            </form>
+        </article>
+    </main>
+</body>
+</html>
+
+
+
+
