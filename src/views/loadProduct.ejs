@@ -6,7 +6,7 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/products/loadProduct" method="POST" class="form">
+            <form action="/products/loadProduct" method="POST" class="form" enctype="multipart/form-data">
                 <h4>Cargar Producto</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
@@ -14,7 +14,7 @@
                     <input type="text" name="description" placeholder="Descripcion del producto" required>
                     <input type="number" name="price" placeholder="Precio del producto" required>
                     <select name="category" id="category">
-                        <option value="Hardware" selected>Hardware</option>
+                        <option value="hardware" selected>Hardware</option>
                         <option value="software">software</option>
                         <option value="perifericos">perifericos</option>
                     </select>

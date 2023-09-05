@@ -1,6 +1,7 @@
 const path = require("path");
-const productJson = path.join(__dirname, "../../data/productos.json");
 const productos = require(path.join(__dirname, "../../data/productos.json"));
+const {v4: uuidv4} = require("uuid")
+
 const productsControllers = {
     products : function(req,res){
         res.render("products", {productos});
@@ -15,9 +16,17 @@ const productsControllers = {
         res.render("loadProduct");
     },  
     storeLoadProduct : function(req, res){
-        console.log(req)
-        res.send(req)
-        //res.redirect('/');
+        const newProducts = {
+            id: uuidv4(),
+            name: req.body.productname,
+			price: req.body.price,
+			category: req.body.category,
+			description: req.body.description,
+			image : req.file.filename
+        };
+        productos.push(newProducts);
+        console.log(productos);
+        res.redirect("/products");
     }
 }
 
