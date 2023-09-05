@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+<body>
+
+    <%- include('./partials/header') %>
+    <main>
+        <article class="form-login-register">
+            <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST" class="form" enctype="multipart/form-data">
+                <h4>Editar un producto</h4>
+                <h2>TechBox</h2>
+                <div class="form__campos">
+                    <h4>Esta seguro de eliminar el producto <%= product.name %></h4>
+                </div>
+                <div class="form__buttom">
+                    <input type="submit" value="Eliminar"></input>
+                </div>
+            </form>
+        </article>
+    </main>
+</body>
+</html>
+
+
+
+

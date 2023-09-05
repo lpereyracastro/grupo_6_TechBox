@@ -57,6 +57,21 @@ const productsControllers = {
         const productsJsonData = JSON.stringify(productos, null, 2);
         fs.writeFileSync(productsJson, productsJsonData);
         res.redirect("/products")   
+    },
+    deleteForm : function (req,res){
+        const idProduct = req.params.id;
+        const product = productos.find(product => product.id == idProduct);
+        res.render("productDelete", {product});
+    },
+    delete : function (req,res){
+    const productIdDelete = req.params.id;
+    const productToDelete = productos.find(product => product.id === productIdDelete);
+    const indiceProduct = productos.findIndex(product => product.id == productToDelete.id);
+    productos.splice(indiceProduct, 1);
+
+    const productsJsonData = JSON.stringify(productos, null, 2);
+    fs.writeFileSync(productsJson, productsJsonData);
+    res.redirect("/products")
     }
 }
 

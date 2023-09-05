@@ -38,5 +38,9 @@ router.post("/loadProduct", upload.single("image"),productsControllers.storeLoad
 router.get("/:id/edit", productsControllers.edit);
 router.put("/:id/edit", upload.single("image"),productsControllers.storeEdit);
 
+// eliminar un producto
+router.get("/:id/delete", productsControllers.deleteForm);
+router.delete("/:id/delete", productsControllers.delete);
+
 // exportamos router para trabajarlo en app
 module.exports = router;

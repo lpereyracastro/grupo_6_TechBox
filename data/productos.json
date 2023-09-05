@@ -14,13 +14,5 @@
     "image": "core-i3-8350k.jpg",
     "category": "procesadores",
     "price": 25000
-  },
-  {
-    "id": "c6dd4fca-abc0-4bac-851c-279a355d6b38",
-    "name": "aaaaaaaaaaaaaaaaa",
-    "price": "22231",
-    "category": "perifericos",
-    "description": "aaaaaaaaaaaaaaaaaaa",
-    "image": "1693942139293_img_product.jpg"
   }
 ]
