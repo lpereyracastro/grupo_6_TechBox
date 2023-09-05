@@ -15,28 +15,17 @@
     <main class="productoDetail-content">
         <article class="producto">
             <div class="productoImage">
-                <div class="productImages">
-                    <img src="/img/product/geforce-rtx-4090-product-gallery-full-screen-3840-1.jpg" alt="">
-                    <img src="/img/product/geforce-rtx-4090-product-gallery-full-screen-3840-2.jpg" alt="">
-                    <img src="/img/product/geforce-rtx-4090-product-gallery-full-screen-3840-3.jpg" alt="">
-                </div>
-                <img src="/img/product/geforce-rtx-4090-product-gallery-full-screen-3840-1.jpg" alt="">
+                <img src="/img/product/<%= product.image %>" alt="">
             </div>
             <div class="productoDetail">
                 <h2>
-                    GeForce RTX 4090-12GB-DLSS3
+                    <%= product.name %>
                 </h2>
                 <p>
-                    Nuevos multiprocesadores de datos
+                    <%= product.description %>
                 </p>
-                <p>
-                    Gráficos Más Realistas e Inmersivos
-                </p>
-                <P>
-                    Voz y Video Mejorados con IA
-                </P>
                 <P class="productoPrice">
-                    US$1800 precio anterior US$2000(20% off)
+                    US$<%= product.price %>
                 </P>
                 <div class="productoGaratias">
                     <div class="garantias">

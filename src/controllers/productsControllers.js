@@ -9,7 +9,9 @@ const productsControllers = {
         res.render("products", {productos});
     },
     productDetail : function(req,res){
-        res.render("productDetail");
+        const idProduct = req.params.id;
+        const product = productos.find(product => product.id == idProduct)
+        res.render("productDetail", {product});
     },
     productCart : function(req,res){
         res.render("productCart");

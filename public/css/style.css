@@ -895,27 +895,6 @@ body{
         height: 100%;
     }
 
-    .productImages {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column nowrap;
-        width: 4rem;
-        height: 80%;
-        position: absolute;
-        top: 10%;
-        left: 5%;
-        overflow: hidden;
-        padding: .3rem;
-        gap: .5rem;
-    }
-
-    .productImages img {
-        width: 100%;
-        height: calc(100%3);
-        border: 1px solid var(--grisOscuro);
-    }
-
     .productoDetail {
         display: flex;
         justify-content: flex-start;
