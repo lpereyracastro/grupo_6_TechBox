@@ -1,5 +1,7 @@
 const path = require("path");
-const productos = require(path.join(__dirname, "../../data/productos.json"));
+const fs = require("fs");
+const productsJson = path.join(__dirname, '../../data/productos.json');
+const productos = JSON.parse(fs.readFileSync(productsJson, 'utf-8'));
 const {v4: uuidv4} = require("uuid")
 
 const productsControllers = {
@@ -25,7 +27,9 @@ const productsControllers = {
 			image : req.file.filename
         };
         productos.push(newProducts);
-        console.log(productos);
+        const productosJson = JSON.stringify(productos,null, 2);
+        fs.writeFileSync(productsJson, productosJson);
+        console.log(productosJson);
         res.redirect("/products");
     }
 }
