@@ -11,14 +11,14 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/register" method="POST" class="form">
+            <form action="/user/userRegister" method="POST" class="form" enctype="multipart/form-data">
                 <h4>Crear una cuenta de</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="user" placeholder="User">
-                    <input type="text" placeholder="Telefono" required>
-                    <input type="email" name="Email" placeholder="Direccion de correo electronico" required>
+                    <input type="user" placeholder="User" name="firstname">
+                    <input type="email" name="email" placeholder="Direccion de correo electronico" required>
                     <input type="password" name="password" placeholder="Password" required>
+                    <input type="file" name="image" required>
                 </div>
                 <div class="form__buttom">
                     <input type="submit" value="Registrarse">

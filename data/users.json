@@ -1,34 +1,16 @@
 [
-    {
-      "id": 1,
-      "firstName": "juan",
-      "lastName": "primero",
-      "email": "jajameloinvente@gmail.com",
-      "password": 12,
-      "image": "default.jpg"
-    },
-    {
-      "id": 2,
-      "firstName": "Jesus",
-      "lastName": "Herrera",
-      "email": "meloinvente@gmail.com",
-      "password": 123,
-      "image": "default.jpg"
-    },
-    {
-      "id": 3,
-      "firstName": "juan",
-      "lastName": "segundo",
-      "email": "jajameloinvente1@gmail.com",
-      "password": 1234,
-      "image": "default.jpg"
-    },
-    {
-      "id": 4,
-      "firstName": "juan",
-      "lastName": "tercero",
-      "email": "jajameloinvente2@gmail.com",
-      "password": 12345,
-      "image": "default.jpg"
-    }
+  {
+    "id": 1,
+    "firstName": "juan",
+    "email": "correoGenerico1@gmail.com",
+    "password": "1124eeeSDFF555",
+    "image": "default.jpg"
+  },
+  {
+    "id": "fcfe4de8-47f4-4f09-b4c4-3a19c9a546fe",
+    "firstName": "Roman",
+    "email": "fontanaroman585@gmail.com",
+    "password": "$2a$10$zG1Ye5FQHCmMqRUMggFYjuBbqwlLdTIe/APiRLIQFGqcBYyimrDOm",
+    "image": "1694017103915_img_user_.jpg"
+  }
 ]

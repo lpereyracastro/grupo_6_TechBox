@@ -433,8 +433,8 @@ body{
         max-height: max-content;
         display: flex;
         justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
+        align-items: flex-start;
+        flex-flow: row wrap;
         gap: 3rem;
         padding: 1rem;
     }
