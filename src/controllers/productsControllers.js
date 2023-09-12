@@ -67,6 +67,17 @@ const productsControllers = {
     },
     // metodo encargado de la logica para editar un producto
     storeEdit : function (req,res){
+
+        const resultValidation = validationResult(req);
+
+        if(resultValidation.errors.length > 0){
+            return res.render("loadProduct",
+            {
+                errors : resultValidation.mapped(),
+                oldData : req.body
+            }
+        )}
+
         const idProduct = req.params.id;
         const productIndex = productos.findIndex(product => product.id == idProduct);
 

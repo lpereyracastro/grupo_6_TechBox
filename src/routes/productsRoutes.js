@@ -39,7 +39,7 @@ router.post("/loadProduct", upload.single("image"),validationProduct,productsCon
 
 // vista del formulario de edicion del producto
 router.get("/:id/edit", productsControllers.edit);
-router.put("/:id/edit", upload.single("image"),productsControllers.storeEdit);
+router.put("/:id/edit", upload.single("image"),validationProduct,productsControllers.storeEdit);
 
 // eliminar un producto
 router.get("/:id/delete", productsControllers.deleteForm);

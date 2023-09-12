@@ -10,15 +10,35 @@
                 <h4>Editar un producto</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="text" name="productname" placeholder="<%= product.name %>" required>
-                    <input type="text" name="description" placeholder="<%= product.description %>" required>
-                    <input type="number" name="price" placeholder="<%= product.price %>" required>
+                    <input type="text" name="productname" placeholder="<%= product.name %>" value="<%= locals.oldData ? oldData.productname : null %>">
+                    <% if (locals.errors && errors.productname) { %>
+                        <p class="form__error">
+                            <%= errors.productname.msg %>
+                        </p>
+                    <% } %>
+                    <input type="text" name="description" placeholder="<%= product.description %>" value="<%= locals.oldData ? oldData.description : null %>">
+                    <% if (locals.errors && errors.description) { %>
+                        <p class="form__error">
+                            <%= errors.description.msg %>
+                        </p>
+                    <% } %>
+                    <input type="number" name="price" placeholder="<%= product.price %>" value="<%= locals.oldData ? oldData.price : null %>">
+                    <% if (locals.errors && errors.price) { %>
+                        <p class="form__error">
+                            <%= errors.price.msg %>
+                        </p>
+                    <% } %>
                     <select name="category" id="category">
                         <option value="hardware" selected><%= product.category %></option>
                         <option value="software">software</option>
                         <option value="perifericos">perifericos</option>
                     </select>
-                    <input type="file" name="image" placeholder="Imagen del producto" required>
+                    <input type="file" name="image" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.file : null %>">
+                    <% if (locals.errors && errors.image) { %>
+                        <p class="form__error">
+                            <%= errors.image.msg %>
+                        </p>
+                    <% } %>
                 </div>
                 <div class="form__buttom">
                     <input type="submit" value="Cargar Producto"></input>
