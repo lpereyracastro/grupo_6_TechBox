@@ -7,6 +7,11 @@ const productsJson = path.join(__dirname, '../../data/productos.json');
 const productos = JSON.parse(fs.readFileSync(productsJson, 'utf-8'));
 // libreria uuid para crear identificadores unicos
 const {v4: uuidv4} = require("uuid")
+// express validator , validaciones
+const {validationResult} = require("express-validator")
+
+
+
 
 const productsControllers = {
     // renderiza los productos
@@ -29,6 +34,16 @@ const productsControllers = {
     },
     // metodo encargado de la logica para almacenar el producto  
     storeLoadProduct : function(req, res){
+
+        const resultValidation = validationResult(req);
+
+        if(resultValidation.errors.length > 0){
+            return res.render("loadProduct",
+            {
+                errors : resultValidation.mapped(),
+                oldData : req.body
+            }
+        )}
         const newProducts = {
             id: uuidv4(),
             name: req.body.productname,
@@ -42,6 +57,7 @@ const productsControllers = {
         fs.writeFileSync(productsJson, productosJson);
         console.log(productosJson);
         res.redirect("/products");
+        
     },
     // renderiza el formulario de edicion
     edit : function (req,res){

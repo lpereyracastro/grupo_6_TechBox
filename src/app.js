@@ -2,6 +2,10 @@
 const express = require("express");
 const app = express();
 
+// require de session
+//const session = require("express-session");
+//app.use(session({secret : "secret no se me ocurrio otra cosa"}));
+
 // routes
 const mainRoutes = require("./routes/mainRoutes");
 const productsRoutes = require("./routes/productsRoutes");

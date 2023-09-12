@@ -8,6 +8,7 @@
     --gris-claro: rgb(182, 182, 182);
     --blanco-perla: rgb(245, 245, 245);
     --grisOscuro: rgb(39, 39, 39);
+    --red : rgb(255, 0, 0);
 }
 /* ============================================== Estilos Globales ======================================== */
 *{
@@ -769,10 +770,16 @@ body{
         text-align: center;
     }
 
-    /* ================================================== login ============================================ */
+    /* ================================================== formulario ============================================ */
+    p  .form__error{
+        color: var(red);
+        font-weight: bold;
+        font-size: 1rem;
+    }
     .form-login-register {
         width: 100vw;
-        height: 100vh;
+        min-height: 100vh;
+        max-height: max-content;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -781,7 +788,8 @@ body{
 
     .form {
         width: 100%;
-        height: 100%;
+        min-height: 100%;
+        max-height: max-content;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -995,77 +1003,6 @@ body{
         .linkinfo {
             padding: 1rem;
         }
-
-        /* =========================================== login (Media) ========================================== */
-        .form {
-            width: 40%;
-            height: 90%;
-            gap: 1rem;
-            background-color: var(--grisOscuro);
-            border-radius: .5rem;
-        }
-
-        .form h2,
-        h4 {
-            color: var(--gris-claro);
-        }
-
-        .form__campos {
-            width: 80%;
-            height: max-content;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-direction: column;
-        }
-
-        .form__campos input {
-            width: 90%;
-            height: 3.5rem;
-            background: transparent;
-            border: 1px solid var(--verde-princ);
-            border-radius: .3rem;
-            padding: .5rem;
-        }
-
-        .form__recuerdame {
-            width: 70%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            gap: 1rem;
-            flex-flow: column nowrap;
-        }
-
-        .form__link {
-            border-bottom: 1px solid var(--verde-princ);
-        }
-
-        .form__buttom {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin: 2rem;
-        }
-
-        .form__buttom button {
-            width: 70%;
-            height: 3.5rem;
-            background-color: var(--verde-princ);
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: .3rem;
-        }
-
-        .form__register-login {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            width: 70%;
-            gap: .5rem;
-        }
     }
 
     @media screen and (min-width: 750px) {
@@ -1196,6 +1133,79 @@ body{
             height: 90vh;
         }
         /* }>========================>>>    LOGIN    <<<==========================<{ */
+
+        /* =========================================== login (Media) ========================================== */
+        .form {
+            width: 60%;
+            min-height: 90%;
+            max-height: max-content;
+            gap: .5rem;
+            background-color: var(--grisOscuro);
+            border-radius: .5rem;
+            padding: 2rem;
+        }
+
+        .form h2,
+        h4 {
+            color: var(--gris-claro);
+        }
+
+        .form__campos {
+            width: 80%;
+            height: max-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-direction: column;
+        }
+
+        .form__campos input {
+            width: 90%;
+            height: 3.5rem;
+            background: transparent;
+            border: 1px solid var(--verde-princ);
+            border-radius: .3rem;
+            padding: .5rem;
+        }
+
+        .form__recuerdame {
+            width: 70%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-flow: column nowrap;
+        }
+
+        .form__link {
+            border-bottom: 1px solid var(--verde-princ);
+        }
+
+        .form__buttom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem;
+        }
+
+        .form__buttom button {
+            width: 70%;
+            height: 3.5rem;
+            background-color: var(--verde-princ);
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: .3rem;
+        }
+
+        .form__register-login {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 70%;
+            gap: .5rem;
+        }
         .form__buttom input {
             cursor: pointer;
             transition: background-color 0.7s;
