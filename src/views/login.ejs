@@ -15,12 +15,22 @@
    <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/login" method="POST" class="form">
+            <form action="/user/userLogin" method="POST" class="form">
                 <h4>Inicia sesión con una cuenta de</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="email" name="Email" placeholder="Direccion de correo electronico" required>
-                    <input type="password" name="password" placeholder="password" required>
+                    <input type="email" name="email" placeholder="Direccion de correo electronico">
+                    <% if (locals.errors && errors.email) { %>
+                        <p class="form__error">
+                            <%= errors.email.msg %>
+                        </p>
+                    <% } %>
+                    <input type="password" name="password" placeholder="password">
+                    <% if (locals.errors && errors.password) { %>
+                        <p class="form__error">
+                            <%= errors.password.msg %>
+                        </p>
+                    <% } %>
                 </div>
                 <div class="form__recuerdame">
                     <div class="form__recuerdame-campos">

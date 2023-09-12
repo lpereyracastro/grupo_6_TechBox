@@ -9,6 +9,8 @@ const users = JSON.parse(fs.readFileSync(usersJson, "utf-8"));
 const {v4: uuidv4} = require("uuid");
 // libreria para encriptar contraseña
 const bcrypt = require("bcryptjs");
+// validatior Result
+const {validationResult} = require("express-validator");
 
 const usersControllers = {
     // renderiza la vista de logueo
@@ -17,6 +19,16 @@ const usersControllers = {
     },
     // metodo encargado de la logica del logueo
     loginAunt : function(req,res){
+
+        const resultValidation = validationResult(req);
+
+        if(resultValidation.errors.length > 0){
+            return res.render("login",
+            {
+                errors : resultValidation.mapped(),
+                oldData : req.body,
+            }
+        )}
 
     },
     // renderiza la vista del formulario para registrarse

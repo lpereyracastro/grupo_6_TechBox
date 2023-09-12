@@ -8,6 +8,8 @@ const usersControllers = require("../controllers/usersControllers");
 const multer = require("multer");
 // libreria path para rutas y nombre de imagen
 const path = require("path");
+//validaciones middleware
+const validacionesLogin = require("../middleware/validacionLogin");
 
 // variable storage encargada de 
 const storage = multer.diskStorage({
@@ -27,7 +29,7 @@ const upload = multer({storage});
 // ruta encargada de mostrar la vista de login
 router.get("/userLogin",usersControllers.login );
 // ruta encargada de procesar la logica de autenticacion
-router.post("/userLogin",usersControllers.loginAunt)
+router.post("/userLogin",validacionesLogin,usersControllers.loginAunt)
 
 // ruta encargada de mostrar la vista register
 router.get("/userRegister", usersControllers.register);
