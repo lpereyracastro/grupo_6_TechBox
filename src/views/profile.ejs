@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head') %>
+
+<body>
+
+    <%- include('./partials/header') %>
+
+    
+    <main class="profile-content">
+        <section class="profile">
+            <article class="profile__user">
+                <div class="profile__image">
+                    <img src="/img/users/<%= user.image %>" alt="">
+                </div>
+                <section class="profile__data">
+                    <ul>
+                        <li>
+                            <%= user.firstName %>
+                        </li>
+                        <li>
+                            <%= user.email %>
+                        </li>
+                        <li>
+                            <a href="/user/logout">logout</a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </section>
+    </main>
+
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

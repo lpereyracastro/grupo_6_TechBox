@@ -11,7 +11,9 @@ const {v4: uuidv4} = require("uuid");
 const bcrypt = require("bcryptjs");
 // validatior Result
 const {validationResult} = require("express-validator");
-
+const { error } = require("console");
+// metodos de User
+const User = require("../../models/User");
 const usersControllers = {
     // renderiza la vista de logueo
     login : function(req,res){
@@ -19,7 +21,7 @@ const usersControllers = {
     },
     // metodo encargado de la logica del logueo
     loginAunt : function(req,res){
-
+    
         const resultValidation = validationResult(req);
 
         if(resultValidation.errors.length > 0){
@@ -30,15 +32,65 @@ const usersControllers = {
             }
         )}
 
+        let userToLogin = User.findByField("email", req.body.email);
+
+        if(userToLogin){
+            let isOkThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+            if(isOkThePassword){
+                delete userToLogin.password;
+                req.session.UserLogged = userToLogin;
+                console.log(req.session);
+                return res.redirect("/user/profile");
+            }
+            return res.render("login",{
+                errors : {
+                    email : {
+                        msg : "Las credenciales son invalidas"
+                    }
+                }
+            })
+        }
+
+        return res.render("login",{
+            errors : {
+                email : {
+                    msg : "No se encuentra este email"
+                }
+            }
+        })
+
+    },
+    // renderizamos la vista del perfil del ususario
+    profile : function(req,res){
+        res.render("profile", 
+        {
+            user : req.session.UserLogged
+        })
     },
     // renderiza la vista del formulario para registrarse
     register : function(req,res){
         res.render("register");
     },
+    // metodo encargado del deslogueo
+    logout : function(req,res){
+        req.session.destroy();
+        return res.redirect("/user/userLogin")
+    },
     // metodo encargado de la logica para guardar un registro
-    resgisterStore : function (req,res){
+    registerStore : function (req,res){
+
+        const resultValidation = validationResult(req);
+
+        if(resultValidation.errors.length > 0){
+            return res.render("register",
+                {
+                    errors : resultValidation.mapped(),
+                    oldData : req.body,
+                }
+            )}
+
         let image = "default.jpg";
-        if( req.file.filename){
+        if (req.file && req.file.filename) {
             image = req.file.filename;
         };
 
@@ -54,7 +106,7 @@ const usersControllers = {
 
         const usersJsonNew = JSON.stringify(users, null, 2);
         fs.writeFileSync(usersJson,usersJsonNew );
-        res.redirect("/");
+        res.redirect("/user/userLogin");
     }
 }
 module.exports = usersControllers;

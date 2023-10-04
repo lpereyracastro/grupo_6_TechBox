@@ -5,12 +5,5 @@
     "email": "correoGenerico1@gmail.com",
     "password": "1124eeeSDFF555",
     "image": "default.jpg"
-  },
-  {
-    "id": "fcfe4de8-47f4-4f09-b4c4-3a19c9a546fe",
-    "firstName": "Roman",
-    "email": "fontanaroman585@gmail.com",
-    "password": "$2a$10$zG1Ye5FQHCmMqRUMggFYjuBbqwlLdTIe/APiRLIQFGqcBYyimrDOm",
-    "image": "1694017103915_img_user_.jpg"
   }
 ]

@@ -1,10 +1,19 @@
 // require de express y ejecucion
 const express = require("express");
 const app = express();
-
-// require de session
-//const session = require("express-session");
-//app.use(session({secret : "secret no se me ocurrio otra cosa"}));
+// require de express session
+const session = require("express-session");
+//require cookie
+const cookies = require("cookie-parser");
+// use para el metodo session
+app.use(session(
+    {
+        secret : "secret no se me ocurrio otra cosa",
+        resave : false,
+        saveUninitialized : false,
+    }
+))
+app.use(cookies());
 
 // routes
 const mainRoutes = require("./routes/mainRoutes");

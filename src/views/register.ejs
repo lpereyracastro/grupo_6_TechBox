@@ -15,13 +15,32 @@
                 <h4>Crear una cuenta de</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="user" placeholder="User" name="firstname">
-                    <input type="email" name="email" placeholder="Direccion de correo electronico" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="file" name="image" required>
+                    <input type="user" placeholder="User" name="firstname" value="<%= locals.oldData ? oldData.firstname : null %>">
+                    <% if (locals.errors && errors.firstname) { %>
+                        <p class="form__error">
+                            <%= errors.firstname.msg %>
+                        </p>
+                    <% } %>
+                    <input type="email" name="email" placeholder="Direccion de correo electronico" value="<%= locals.oldData ? oldData.email : null %>">
+                    <% if (locals.errors && errors.email) { %>
+                        <p class="form__error">
+                            <%= errors.email.msg %>
+                        </p>
+                    <% } %>
+                    <input type="password" name="password" placeholder="Password" value="<%= locals.oldData ? oldData.password : null %>">
+                    <% if (locals.errors && errors.password) { %>
+                        <p class="form__error">
+                            <%= errors.password.msg %>
+                        </p>
+                    <% } %>
+                    <input type="file" name="image" value="<%= locals.oldData ? oldData.image : null %>">
                 </div>
                 <div class="form__buttom">
                     <input type="submit" value="Registrarse">
+                </div>
+                <div class="form__register-login">
+                    <p>¿tienes cueta?</p>
+                    <a href="/user/userLogin" class="form__link">Inicia sesion!</a>
                 </div>
             </form>
         </article>

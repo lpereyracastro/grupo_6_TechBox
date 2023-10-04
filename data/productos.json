@@ -1,13 +1,5 @@
 [
   {
-    "id": "1",
-    "name": "Intel core i3 12100",
-    "description": "se encuadra en la gama baja, pero es un chip de nueva generación, lo que significa que utiliza la arquitectura Golden Cove, y que es compatible con memoria DDR5 a 4.800 MHz, y con memoria DDR4 a 3.200 MHz",
-    "image": "core-i3-12100F.jpg",
-    "category": "procesadores",
-    "price": 25000
-  },
-  {
     "id": "2",
     "name": "Intel core i3 8350",
     "description": "se encuadra en la gama baja, pero es un chip de nueva generación, lo que significa que utiliza la arquitectura Golden Cove, y que es compatible con memoria DDR5 a 4.800 MHz, y con memoria DDR4 a 3.200 MHz",
@@ -16,11 +8,11 @@
     "price": 25000
   },
   {
-    "id": "d31752d2-ffad-44f4-8636-dc5cec06be59",
-    "name": "este es un nombre de prueba",
-    "price": "10000",
+    "id": 5,
+    "name": "RAZER HAMMERHEAD TRUE WIRELESS",
+    "description": "Ilumina tu inmersión",
+    "image": "razer-hammerhead.jpg",
     "category": "hardware",
-    "description": "esta es una descripcion de prueba",
-    "image": "1694454973710_img_product.jpg"
+    "price": 25000
   }
 ]

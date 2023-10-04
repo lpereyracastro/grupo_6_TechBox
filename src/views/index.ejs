@@ -162,10 +162,9 @@
             <div class="bloques_index">
               <div class="img__products">
                 <img
-                  src= <%= producto.image %>
-                  alt=""
-                  class="imagenes__producst"
-                />
+                  src="/img/product/<%= producto.image %>" 
+                  alt="" 
+                  class="imagenes__producst">
               </div>
               <div class="linkinfo">
                 <h3 class="product__title product__title-modify">
@@ -174,7 +173,7 @@
                 <div class="product__info product__info-modify">
                   <p><%= producto.description %></p>
                 </div>
-                <a href="#" target="_blank">COMPRAR</a>
+                <a href="/products/detail/<%= producto.id %>" target="_blank">DETALLES</a>
               </div>
             </div>
           <% }) %>
