@@ -7,7 +7,7 @@ const session = require("express-session");
 const cookies = require("cookie-parser");
 // use para el metodo session
 
-const sequelize = require('../databases/config/config');
+//? const sequelize = require('../databases/config/config');
 // requiere la configuracion de la base de datos :P
 
 app.use(session(
@@ -19,18 +19,18 @@ app.use(session(
 ))
 app.use(cookies());
 
-async function main() {
-    await sequelize.sync({force: false}); 
-    //se sincroniza con la base, force rehace las tablas.
-    // RECOMENDACION: ponelo en true pero va a hacer drop, alter y create tables.
-    // Ademas con el nodemon se ejecuta cada rato que guardas y es pesado.
-}
-main();
+// async function main() {
+//     await sequelize.sync({force: false}); 
+//     //se sincroniza con la base, force rehace las tablas.
+//     // RECOMENDACION: ponelo en true pero va a hacer drop, alter y create tables.
+//     // Ademas con el nodemon se ejecuta cada rato que guardas y es pesado.
+// }
+// main();
 
 // routes
-const mainRoutes = require("./routes/mainRoutes");
-const productsRoutes = require("./routes/productsRoutes");
-const usersRoutes = require("./routes/usersRoutes");
+const mainRoutes = require("./routes/mainRoutes.routes");
+const productsRoutes = require("./routes/productsRoutes.routes");
+const usersRoutes = require("./routes/usersRoutes.routes");
 
 //! models      OBVIAMENTE REQUERIRLOS EN LOS CONTROLADORES LO QUE SE VAN A USAR
 // const carrito = require("../databases/models/carrito.db.js");

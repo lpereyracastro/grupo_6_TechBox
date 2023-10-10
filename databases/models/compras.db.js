@@ -5,8 +5,6 @@
 Etiquetas de documentacion. No afectan en nada si son removidas.
 */
 
-const { DataTypes } = require('sequelize');
-
 module.exports = function(sequelize,dataTypes){
     let comprasDB = sequelize.define("comprasModel",{
         id_compras_usuario: {
@@ -17,7 +15,7 @@ module.exports = function(sequelize,dataTypes){
         },
         fecha: {
             type:           dataTypes.DATE,
-            defaultValue: DataTypes.NOW //! OPCIONAL
+            defaultValue:   dataTypes.NOW //! OPCIONAL
         }
 
         //2 PARAMETERS MORE
@@ -32,7 +30,7 @@ module.exports = function(sequelize,dataTypes){
     })
 
     comprasDB.associate = function (model) {
-        // userDB.hasMany(model.???,{
+        // comprasDB.hasMany(model.???,{
         //     foreignKey: 'foreign_???',
         //     sourceKey: '???'
         // });
