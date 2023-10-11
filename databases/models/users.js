@@ -15,27 +15,40 @@ module.exports = function(sequelize,dataTypes){
             },
         mail: {
             type:           dataTypes.STRING(45),
-            allowNull:      false
+            allowNull:      false,
+            unique: true
         },
         name: {
             type:           dataTypes.STRING(45),
             allowNull:      false
         },
         password: {
-            type:           dataTypes.STRING(45),
+            type:           dataTypes.STRING(255),
             allowNull:      false
+        },
+        carrito_id: {
+            type:           dataTypes.INTEGER,
+            allowNull:      false
+        },
+        imagen: {
+            type:           dataTypes.STRING(255),
+            defaultValue:   '/img/publicidad-banner/amd-ryzen-radeon-banner.jpg' //! EXAMPLE!!
+        },
+        last_login: {
+            type:           dataTypes.DATE
         }
     }, {
         tableName: 'user',
-        timestamps: false
+        timestamps: false,
+        // createdAt: false,
+        // updatedAt: 'updateTimestamp'
     })
 
     userDB.associate = function (model) {
-        // userDB.hasMany(model.???,{
-        //     foreignKey: 'foreign_???',
-        //     sourceKey: '???'
-        // });
-        //todo: WAITING TILL THE DB IS OFICIALLY OVER TO COMPLETE THESE PARAMS
+        userDB.hasOne(model.carritoModel,{
+            as: "carrito", 
+            foreignKey: "id_carrito" 
+        })
     }
     
     return userDB;

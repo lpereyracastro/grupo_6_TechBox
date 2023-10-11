@@ -7,7 +7,7 @@ const session = require("express-session");
 const cookies = require("cookie-parser");
 // use para el metodo session
 
-//? const sequelize = require('../databases/config/config');
+const sequelize = require('../databases/config/database');
 // requiere la configuracion de la base de datos :P
 
 app.use(session(
@@ -19,18 +19,21 @@ app.use(session(
 ))
 app.use(cookies());
 
-// async function main() {
-//     await sequelize.sync({force: false}); 
-//     //se sincroniza con la base, force rehace las tablas.
-//     // RECOMENDACION: ponelo en true pero va a hacer drop, alter y create tables.
-//     // Ademas con el nodemon se ejecuta cada rato que guardas y es pesado.
-// }
-// main();
+async function main() {
+    await sequelize.sync({force: false}); 
+    //se sincroniza con la base, force rehace las tablas.
+    // RECOMENDACION: ponelo en true pero va a hacer drop, alter y create tables.
+    // Ademas con el nodemon se ejecuta cada rato que guardas y es pesado.
+}
+main();
+
+app.disable('x-powered-by'); //solo trae problemas de seguridad...
 
 // routes
 const mainRoutes = require("./routes/mainRoutes.routes");
 const productsRoutes = require("./routes/productsRoutes.routes");
 const usersRoutes = require("./routes/usersRoutes.routes");
+const test = require("./routes/test.routes");
 
 //! models      OBVIAMENTE REQUERIRLOS EN LOS CONTROLADORES LO QUE SE VAN A USAR
 // const carrito = require("../databases/models/carrito.db.js");
@@ -46,7 +49,7 @@ const path = require("path");
 //require mmethodOverride
 const methodOverride = require('method-override');
 
-//! PRIMER PARAMETRO SE PASA DESDE LA TERMINAL, SINO USA EL SEGUNDO PARAMETRO
+// PRIMER PARAMETRO SE PASA DESDE LA TERMINAL, SINO USA EL SEGUNDO PARAMETRO
 const PORT = process.env.PORT ?? 3000;
 
 // config templete engina y ruta elementos estaticos
@@ -63,6 +66,8 @@ app.use(express.json());
 app.use("/",mainRoutes);
 app.use("/products",productsRoutes);
 app.use("/user", usersRoutes);
+
+app.use("/testroute",test); //!TEST ROUTE
 
 // indicamos como proceder ante el error 404
 app.use((req, res, next) => {

@@ -6,8 +6,8 @@ Etiquetas de documentacion. No afectan en nada si son removidas.
 */
 
 module.exports = function(sequelize,dataTypes){
-    let productosDB = sequelize.define("productosModel",{
-        product_id: {
+    let articulosDB = sequelize.define("articulosModel",{
+        id_articulos: {
             type:           dataTypes.INTEGER, 
             allowNull:      false, 
             autoIncrement:  true,
@@ -18,27 +18,29 @@ module.exports = function(sequelize,dataTypes){
             allowNull:      false
         },
         description: {
-            type:           dataTypes.STRING(300), //puede ser TEXT, pero no tiene limite
+            type:           dataTypes.TEXT, // MAXIMO DE CARACTERES: 65535
             allowNull:      false
         },
         price: {
             type:           dataTypes.STRING(45),
             allowNull:      false
+        },
+        marca: {
+            type:           dataTypes.STRING(45),
+            allowNull:      false
         }
     }, {
-        tableName: 'products',
+        tableName: 'articulos',
         timestamps: false
 
     })
 
-    productosDB.associate = function (model) {
-        // userDB.hasMany(model.???,{
-        //     foreignKey: 'foreign_???',
-        //     sourceKey: '???'
-        // });
-        //todo: WAITING TILL THE DB IS OFICIALLY OVER TO COMPLETE THESE PARAMS
-    }
-    
-    return productosDB; 
-    //!mismo nombre que otra tabla. Afectaria si utilizariamos .mjs, pero usamos .cjs :P
+    articulosDB.associate = function (model) {
+        articulosDB.hasMany(model.pivotCarrito, {
+            foreignKey: "id_articulos",
+            sourceKey: "id_articulos"
+          });
+    };
+
+    return articulosDB; 
 }

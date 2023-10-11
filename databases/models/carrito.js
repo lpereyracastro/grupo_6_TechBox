@@ -13,16 +13,8 @@ module.exports = function(sequelize,dataTypes){
             autoIncrement:  true,
             primaryKey:     true
         },
-        id_usuario: {
-            type:           dataTypes.STRING(45),
-            allowNull:      false
-        }, //! De nuevo lo mismo, cambiar formato de los id_usuario y id_producto
-        id_producto: {
-            type:           dataTypes.STRING(45),
-            allowNull:      false
-        },
         cantidad: {
-            type:           dataTypes.STRING(45),
+            type:           dataTypes.TINYINT(11),
             allowNull:      false
         }
     }, {
@@ -31,11 +23,12 @@ module.exports = function(sequelize,dataTypes){
 
     })
 
-    carritoDB.associate = function (model) {
-        // userDB.hasMany(model.???,{
-        //     foreignKey: 'foreign_???',
-        //     sourceKey: '???'
-        // });
+    carritoDB.associate = function(models) {
+        carritoDB.hasMany(models.pivotCarrito, {
+            as: "carrito",
+            foreingkey: "id_carrito",
+            sourceKey: "id_carrito"
+        });
         
     }
     
