@@ -67,7 +67,7 @@ app.use("/",mainRoutes);
 app.use("/products",productsRoutes);
 app.use("/user", usersRoutes);
 
-app.use("/testroute",test); //!TEST ROUTE
+app.use("/test",test); //!TEST ROUTE
 
 // indicamos como proceder ante el error 404
 app.use((req, res, next) => {

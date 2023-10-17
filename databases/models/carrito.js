@@ -24,11 +24,16 @@ module.exports = function(sequelize,dataTypes){
     })
 
     carritoDB.associate = function(models) {
-        carritoDB.hasMany(models.pivotCarrito, {
-            as: "carrito",
-            foreingkey: "id_carrito",
-            sourceKey: "id_carrito"
-        });
+        carritoDB.belongsTo(models.userModel, {
+            as:"UserToCarrito",
+            foreignKey: 'id_carrito'
+          });
+
+        carritoDB.belongsToMany(models.articulosModel,{
+            through: "pivotCarrito",
+            as: "carritoPivotArticulos",
+            foreignKey: "id_carrito"
+        })
         
     }
     

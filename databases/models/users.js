@@ -46,7 +46,7 @@ module.exports = function(sequelize,dataTypes){
 
     userDB.associate = function (model) {
         userDB.hasOne(model.carritoModel,{
-            as: "carrito", 
+            as: "UserToCarrito", 
             foreignKey: "id_carrito" 
         })
     }

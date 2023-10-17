@@ -2,12 +2,33 @@ const express = require("express");
 const router = express.Router();
 const db = require('../../databases/models');
 
-router.get("/", function(req,res){
+router.get("/user", function(req,res){
     db.userModel.findAll()
     .then(user => {
         res.json(user);
     })
-}); //TEST 
+});
+
+router.get("/pivot", function(req,res){
+    db.pivotCarrito.findAll()
+    .then(user => {
+        res.json(user);
+    })
+});
+
+router.get("/articulos", function(req,res){
+    db.articulosModel.findAll()
+    .then(user => {
+        res.json(user);
+    })
+});
+
+router.get("/carrito", function(req,res){
+    db.carritoModel.findAll()
+    .then(user => {
+        res.json(user);
+    })
+});
 
 module.exports = router
 

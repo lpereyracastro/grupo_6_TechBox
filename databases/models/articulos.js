@@ -7,7 +7,7 @@ Etiquetas de documentacion. No afectan en nada si son removidas.
 
 module.exports = function(sequelize,dataTypes){
     let articulosDB = sequelize.define("articulosModel",{
-        id_articulos: {
+        articulos_id: {
             type:           dataTypes.INTEGER, 
             allowNull:      false, 
             autoIncrement:  true,
@@ -35,11 +35,12 @@ module.exports = function(sequelize,dataTypes){
 
     })
 
-    articulosDB.associate = function (model) {
-        articulosDB.hasMany(model.pivotCarrito, {
-            foreignKey: "id_articulos",
-            sourceKey: "id_articulos"
-          });
+    articulosDB.associate = function (models) {
+          articulosDB.belongsToMany(models.carritoModel,{
+            through: "pivotCarrito",
+            as: "carritoPivotArticulos",
+            foreignKey: "articulos_id"
+        })
     };
 
     return articulosDB; 

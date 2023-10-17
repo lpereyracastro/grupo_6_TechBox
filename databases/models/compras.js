@@ -27,16 +27,6 @@ module.exports = function(sequelize,dataTypes){
 
     })
 
-    pivotCarrito.associate = function (model) {
-        pivotCarrito.belongsTo(model.articulosModel, { 
-            foreignKey: "id_articulos", //HACE REFERENCIA A ESTA TABLA
-            targetId: "id_articulos"  //HACE REFERENCIA A LA TABLA ARTICULOS.DB.JS
-        });
 
-        pivotCarrito.belongsTo(model.carritoModel, { 
-            foreignKey: "id_carrito", //HACE REFERENCIA A ESTA TABLA
-            targetId: "id_carrito"  //HACE REFERENCIA A LA TABLA CARRITO.DB.JS
-        });
-    }
     return pivotCarrito;
 }
