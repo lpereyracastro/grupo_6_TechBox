@@ -16,7 +16,7 @@ module.exports = function(sequelize,dataTypes){
         mail: {
             type:           dataTypes.STRING(45),
             allowNull:      false,
-            unique: true
+            unique:         true
         },
         name: {
             type:           dataTypes.STRING(45),
@@ -28,11 +28,12 @@ module.exports = function(sequelize,dataTypes){
         },
         carrito_id: {
             type:           dataTypes.INTEGER,
+            unique:         true,
             allowNull:      false
         },
         imagen: {
             type:           dataTypes.STRING(255),
-            defaultValue:   '/img/publicidad-banner/amd-ryzen-radeon-banner.jpg' //! EXAMPLE!!
+            allowNull:      false
         },
         last_login: {
             type:           dataTypes.DATE
@@ -47,7 +48,7 @@ module.exports = function(sequelize,dataTypes){
     userDB.associate = function (model) {
         userDB.hasOne(model.carritoModel,{
             as: "UserToCarrito", 
-            foreignKey: "id_carrito" 
+            foreignKey: "carrito_id" 
         })
     }
     

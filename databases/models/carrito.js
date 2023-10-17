@@ -26,7 +26,7 @@ module.exports = function(sequelize,dataTypes){
     carritoDB.associate = function(models) {
         carritoDB.belongsTo(models.userModel, {
             as:"UserToCarrito",
-            foreignKey: 'id_carrito'
+            foreignKey: 'carrito_id'
           });
 
         carritoDB.belongsToMany(models.articulosModel,{
