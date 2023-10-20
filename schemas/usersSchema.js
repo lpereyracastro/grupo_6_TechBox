@@ -1,38 +1,41 @@
-const z = require("zod");
+const {body} = require('express-validator');
+const db = require('../databases/models');
+const sequelize = require('sequelize')
 
-const usersSchema = z.object({
-    mail: z.string().max(45).email({
-        invalid_type_error: 'El email debe ser correcto.',
-        required_error: 'El email debe ser requerido.'
-    }), //! checkear si el dato es unico
+const validateUsers = [
+    body('mail')
+        .exists().withMessage("Este valor no existe")
+        .isString().withMessage("Debe ser un string")
+        .isLength({ min: 5, max: 45})
+        .notEmpty().withMessage('El campo no debe estar vacio')
+        .custom(data => {
+            return db.userModel.findOne({ where: {mail: data}}).then(result => {
+                return result !== null ? Promise.reject("Email ya registrado") : Promise.resolve("")
+             })
+        }),
 
-    name: z.string({
-        invalid_type_error: 'El nombre debe ser un string.'
-    }).min(3).max(45),
-
-    password: z.string().max(45)
-    // .uuid({
-    //     error_message: "Debe ser una uuid"
-    //     //! ver si esto funciona, y parsear los int a str
-    // })
-    , 
-
-    // carrito_id: z.number().int().positive(),
+    body('name')
+        .exists().withMessage("Este valor no existe")
+        .isString().withMessage("Debe ser un string")
+        .isLength({ min: 3, max: 45}).withMessage("El minimo de caracteres es 3 y el maximo 45")
+        .notEmpty().withMessage('El campo no debe estar vacio'),
     
-    imagen: z.string().max(255).url({ message: "Invalid url" }).default("/images/example")
-    // terminar
-});
+    body('password')
+        .exists().withMessage("Este valor no existe")
+        .isString().withMessage("Debe ser un string")
+        .isLength({ min: 7, max: 21}).withMessage("El minimo de caracteres es 7 y el maximo 21")
+        .notEmpty().withMessage('El campo no debe estar vacio'),
 
-function validateUsers (input) {
-    return usersSchema.safeParse(input)
-     // safeParse => { success: false; error: ZodError }
-};
-  
-function validatePartialUsers (input) {
-    return usersSchema.partial().safeParse(input)
-};
-  
-module.exports = {
-    validateUsers,
-    validatePartialUsers
-};
+    body('carrito_id')
+        .exists().withMessage("Este valor no existe")
+        .isInt().withMessage("Debe ser un numero entero.")
+        .isLength({min: 1}).withMessage("Debe existir al menos un numero")
+        ,
+    
+    body('imagen')
+        .isString().withMessage("Debe ser un string")
+        .isLength({ max: 255}).withMessage("Maximo de caracteres es de 255")
+        .default('userDefault.png'),
+]
+
+module.exports = validateUsers;
