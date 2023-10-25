@@ -12,7 +12,7 @@ module.exports = function(sequelize,dataTypes){
             allowNull:      false, 
             autoIncrement:  true,
             primaryKey:     true
-            },
+        },
         mail: {
             type:           dataTypes.STRING(45),
             allowNull:      false,
@@ -24,7 +24,7 @@ module.exports = function(sequelize,dataTypes){
         },
         password: {
             type:           dataTypes.STRING(255),
-            allowNull:      false
+            allowNull:      false,
         },
         carrito_id: {
             type:           dataTypes.INTEGER,
