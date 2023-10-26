@@ -19,7 +19,6 @@ router.get("/user", function (req, res) {
     db.userModel.findAll().then(user=>{
         res.json(user);
     })
-        
 });
 
 router.post("/user", validateUsers, function(req, res){

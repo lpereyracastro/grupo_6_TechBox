@@ -9,9 +9,10 @@ const users = JSON.parse(fs.readFileSync(usersJson, "utf-8"));
 const {v4: uuidv4} = require("uuid");
 // libreria para encriptar contraseña
 const bcrypt = require("bcryptjs");
+// modelos db
+const db = require("../../databases/models")
 // validatior Result
 const {validationResult} = require("express-validator");
-const { error } = require("console");
 // metodos de User
 const User = require("../../models/User");
 const usersControllers = {
@@ -71,11 +72,6 @@ const usersControllers = {
     register : function(req,res){
         res.render("register");
     },
-    // metodo encargado del deslogueo
-    logout : function(req,res){
-        req.session.destroy();
-        return res.redirect("/user/userLogin")
-    },
     // metodo encargado de la logica para guardar un registro
     registerStore : function (req,res){
 
@@ -94,19 +90,37 @@ const usersControllers = {
             image = req.file.filename;
         };
 
-        const newUser = {
-            id : uuidv4(),
-            firstName : req.body.firstname,
-            email : req.body.email,
-            password : bcrypt.hashSync(req.body.password, 10),
-            image : image,
-        };
-        console.log(newUser);
-        users.push(newUser);
+        db.userModel.create({
+            mail : req.body.mail,
+            name : req.body.name,
+            password : req.body.password,
+            carrito_id : db.carritoModel.create({cantidad : 0 })
+                .then(result=>result)
+            ,
+            imagen : image,
+        })
+            .then(res.redirect("/user/userLogin"))
 
-        const usersJsonNew = JSON.stringify(users, null, 2);
-        fs.writeFileSync(usersJson,usersJsonNew );
-        res.redirect("/user/userLogin");
+
+
+        // const newUser = {
+        //     id : uuidv4(),
+        //     firstName : req.body.firstname,
+        //     email : req.body.email,
+        //     password : bcrypt.hashSync(req.body.password, 10),
+        //     image : image,
+        // };
+        // console.log(newUser);
+        // users.push(newUser);
+
+        // const usersJsonNew = JSON.stringify(users, null, 2);
+        // fs.writeFileSync(usersJson,usersJsonNew );
+        // res.redirect("/user/userLogin");
+    },
+    // metodo encargado del deslogueo
+    logout : function(req,res){
+        req.session.destroy();
+        return res.redirect("/user/userLogin")
     }
 }
 module.exports = usersControllers;

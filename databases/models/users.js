@@ -33,7 +33,6 @@ module.exports = function(sequelize,dataTypes){
         },
         imagen: {
             type:           dataTypes.STRING(255),
-            allowNull:      false
         },
         last_login: {
             type:           dataTypes.DATE

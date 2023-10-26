@@ -8,13 +8,12 @@ const usersControllers = require("../controllers/usersControllers");
 const multer = require("multer");
 // libreria path para rutas y nombre de imagen
 const path = require("path");
-//validaciones middleware
-const validacionesLogin = require("../middleware/validacionLogin");
-//validaciones register 
-const validationRegister = require("../middleware/validacionRegister");
 // middleware
 const guesMiddleware = require("../middleware/guesMiddleware");
 const authMiddleware = require("../middleware/authMiddleware");
+// validaciones userSchema
+const {validateUsers, validatePartialUsers} = require("../../schemas/usersSchema");
+
 
 // variable storage encargada de 
 const storage = multer.diskStorage({
@@ -34,12 +33,12 @@ const upload = multer({storage});
 // ruta encargada de mostrar la vista de login
 router.get("/userLogin", guesMiddleware, usersControllers.login );
 // ruta encargada de procesar la logica de autenticacion
-router.post("/userLogin",validacionesLogin,usersControllers.loginAunt)
+router.post("/userLogin",validatePartialUsers,usersControllers.loginAunt)
 
 // ruta encargada de mostrar la vista register
 router.get("/userRegister", guesMiddleware, usersControllers.register);
 // ruta encargada de procesar la logica de guardar un registro
-router.post("/userRegister", upload.single("image"), validationRegister,usersControllers.registerStore);
+router.post("/userRegister", upload.single("image"),validateUsers,usersControllers.registerStore);
 
 //ruta encargada para mostrar la vista del perfil
 router.get("/profile", authMiddleware, usersControllers.profile);
