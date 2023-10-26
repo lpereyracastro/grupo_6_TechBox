@@ -1,10 +1,3 @@
-// libreria fs para leer y escribir json
-const fs = require("fs");
-// libreria path para realizar direcciones de archivos
-const path = require("path");
-// datos en formuta json y parseados
-const usersJson = path.join(__dirname, "../../data/users.json");
-const users = JSON.parse(fs.readFileSync(usersJson, "utf-8"));
 // libreria para crear uuid 
 const {v4: uuidv4} = require("uuid");
 // libreria para encriptar contraseña
@@ -90,17 +83,18 @@ const usersControllers = {
             image = req.file.filename;
         };
 
-        db.userModel.create({
-            mail : req.body.mail,
-            name : req.body.name,
-            password : req.body.password,
-            carrito_id : db.carritoModel.create({cantidad : 0 })
-                .then(result=>result)
-            ,
-            imagen : image,
+        db.carritoModel.create({
+            cantidad: 0, 
+        }).then(result => {
+            db.userModel.create({
+                mail : req.body.mail,
+                name : req.body.name,
+                password : req.body.password,
+                carrito_id : result.dataValues.id_carrito,
+                imagen : image,
+            }).then(res.redirect("/user/userLogin"))    
         })
-            .then(res.redirect("/user/userLogin"))
-
+        //!hacer funcionar correctamente luego
 
 
         // const newUser = {
