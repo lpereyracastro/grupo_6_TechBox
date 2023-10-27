@@ -67,7 +67,6 @@ const usersControllers = {
     },
     // metodo encargado de la logica para guardar un registro
     registerStore : function (req,res){
-
         const resultValidation = validationResult(req);
 
         if(resultValidation.errors.length > 0){

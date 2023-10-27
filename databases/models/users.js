@@ -36,6 +36,9 @@ module.exports = function(sequelize,dataTypes){
         },
         last_login: {
             type:           dataTypes.DATE
+        },
+        role: {
+            type:           dataTypes.TINYINT(1)
         }
     }, {
         tableName: 'user',

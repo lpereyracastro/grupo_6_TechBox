@@ -24,6 +24,11 @@ const validateUsers = [
         .isString().withMessage("Debe ser un string")
         .isLength({ min: 7, max: 255}).withMessage("El minimo de caracteres es 7 y el maximo 21")
         .notEmpty().withMessage('El campo no debe estar vacio'),
+    
+    body('role')
+    .optional(true)
+        .isString()
+        .isLength({ min: 0, max: 10}),
 
     // body('carrito_id')
     //     .exists().withMessage("Este valor no existe")
@@ -63,6 +68,11 @@ const validatePartialUsers = [
         .isString().withMessage("Tiene que ingresar una password")
         .isLength({ min: 7, max: 21}).withMessage("El minimo de caracteres es 7 y el maximo 21")
         .notEmpty().withMessage('El campo no debe estar vacio'),
+
+    body('role')
+    .optional(true)
+        .isString()
+        .isLength({ min: 0, max: 10}),
 ]
 
 

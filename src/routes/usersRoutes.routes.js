@@ -4,31 +4,13 @@ const {Router} = require("express");
 const router = Router();
 // controladores de usuarios
 const usersControllers = require("../controllers/usersControllers");
-// multer para procesar imagen
-const multer = require("multer");
-// libreria path para rutas y nombre de imagen
-const path = require("path");
 // middleware
 const guesMiddleware = require("../middleware/guesMiddleware");
 const authMiddleware = require("../middleware/authMiddleware");
 // validaciones userSchema
 const {validateUsers, validatePartialUsers} = require("../../schemas/usersSchema");
-
-
-// variable storage encargada de 
-const storage = multer.diskStorage({
-    destination : function(req,file,cb){
-        cb(null, path.join(__dirname, "../../public/img/users"));
-    },
-    filename : function(req,file,cb){
-        const ext = path.extname(file.originalname);
-        const newFileName = `${Date.now()}_img_user_${ext}`;
-        cb(null, newFileName);
-    }
-})
-
-// variable upload almacenando multer con storage como propiedad
-const upload = multer({storage});
+//pedir multer desde la carpeta middleware
+const upload = require("../middleware/multer");
 
 // ruta encargada de mostrar la vista de login
 router.get("/userLogin", guesMiddleware, usersControllers.login );
