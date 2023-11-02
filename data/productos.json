@@ -1,18 +1,18 @@
 [
   {
-    "id": "2",
-    "name": "Intel core i3 8350",
-    "description": "se encuadra en la gama baja, pero es un chip de nueva generación, lo que significa que utiliza la arquitectura Golden Cove, y que es compatible con memoria DDR5 a 4.800 MHz, y con memoria DDR4 a 3.200 MHz",
-    "image": "core-i3-8350k.jpg",
-    "category": "procesadores",
-    "price": 25000
-  },
-  {
     "id": 5,
     "name": "RAZER HAMMERHEAD TRUE WIRELESS",
     "description": "Ilumina tu inmersión",
     "image": "razer-hammerhead.jpg",
     "category": "hardware",
     "price": 25000
+  },
+  {
+    "id": "18fc744a-b507-4d33-bc22-4690c7681e12",
+    "name": "intel core i10",
+    "price": "213",
+    "category": "hardware",
+    "description": "asdasdasd",
+    "image": "1698949424937_img_product.jpg"
   }
 ]

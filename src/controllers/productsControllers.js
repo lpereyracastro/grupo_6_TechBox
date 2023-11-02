@@ -1,118 +1,97 @@
-//metodo path para direcciones
-const path = require("path");
-//metodo fs para leer JSON y escribirlos
-const fs = require("fs");
-// datos del json
-const productsJson = path.join(__dirname, '../../data/productos.json');
-const productos = JSON.parse(fs.readFileSync(productsJson, 'utf-8'));
-// libreria uuid para crear identificadores unicos
+const db = require("../../databases/models")
+
 const {v4: uuidv4} = require("uuid")
 // express validator , validaciones
-const {validationResult} = require("express-validator")
-
+const {validationResult,matchedData} = require("express-validator")
 
 
 
 const productsControllers = {
     // renderiza los productos
     products : function(req,res){
-        res.render("products", {productos});
+        db.articulosModel.findAll().then(articulo=>{
+            return res.render("products",{productos: articulo});
+        })
     },
     // renderiza el detalle de un producto
     productDetail : function(req,res){
-        const idProduct = req.params.id;
-        const product = productos.find(product => product.id == idProduct)
-        res.render("productDetail", {product});
+        const {id} = req.params;
+        db.articulosModel.findOne({where: {
+            articulos_id: id
+        }}).then(articulo=>{
+            return res.render("productDetail",{product: articulo.dataValues});
+        })
     },
     // renderiza el carrito
     productCart : function(req,res){
-        res.render("productCart");
+        return res.render("productCart");
     },
     // renderiza el formulario para cargar un producto
     loadProduct : function(req,res){
-        res.render("loadProduct");
+        return res.render("loadProduct");
     },
     // metodo encargado de la logica para almacenar el producto  
     storeLoadProduct : function(req, res){
-
-        const resultValidation = validationResult(req);
-
-        
-        if(resultValidation.errors.length > 0){
-            return res.render("loadProduct",
-            {
-                errors : resultValidation.mapped(),
-                oldData : req.body,
-            }
-        )}
-        const newProducts = {
-            id: uuidv4(),
-            name: req.body.productname,
-			price: req.body.price,
-			category: req.body.category,
-			description: req.body.description,
-			image : req.file.filename
-        };
-        productos.push(newProducts);
-        const productosJson = JSON.stringify(productos,null, 2);
-        fs.writeFileSync(productsJson, productosJson);
-        console.log(productosJson);
-        res.redirect("/products");
-        
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            return res.status(422).render("loadProduct",{ errors: result.array() });
+        }
+        const validData = matchedData(req);
+    
+        db.articulosModel.create({
+            ...validData
+        }).then(() => {
+            return res.redirect("/products");
+        })
     },
     // renderiza el formulario de edicion
     edit : function (req,res){
-        const idProduct = req.params.id;
-        const product = productos.find(product => product.id == idProduct);
-        res.render("productEdit", {product});
+        const {id} = req.params;
+        db.articulosModel.findOne({where: {
+            articulos_id: id
+        }}).then(articulo=>{
+            return res.render("productEdit", {product: articulo.dataValues});;
+        })
     },
     // metodo encargado de la logica para editar un producto
-    storeEdit : function (req,res){
-
-        const resultValidation = validationResult(req);
-
-        if(resultValidation.errors.length > 0){
-            return res.render("loadProduct",
-            {
-                errors : resultValidation.mapped(),
-                oldData : req.body
+    storeEdit : function(req,res){
+            const result = validationResult(req);
+            if (!result.isEmpty()) {
+                return res.status(422).render('loadProduct',{ errors: result.array() });
             }
-        )}
-
-        const idProduct = req.params.id;
-        const productIndex = productos.findIndex(product => product.id == idProduct);
-
-        const editedProduct = {
-            id: idProduct,
-            name: req.body.productname,
-            price: req.body.price,
-            category: req.body.category,
-            description: req.body.description,
-            image: req.file.filename
-        };
-
-        productos[productIndex] = editedProduct;
-
-        const productsJsonData = JSON.stringify(productos, null, 2);
-        fs.writeFileSync(productsJson, productsJsonData);
-        res.redirect("/products")   
+            const validData = matchedData(req);
+            const {id} = req.params;
+            db.articulosModel.update({
+                imagen: req.file.filename,
+                ...validData 
+            },{
+                where: {
+                    articulos_id: id
+                }
+            }).then(() => {
+                return res.redirect("/products");
+            })
     },
     // renderiza el formulario de eliminacion
     deleteForm : function (req,res){
-        const idProduct = req.params.id;
-        const product = productos.find(product => product.id == idProduct);
-        res.render("productDelete", {product});
+        const {id} = req.params;
+        db.articulosModel.findOne({where: {
+            articulos_id: id
+        }}).then(articulo=>{
+            return res.render("productDelete", {product: articulo});;
+        })
     },
     // metodo encargado de la logica de eliminacion
     delete : function (req,res){
-    const productIdDelete = req.params.id;
-    const productToDelete = productos.find(product => product.id === productIdDelete);
-    const indiceProduct = productos.findIndex(product => product.id == productToDelete.id);
-    productos.splice(indiceProduct, 1);
+        const {id} = req.params;
+        db.articulosModel.destroy({
+            where: {
+                articulos_id: id
+            }
+        }).then(articulo => {
+            return res.redirect("/products")
+        })
 
-    const productsJsonData = JSON.stringify(productos, null, 2);
-    fs.writeFileSync(productsJson, productsJsonData);
-    res.redirect("/products")
     }
 }
 

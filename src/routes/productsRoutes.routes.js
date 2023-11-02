@@ -7,7 +7,7 @@ const multer = require("multer");
 // metodo path para armas rutas y nombre del archivo multimedia
 const path = require("path");
 // validations loadProdcuts
-const validationProduct = require("../middleware/validacionFormCargarProducto")
+const {validateArticulos, validatePartialArticulos} = require("../../schemas/articulosSchema")
 
 // configuracion de multer 
 const storage = multer.diskStorage({
@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
         cb(null, newFilename);
     }
 })
+//! CAMBIAR
 
 // middleware de multer con la configuracion del archivo
 const upload = multer({storage});
@@ -35,11 +36,11 @@ router.get("/detail/:id", productsControllers.productDetail);
 // vista del formulario para cargar un producto
 router.get("/loadProduct", productsControllers.loadProduct);
 // ruta post para manejar los campos del formulario y la imagen que procesamos con multer
-router.post("/loadProduct", upload.single("image"),validationProduct,productsControllers.storeLoadProduct);
+router.post("/loadProduct", upload.single("imagen"),validateArticulos,productsControllers.storeLoadProduct);
 
 // vista del formulario de edicion del producto
 router.get("/:id/edit", productsControllers.edit);
-router.put("/:id/edit", upload.single("image"),validationProduct,productsControllers.storeEdit);
+router.put("/:id/edit", upload.single("imagen"),validateArticulos,productsControllers.storeEdit);
 
 // eliminar un producto
 router.get("/:id/delete", productsControllers.deleteForm);

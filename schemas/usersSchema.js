@@ -4,9 +4,9 @@ const db = require('../databases/models');
 const validateUsers = [
     body('mail')
         .exists().withMessage("Tiene que ingresar un email")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 5, max: 45})
-        .notEmpty().withMessage('El campo no debe estar vacio')
+        .isString().withMessage("El email debe ser un texto")
+        .isLength({ min: 5, max: 45}).withMessage("El email debe tener entre 5 y 45 caracteres")
+        .notEmpty().withMessage('Tiene que ingresar un email')
         .custom(data => {
             return db.userModel.findOne({ where: {mail: data}}).then(result => {
                 return result !== null ? Promise.reject("Email ya registrado") : Promise.resolve("")
@@ -15,21 +15,25 @@ const validateUsers = [
 
     body('name')
         .exists().withMessage("Tiene que ingresar un nombre")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 3, max: 45}).withMessage("El minimo de caracteres es 3 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .isString().withMessage("El nombre debe ser un texto")
+        .isLength({ min: 3, max: 45}).withMessage("El nombre debe tener entre 3 y 45 caracteres")
+        .notEmpty().withMessage('Tiene que ingresar un nombre'),
     
     body('password')
         .exists().withMessage("Tiene que ingresar una contraseña")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 7, max: 255}).withMessage("El minimo de caracteres es 7 y el maximo 21")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .isString().withMessage("La contraseña debe ser un texto")
+        .isLength({ min: 7, max: 255}).withMessage("La contraseña debe tener entre 7 y 45 caracteres")
+        .notEmpty().withMessage('Tiene que ingresar una contraseña'),
     
     body('role')
     .optional(true)
         .isString()
-        .isLength({ min: 0, max: 10}),
+        .isLength({ min: 0, max: 10})
 
+
+        
+    ]
+    
     // body('carrito_id')
     //     .exists().withMessage("Este valor no existe")
     //     .isInt({min:1}).withMessage("Debe ser un numero entero.")
@@ -43,31 +47,25 @@ const validateUsers = [
     //             })
     //         })
     //     }),
-]
 
-const validatePartialUsers = [
+    const validatePartialUsers = [
     body('mail')
         .optional(true)
-        .isString().withMessage("Tiene que ingresar un email")
-        .isLength({ min: 5, max: 45}).withMessage("El email es incorrecto")
-        .notEmpty().withMessage('El campo no debe estar vacio')
-        .custom(data => {
-            return db.userModel.findOne({ where: {mail: data}}).then(result => {
-                return result !== null? Promise.reject("Email ya registrado") : Promise.resolve("")
-             })
-        }),
+        .isString().withMessage("Ingresa un email valido")
+        .isLength({ min: 5, max: 45}).withMessage("Email incorrecto")
+        .notEmpty().withMessage("Email incorrecto"),
 
     body('name')
     .optional(true)
-        .isString().withMessage("Tiene que ingresar un nombre")
-        .isLength({ min: 3, max: 45}).withMessage("El minimo de caracteres es 3 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("El nombre debe ser un texto")
+    .isLength({ min: 3, max: 45}).withMessage("El nombre debe tener entre 3 y 45 caracteres")
+    .notEmpty().withMessage('Tiene que ingresar un nombre'),
     
     body('password')
     .optional(true)
-        .isString().withMessage("Tiene que ingresar una password")
-        .isLength({ min: 7, max: 21}).withMessage("El minimo de caracteres es 7 y el maximo 21")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("Ingresa una contraseña valida")
+    .isLength({ min: 7, max: 21}).withMessage("Contraseña incorrecta")
+    .notEmpty().withMessage("Contraseña incorrecta"),
 
     body('role')
     .optional(true)

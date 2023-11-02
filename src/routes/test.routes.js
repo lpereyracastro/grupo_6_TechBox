@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require('../../databases/models');
-const { validationResult, matchedData, checkSchema } = require('express-validator');
+const { validationResult, matchedData } = require('express-validator');
+
 
 //!                 IMPORTANTE:
 //* POST:   Crea un nuevo recurso
@@ -12,12 +13,9 @@ const { validationResult, matchedData, checkSchema } = require('express-validato
 // const articuloSchema = require('../../schemas/articulosSchema')
 // const carritoSchema = require('../../schemas/carritoSchema')
 const {validateUsers, validatePartialUsers} = require('../../schemas/usersSchema');
-const {createCookie,getCookie}   = require("../middleware/roleChecker")
 
 
 router.get("/user", function (req, res) {
-    createCookie(req,res,'ADMINISTRATIVE-KEY-VALUE2','lmao');
-    getCookie(req,res,'ADMINISTRATIVE-KEY-VALUE');
     db.userModel.findAll().then(user=>{
         res.json(user);
     })

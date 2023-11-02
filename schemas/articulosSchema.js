@@ -2,54 +2,54 @@ const {body} = require('express-validator');
 
 const validateArticulos = [
     body('name')
-        .exists().withMessage("Este valor no existe")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 3, max: 45}).withMessage("El minimo de caracteres es 3 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .exists().withMessage("El nombre no puede estar vacio")
+        .isString().withMessage("El nombre debe ser un texto")
+        .isLength({ min: 3, max: 45}).withMessage("El nombre debe tener entre 3 y 45 caracteres")
+        .notEmpty().withMessage('El nombre no puede estar vacio'),
     
     body('description')
-        .exists().withMessage("Este valor no existe")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 7, max: 999}).withMessage("El minimo de caracteres es 7 y el maximo 999")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .exists().withMessage("La descripcion no puede estar vacia")
+        .isString().withMessage("La descripcion debe ser un texto")
+        .isLength({ min: 7, max: 999}).withMessage("La descripcion debe tener entre 7 y 999 caracteres")
+        .notEmpty().withMessage('La descripcion no puede estar vacia'),
 
     body('price')
-        .exists().withMessage("Este valor no existe")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 1, max: 45}).withMessage("El minimo de caracteres es 1 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .exists().withMessage("El precio no puede estar vacio")
+        .isString().withMessage("El precio debe ser un texto")
+        .isLength({ min: 1, max: 45}).withMessage("El precio debe tener entre 1 y 45 caracteres")
+        .notEmpty().withMessage('El precio no puede estar vacio'),
 
     body('marca')
-        .exists().withMessage("Este valor no existe")
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 1, max: 45}).withMessage("El minimo de caracteres es 1 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+        .exists().withMessage("La marca no puede estar vacia")
+        .isString().withMessage("La marca debe ser un texto")
+        .isLength({ min: 1, max: 45}).withMessage("La marca debe tener entre 1 y 45 caracteres")
+        .notEmpty().withMessage('La marca no puede estar vacia')
 ]
 
 const validatePartialArticulos = [
     body('name')
     .optional(true)
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 3, max: 45}).withMessage("El minimo de caracteres es 3 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("El nombre debe ser un texto")
+    .isLength({ min: 3, max: 45}).withMessage("El nombre debe tener entre 3 y 45 caracteres")
+    .notEmpty().withMessage('El nombre no puede estar vacio'),
     
     body('description')
     .optional(true)
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 7, max: 999}).withMessage("El minimo de caracteres es 7 y el maximo 999")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("La descripcion debe ser un texto")
+    .isLength({ min: 7, max: 999}).withMessage("La descripcion debe tener entre 7 y 999 caracteres")
+    .notEmpty().withMessage('La descripcion no puede estar vacia'),
 
     body('price')
     .optional(true)
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 1, max: 45}).withMessage("El minimo de caracteres es 1 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("El precio debe ser un texto")
+    .isLength({ min: 1, max: 45}).withMessage("El precio debe tener entre 1 y 45 caracteres")
+    .notEmpty().withMessage('El precio no puede estar vacio'),
 
     body('marca')
     .optional(true)
-        .isString().withMessage("Debe ser un string")
-        .isLength({ min: 1, max: 45}).withMessage("El minimo de caracteres es 1 y el maximo 45")
-        .notEmpty().withMessage('El campo no debe estar vacio'),
+    .isString().withMessage("La marca debe ser un texto")
+    .isLength({ min: 1, max: 45}).withMessage("La marca debe tener entre 1 y 45 caracteres")
+    .notEmpty().withMessage('La marca no puede estar vacia')
 ]
 
 module.exports = {validateArticulos, validatePartialArticulos};

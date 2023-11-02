@@ -6,37 +6,56 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/products/<%= product.id %>/edit?_method=PUT" method="POST" class="form" enctype="multipart/form-data">
+            <form action="/products/<%= product.articulos_id %>/edit?_method=PUT" method="POST" class="form" enctype="multipart/form-data">
                 <h4>Editar un producto</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="text" name="productname" placeholder="<%= product.name %>" value="<%= locals.oldData ? oldData.productname : null %>">
+                    <input type="text" name="name" placeholder="Nombre del producto" value="<%= product.name %>" value="<%= locals.oldData ? oldData.name : null %>">
                     <% if (locals.errors && errors.productname) { %>
                         <p class="form__error">
-                            <%= errors.productname.msg %>
+                            <%= errors.name.msg %>
                         </p>
                     <% } %>
-                    <input type="text" name="description" placeholder="<%= product.description %>" value="<%= locals.oldData ? oldData.description : null %>">
+                    <input type="text" name="description" placeholder="Descripcion del producto" value="<%= product.description %>" value="<%= locals.oldData ? oldData.description : null %>">
                     <% if (locals.errors && errors.description) { %>
                         <p class="form__error">
                             <%= errors.description.msg %>
                         </p>
                     <% } %>
-                    <input type="number" name="price" placeholder="<%= product.price %>" value="<%= locals.oldData ? oldData.price : null %>">
+                    <input type="text" name="price" placeholder="Valor monetario" value="<%= product.price %>" value="<%= locals.oldData ? oldData.price : null %>">
                     <% if (locals.errors && errors.price) { %>
                         <p class="form__error">
                             <%= errors.price.msg %>
                         </p>
                     <% } %>
-                    <select name="category" id="category">
-                        <option value="hardware" selected><%= product.category %></option>
-                        <option value="software">software</option>
-                        <option value="perifericos">perifericos</option>
-                    </select>
-                    <input type="file" name="image" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.file : null %>">
-                    <% if (locals.errors && errors.image) { %>
+
+                    <!-- <input type="text" name="marca" placeholder="Marca del producto" value="<%= product.marca %>" value="<%= locals.oldData ? oldData.marca : null %>">
+                    <% if (locals.errors && errors.marca) { %>
                         <p class="form__error">
-                            <%= errors.image.msg %>
+                            <%= errors.marca.msg %>
+                        </p>
+                    <% } %> -->
+                    
+                    <select name="marca" id="category">
+                        <% if (product.marca === 'amd') { %>
+                            <option value="amd" selected>AMD</option>
+                            <option value="intel">Intel</option>
+                            <option value="other">Otro</option>
+                        <% } else if (product.marca === 'intel') {  %>
+                            <option value="amd">AMD</option>
+                            <option value="intel" selected>Intel</option>
+                            <option value="other">Otro</option>
+                        <% } else { %>
+                            <option value="amd">AMD</option>
+                            <option value="intel">Intel</option>
+                            <option value="other" selected>Otro</option>
+                        <% } %>
+
+                    </select>
+                    <input type="file" name="imagen" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.imagen : null %>">
+                    <% if (locals.errors && errors.imagen) { %>
+                        <p class="form__error">
+                            <%= errors.imagen.msg %>
                         </p>
                     <% } %>
                 </div>

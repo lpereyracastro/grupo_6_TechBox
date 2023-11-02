@@ -28,6 +28,10 @@ module.exports = function(sequelize,dataTypes){
         marca: {
             type:           dataTypes.STRING(45),
             allowNull:      false
+        },
+        imagen: {
+            type:           dataTypes.STRING(50),
+            defaultValue:   "default.jpg"
         }
     }, {
         tableName: 'articulos',
