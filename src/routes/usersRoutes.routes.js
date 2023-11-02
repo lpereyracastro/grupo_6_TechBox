@@ -24,7 +24,7 @@ router.get("/userRegister", guesMiddleware, usersControllers.register);
 router.post("/userRegister", validateUsers,usersControllers.registerStore);
 
 //ruta encargada para mostrar la vista del perfil
-router.get("/profile", authMiddleware, usersControllers.profile);
+router.get("/profile", usersControllers.profile);
 
 // ruta parta desloguearse
 router.get("/logout", usersControllers.logout);

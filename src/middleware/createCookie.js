@@ -14,11 +14,7 @@ function getCookie(parameter){
     return JSON.parse(parameter);
 }
 
-function checkPassword(input) {
-
-}
-
-module.exports = {createCookie, getCookie, checkPassword, SALTROUNDS};
+module.exports = {createCookie, getCookie, SALTROUNDS};
 
 //! ejemplo:
 //  createCookie(req,res,"LOGGED_ON", JSON.stringify({mail: "alo", data: bcrypt.hashSync("papu",12)}))

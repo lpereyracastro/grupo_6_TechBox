@@ -33,6 +33,9 @@ router.get("/cart", productsControllers.productCart);
 // detalle del producto
 router.get("/detail/:id", productsControllers.productDetail);
 
+router.get("/productCreate", productsControllers.productCreate)
+router.post("/productCreate", upload.single("imagen"),validateArticulos, productsControllers.productCreatePost)
+
 // vista del formulario para cargar un producto
 router.get("/loadProduct", productsControllers.loadProduct);
 // ruta post para manejar los campos del formulario y la imagen que procesamos con multer

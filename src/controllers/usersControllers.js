@@ -5,8 +5,7 @@ const multer  = require('multer');
 // validatior Result
 const { validationResult, matchedData } = require('express-validator');
 const {hashPassword, recoverPassword} = require("../middleware/passwordChecker");
-const bcrypt = require('bcryptjs')
-const {createCookie, getCookie, checkPassword, SALTROUNDS} = require("../middleware/createCookie");
+const {createCookie, getCookie} = require("../middleware/createCookie");
 
 
 const usersControllers = {
@@ -54,10 +53,21 @@ const usersControllers = {
     },
     // renderizamos la vista del perfil del ususario
     profile : function(req,res){
-        return res.render("profile", 
-        {
-            user : req.session.UserLogged
-        })
+        if(req.headers.cookie !== undefined){
+            let resultCookie = getCookie(req.cookies.LOGGED_ON)
+            if(resultCookie) {
+                return db.userModel.findOne({
+                    where:{
+                        mail: resultCookie.mail
+                    }
+                }).then( result => {
+                    if(result != undefined && validate(resultCookie.data)){
+                        return res.render("profile", {user: result.dataValues})
+                    } else return res.redirect("/user/userLogin");
+                })
+            }
+        } else return res.redirect("/user/userLogin");
+       
     },
     // renderiza la vista del formulario para registrarse
     register : function(req,res){
@@ -102,7 +112,7 @@ const usersControllers = {
     },
     // metodo encargado del deslogueo
     logout : function(req,res){
-        req.session.destroy();
+        res.clearCookie("LOGGED_ON");
         return res.redirect("/user/userLogin")
     }
 }

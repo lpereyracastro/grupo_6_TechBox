@@ -13,6 +13,26 @@ const productsControllers = {
             return res.render("products",{productos: articulo});
         })
     },
+
+    productCreate: function(req,res) {
+        return res.render('productCreate');
+    },
+
+    productCreatePost: function(req,res){
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            return res.status(422).json({ errors: result.array() });
+        }
+        const validData = matchedData(req);
+    
+        db.articulosModel.create({
+            imagen: req.file.filename,
+            ...validData
+        })
+        .then(user => {
+            return res.redirect("/products");
+        })
+    },
     // renderiza el detalle de un producto
     productDetail : function(req,res){
         const {id} = req.params;
@@ -75,11 +95,7 @@ const productsControllers = {
     // renderiza el formulario de eliminacion
     deleteForm : function (req,res){
         const {id} = req.params;
-        db.articulosModel.findOne({where: {
-            articulos_id: id
-        }}).then(articulo=>{
-            return res.render("productDelete", {product: articulo});;
-        })
+        return res.render("productDelete", {product: id})
     },
     // metodo encargado de la logica de eliminacion
     delete : function (req,res){
