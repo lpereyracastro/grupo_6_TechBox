@@ -6,8 +6,7 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST" class="form" enctype="multipart/form-data">
-                <h4>Eliminar este producto</h4>
+            <form method="POST" action="/products/<%= product.articulos_id %>/delete?_method=DELETE" class="form" enctype="application/x-www-form-urlencoded">
                 <h2>TechBox</h2>
                 <div class="form__campos">
                     <h4>Esta seguro de eliminar el producto <%= product.name %></h4>
@@ -19,6 +18,7 @@
         </article>
     </main>
 </body>
+<script src="/js/script.js"></script>
 </html>
 
 

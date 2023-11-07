@@ -33,10 +33,13 @@ module.exports = function(sequelize,dataTypes){
         },
         imagen: {
             type:           dataTypes.STRING(255),
-            allowNull:      false
+            defaultValue:   "default.jpg"
         },
         last_login: {
             type:           dataTypes.DATE
+        },
+        role: {
+            type:           dataTypes.TINYINT(1)
         }
     }, {
         tableName: 'user',

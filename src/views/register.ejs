@@ -11,35 +11,48 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/user/userRegister" method="POST" class="form" enctype="multipart/form-data">
+            <form action="/user/userRegister" method="POST" class="form">
+                                                     <!-- enctype='multipart/form-data' -->  
                 <h4>Crear una cuenta de</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
-                    <input type="user" placeholder="User" name="firstname" value="<%= locals.oldData ? oldData.firstname : null %>">
-                    <% if (locals.errors && errors.firstname) { %>
+                    <input type="user" placeholder="User" name="name">
+                    <% if (locals.errors && errors.name) { %>
                         <p class="form__error">
-                            <%= errors.firstname.msg %>
+                            <%= errors.name.msg %>
                         </p>
                     <% } %>
-                    <input type="email" name="email" placeholder="Direccion de correo electronico" value="<%= locals.oldData ? oldData.email : null %>">
-                    <% if (locals.errors && errors.email) { %>
+                    <input type="email" name="mail" placeholder="Direccion de correo electronico" autocomplete="on">
+                    <% if (locals.errors && errors.mail) { %>
                         <p class="form__error">
-                            <%= errors.email.msg %>
+                            <%= errors.mail.msg %>
                         </p>
                     <% } %>
-                    <input type="password" name="password" placeholder="Password" value="<%= locals.oldData ? oldData.password : null %>">
+                    <input type="password" name="password" placeholder="Password" autocomplete="off">
+                    
+                    <% if (locals.passwordAuth) { %>
+                        <p class="form__error">
+                            <%= passwordAuth %>
+                        </p>
+                    <% } %>
+                    
                     <% if (locals.errors && errors.password) { %>
                         <p class="form__error">
                             <%= errors.password.msg %>
                         </p>
                     <% } %>
-                    <input type="file" name="image" value="<%= locals.oldData ? oldData.image : null %>">
+                    <input type="file" name="imagen">
+                    <% if(locals.multerErr) {%>
+                        <p class="form__error">
+                            <%= multerErr %>
+                        </p>
+                    <% } %>
                 </div>
                 <div class="form__buttom">
                     <input type="submit" value="Registrarse">
                 </div>
                 <div class="form__register-login">
-                    <p>¿tienes cueta?</p>
+                    <p>¿Tienes cuenta?</p>
                     <a href="/user/userLogin" class="form__link">Inicia sesion!</a>
                 </div>
             </form>

@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require('../../databases/models');
-const { validationResult, matchedData, checkSchema } = require('express-validator');
+const { validationResult, matchedData } = require('express-validator');
+
 
 //!                 IMPORTANTE:
 //* POST:   Crea un nuevo recurso
@@ -14,12 +15,10 @@ const { validationResult, matchedData, checkSchema } = require('express-validato
 const {validateUsers, validatePartialUsers} = require('../../schemas/usersSchema');
 
 
-
 router.get("/user", function (req, res) {
     db.userModel.findAll().then(user=>{
         res.json(user);
     })
-        
 });
 
 router.post("/user", validateUsers, function(req, res){

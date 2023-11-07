@@ -18,15 +18,31 @@
             <form action="/user/userLogin" method="POST" class="form">
                 <h4>Inicia sesión con una cuenta de</h4>
                 <h2>TechBox</h2>
+                <% if (locals.messageAuth) { %>
+                    <p style="color: red;">
+                        <%= messageAuth %>
+                    </p>
+                <% } %>
                 <div class="form__campos">
-                    <input type="email" name="email" placeholder="Direccion de correo electronico">
-                    <% if (locals.errors && errors.email) { %>
-                        <p class="form__error">
-                            <%= errors.email.msg %>
+                    <input type="email" name="mail" placeholder="Direccion de correo electronico" autocomplete="on">
+                    
+                    <% if (locals.emailAuth) { %>
+                        <p class="form__error">        
+                            <%= emailAuth %>
+                        </p>
+                    <% } else if (locals.errors && errors.mail) { %>
+                        <p class="form__error">        
+                            <%= errors.mail.msg %>
                         </p>
                     <% } %>
-                    <input type="password" name="password" placeholder="password">
-                    <% if (locals.errors && errors.password) { %>
+
+
+                    <input type="password" name="password" placeholder="password" autocomplete="off">
+                    <% if (locals.passwordAuth) { %>
+                        <p class="form__error">        
+                            <%= passwordAuth %>
+                        </p>
+                    <% } else if (locals.errors && errors.password) { %>
                         <p class="form__error">
                             <%= errors.password.msg %>
                         </p>
@@ -34,8 +50,10 @@
                 </div>
                 <div class="form__recuerdame">
                     <div class="form__recuerdame-campos">
-                        <input type="checkbox" name="recuerdame">
-                        <label for="recuerdame">Recuerdame</label>
+                        <label for="recuerdame">
+                            <input type="checkbox" name="recuerdame" id="recuerdame">
+                            Recuerdame
+                    </label>
                     </div>
                     <a href="/cambiarContraseña" class="form__link">¿Has olvidado tu contraseña?</a>
                 </div>
@@ -43,7 +61,7 @@
                     <input type="submit" value="Iniciar"></input>
                 </div>
                 <div class="form__register-login">
-                    <p>¿No tienes cueta?</p>
+                    <p>¿No tienes cuenta?</p>
                     <a href="/user/userRegister" class="form__link">registrate !</a>
                 </div>
             </form>

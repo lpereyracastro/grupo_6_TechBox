@@ -1,83 +1,91 @@
-// libreria fs para leer y escribir json
-const fs = require("fs");
-// libreria path para realizar direcciones de archivos
-const path = require("path");
-// datos en formuta json y parseados
-const usersJson = path.join(__dirname, "../../data/users.json");
-const users = JSON.parse(fs.readFileSync(usersJson, "utf-8"));
-// libreria para crear uuid 
-const {v4: uuidv4} = require("uuid");
-// libreria para encriptar contraseña
-const bcrypt = require("bcryptjs");
+// modelos db
+const db = require("../../databases/models");
+const { v4, validate } = require("uuid")
+const multer  = require('multer');
 // validatior Result
-const {validationResult} = require("express-validator");
-// metodos de User
-const User = require("../../models/User");
+const { validationResult, matchedData } = require('express-validator');
+const {hashPassword, recoverPassword} = require("../middleware/passwordChecker");
+const {createCookie, getCookie} = require("../middleware/createCookie");
+
+
 const usersControllers = {
     // renderiza la vista de logueo
     login : function(req,res){
-        res.render("login");
+        return res.render("login");
     },
     // metodo encargado de la logica del logueo
     loginAunt : function(req,res){
-    
-        const resultValidation = validationResult(req);
+        if(req.headers.cookie !== undefined){
+            let resultCookie = getCookie(req.cookies.LOGGED_ON)
+            if(resultCookie) {
+                return db.userModel.findOne({
+                    where:{
+                        mail: resultCookie.mail
+                    }
+                }).then( result => {
+                    if(result != undefined && validate(resultCookie.data)){
+                        return res.render("login", {messageAuth: "Ya estas logeado"})
+                    } else res.clearCookie("LOGGED_ON")
+                })
+            }
+        }
 
+        const resultValidation = validationResult(req);
         if(resultValidation.errors.length > 0){
             return res.render("login",
             {
                 errors : resultValidation.mapped(),
-                oldData : req.body,
+                oldData : req.body
             }
-        )}
+        )}   
 
-        let userToLogin = User.findByField("email", req.body.email);
-
-        if(userToLogin){
-            let isOkThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if(isOkThePassword){
-                delete userToLogin.password;
-                req.session.UserLogged = userToLogin;
-                return res.redirect("/user/profile");
+        db.userModel.findOne({where: { mail: matchedData(req).mail}})
+        .then(resultEmail=>{
+            if (!resultEmail) return res.status(200).render("login",{emailAuth: "Email incorrecto :P"})
+            if(recoverPassword(req.body.password, resultEmail.dataValues.password)){
+                createCookie(req,res,"LOGGED_ON", JSON.stringify({mail: resultEmail.dataValues.mail, data: v4()}))
+                return res.redirect("/"); //! convertir en la base de datos 
             }
-            return res.render("login",{
-                errors : {
-                    email : {
-                        msg : "Las credenciales son invalidas"
-                    }
-                }
-            })
-        }
+            return res.status(200).render("login",{passwordAuth: "Contraseña incorrecta :P"})
 
-        return res.render("login",{
-            errors : {
-                email : {
-                    msg : "No se encuentra este email"
-                }
-            }
         })
 
     },
     // renderizamos la vista del perfil del ususario
     profile : function(req,res){
-        res.render("profile", 
-        {
-            user : req.session.UserLogged
-        })
+        if(req.headers.cookie !== undefined){
+            let resultCookie = getCookie(req.cookies.LOGGED_ON)
+            if(resultCookie) {
+                return db.userModel.findOne({
+                    where:{
+                        mail: resultCookie.mail
+                    }
+                }).then( result => {
+                    if(result != undefined && validate(resultCookie.data)){
+                        return res.render("profile", {user: result.dataValues})
+                    } else return res.redirect("/user/userLogin");
+                })
+            }
+        } else return res.redirect("/user/userLogin");
+       
     },
     // renderiza la vista del formulario para registrarse
     register : function(req,res){
-        res.render("register");
-    },
-    // metodo encargado del deslogueo
-    logout : function(req,res){
-        req.session.destroy();
-        return res.redirect("/user/userLogin")
+        return res.render("register");
     },
     // metodo encargado de la logica para guardar un registro
     registerStore : function (req,res){
+        // console.log(req.file, req.body)
 
+     // uploadSingleImage(req, res, (err) => {
+        //     if (err instanceof multer.MulterError) {
+        //         return res.render('register', {multerErr: `La imagen debe respetar estos formatos: ${ACCEPTED_TYPES}`})
+        //     }
+        //     })
+
+        const { password } = req.body;
         const resultValidation = validationResult(req);
+        console.log("result: ",resultValidation)
 
         if(resultValidation.errors.length > 0){
             return res.render("register",
@@ -85,25 +93,27 @@ const usersControllers = {
                     errors : resultValidation.mapped(),
                     oldData : req.body,
                 }
-            )}
+        )}
 
-        let image = "default.jpg";
-        if (req.file && req.file.filename) {
-            image = req.file.filename;
-        };
-
-        const newUser = {
-            id : uuidv4(),
-            firstName : req.body.firstname,
-            email : req.body.email,
-            password : bcrypt.hashSync(req.body.password, 10),
-            image : image,
-        };
-        users.push(newUser);
-
-        const usersJsonNew = JSON.stringify(users, null, 2);
-        fs.writeFileSync(usersJson,usersJsonNew );
-        res.redirect("/user/userLogin");
+        if(!hashPassword(password)){ return res.render("register", {passwordAuth: "La contraseña no puede tener muchos caracteres"});}
+        
+        db.carritoModel.create({
+            cantidad: 0, 
+        }).then(result => {
+            db.userModel.create({
+                mail : req.body.mail,
+                name : req.body.name,
+                password : hashPassword(password),
+                carrito_id : result.dataValues.id_carrito,
+                imagen : req.body.imagen,
+                role: 1
+            }).then(() => res.redirect("/user/userLogin"))    
+        })
+    },
+    // metodo encargado del deslogueo
+    logout : function(req,res){
+        res.clearCookie("LOGGED_ON");
+        return res.redirect("/user/userLogin")
     }
 }
 module.exports = usersControllers;

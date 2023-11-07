@@ -5,20 +5,28 @@
 
 <body>
    <%- include('./partials/header') %>
-    
+
     <main class="productsPage">
-        <% productos.forEach(product => { %>
-            <article class="productsPage_products">
-                <img src="/img/product/<%= product.image %>" alt="" class="productsPage__img">
-                <section class="productPage__detail">
-                    <h4><%= product.name %></h4>
-                    <p><%= product.description %></p>
-                </section>
-                <section class="productPage__buttons">
-                    <a href="/products/detail/<%= product.id %>" class="productPage__link">Detalles</a>
-                </section>
-            </article>
-        <% }) %>
+
+            <% productos.forEach(product => { %>
+                <article class="productsPage_products">
+                    <img src="/img/product/<%= product.imagen %>" alt="" class="productsPage__img">
+                    <section class="productPage__detail">
+                        <h4><%= product.name %></h4>
+                        <p><%= product.description %></p>
+                    </section>
+                    <section class="productPage__buttons">
+                        <a href="/products/detail/<%= product.articulos_id %>" class="productPage__link">Detalles</a>
+                        <a href="/products/<%= product.articulos_id %>/edit" class="productPage__link">Edit</a>
+                        <a href="/products/<%= product.articulos_id %>/delete" class="productPage__link">Delete</a>
+                    </section>
+                </article>
+            <% }) %>
+
+            <section>
+                <a href="/products/productCreate">Añadir mas productos</a>
+            </section>
+
     </main>
 
     <%- include('./partials/footer') %>

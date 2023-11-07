@@ -59,7 +59,7 @@ app.use(express.static("public"));
 
 // config para method override
 app.use(methodOverride('_method'));
-app.use(express.urlencoded({extended : false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // indicamos los routes

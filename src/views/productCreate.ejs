@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+<body>
+
+    <%- include('./partials/header') %>
+    <main>
+        <article class="form-login-register">
+            <form action="/products/productCreate" method="POST" class="form" enctype="multipart/form-data">
+                <h4>Editar un producto</h4>
+                <h2>TechBox</h2>
+                <div class="form__campos">
+                    <input type="text" name="name" placeholder="Nombre del producto">
+                    <% if (locals.errors && errors.name) { %>
+                        <p class="form__error">
+                            <%= errors.name.msg %>
+                        </p>
+                    <% } %>
+                    <input type="text" name="description" placeholder="Descripcion del producto">
+                    <% if (locals.errors && errors.description) { %>
+                        <p class="form__error">
+                            <%= errors.description.msg %>
+                        </p>
+                    <% } %>
+                    <input type="text" name="price" placeholder="Valor monetario">
+                    <% if (locals.errors && errors.price) { %>
+                        <p class="form__error">
+                            <%= errors.price.msg %>
+                        </p>
+                    <% } %>
+                    
+                    <select name="marca" id="category">
+                        <option value="amd">AMD             </option>
+                        <option value="intel">Intel         </option>
+                        <option value="other" selected>Otro </option>
+                    </select>
+                    <input type="file" name="imagen" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.imagen : null %>">
+                    <% if (locals.errors && errors.imagen) { %>
+                        <p class="form__error">
+                            <%= errors.imagen.msg %>
+                        </p>
+                    <% } %>
+                </div>
+                <div class="form__buttom">
+                    <input type="submit" value="Cargar Producto"></input>
+                </div>
+            </form>
+        </article>
+    </main>
+</body>
+</html>
+
+
+
+

@@ -15,7 +15,7 @@
     <main class="productoDetail-content">
         <article class="producto">
             <div class="productoImage">
-                <img src="/img/product/<%= product.image %>" alt="">
+                <img src="/img/product/<%= product.imagen %>" alt="">
             </div>
             <div class="productoDetail">
                 <h2>
@@ -41,12 +41,13 @@
                         Envio gratis y asegurado
                     </div>
                 </div>
-                <button class="producto-card">Agregar al carro</button>
+                <input type="button" class="producto-card" value="Agregar al carro">
             </div>
         </article>
     </main>
     <%- include('./partials/footer') %>
     <script src="/js/script.js"></script>
+    <script src="/js/carritoAdd.js"></script>
 </body>
 
 </html>
