@@ -96,3 +96,6 @@ function sliceLeft(){
         carrouselProductsSlice.style.transition = "all ease .6s"
     }
 }
+
+const formulario = document.getElementById('formulario');
+const inputs = document.querySelectorAll('#formulario input');

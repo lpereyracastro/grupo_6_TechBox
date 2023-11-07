@@ -56,7 +56,6 @@ const productsControllers = {
         productos.push(newProducts);
         const productosJson = JSON.stringify(productos,null, 2);
         fs.writeFileSync(productsJson, productosJson);
-        console.log(productosJson);
         res.redirect("/products");
         
     },
@@ -95,7 +94,7 @@ const productsControllers = {
 
         const productsJsonData = JSON.stringify(productos, null, 2);
         fs.writeFileSync(productsJson, productsJsonData);
-        res.redirect("/products")   
+        res.redirect("/productsAdmin")   
     },
     // renderiza el formulario de eliminacion
     deleteForm : function (req,res){

@@ -20,7 +20,7 @@ app.use(session(
 app.use(cookies());
 
 async function main() {
-    await sequelize.sync({force: false}); 
+    await sequelize.sync({force: true}); 
     //se sincroniza con la base, force rehace las tablas.
     // RECOMENDACION: ponelo en true pero va a hacer drop, alter y create tables.
     // Ademas con el nodemon se ejecuta cada rato que guardas y es pesado.

@@ -11,7 +11,6 @@ const {v4: uuidv4} = require("uuid");
 const bcrypt = require("bcryptjs");
 // validatior Result
 const {validationResult} = require("express-validator");
-const { error } = require("console");
 // metodos de User
 const User = require("../../models/User");
 const usersControllers = {
@@ -39,7 +38,6 @@ const usersControllers = {
             if(isOkThePassword){
                 delete userToLogin.password;
                 req.session.UserLogged = userToLogin;
-                console.log(req.session);
                 return res.redirect("/user/profile");
             }
             return res.render("login",{
@@ -101,7 +99,6 @@ const usersControllers = {
             password : bcrypt.hashSync(req.body.password, 10),
             image : image,
         };
-        console.log(newUser);
         users.push(newUser);
 
         const usersJsonNew = JSON.stringify(users, null, 2);
