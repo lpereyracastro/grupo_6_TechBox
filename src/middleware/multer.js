@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 
 const ACCEPTED_TYPES = ['image/jpeg','image/png','image/jpg']; //!agregar mas si es necesario.
-const MAX_FILESIZE = 3; //estos son MB, si le pasas 3 son maximo 3mb
+const MAX_FILESIZE = 1 * 1024 * 1024; //estos son MB, si le pasas 3 son maximo 3mb
 
 // variable storage encargada de 
 const storage = multer.diskStorage({
@@ -19,20 +19,16 @@ const storage = multer.diskStorage({
 })
 
 const imageFilter = (req,file,cb) => {
-    if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
+    if(ACCEPTED_TYPES.includes(file.mimetype && req.headers['content-length'] <= MAX_FILESIZE)){
         cb(null,true)
-    } else {
-        return cb(new Error(`Solo se aceptan los siguientes tipos: ${ACCEPTED_TYPES}`))
-    }
+    } else cb(null, false)
+
 }
 
 // variable upload almacenando multer con storage como propiedad
 const upload = multer({
     storage: storage,
-    fileFilter: imageFilter,
-    limits: {
-        fileSize: 1 * 1024 * 1024
-    },
+    fileFilter: imageFilter
 });
 
 module.exports = {upload, ACCEPTED_TYPES, MAX_FILESIZE};

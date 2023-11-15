@@ -4,24 +4,24 @@ const {Router} = require("express");
 const router = Router();
 // controladores de usuarios
 const usersControllers = require("../controllers/usersControllers");
-// middleware
-const guesMiddleware = require("../middleware/guesMiddleware");
-const authMiddleware = require("../middleware/authMiddleware");
 // validaciones userSchema
-const {validateUsers, validatePartialUsers} = require("../..//schemas/usersSchema");
+const {validateUsers, validatePartialUsers} = require("../../schemas/usersSchema");
 const { upload } = require("../middleware/multer");
 
-
-
 // ruta encargada de mostrar la vista de login
-router.get("/userLogin", guesMiddleware, usersControllers.login );
+router.get("/userLogin", usersControllers.login );
 // ruta encargada de procesar la logica de autenticacion
 router.post("/userLogin",validatePartialUsers,usersControllers.loginAunt)
 
 // ruta encargada de mostrar la vista register
-router.get("/userRegister", guesMiddleware, usersControllers.register);
+router.get("/userRegister", usersControllers.register);
 // ruta encargada de procesar la logica de guardar un registro
-router.post("/userRegister", validateUsers,usersControllers.registerStore);
+router.post("/userRegister",
+    upload.single("imagen"),
+    validateUsers,
+    usersControllers.registerStore
+);
+
 
 //ruta encargada para mostrar la vista del perfil
 router.get("/profile", usersControllers.profile);

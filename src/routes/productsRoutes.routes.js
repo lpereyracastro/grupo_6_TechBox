@@ -3,27 +3,10 @@ const productsControllers = require("../controllers/productsControllers");
 // Router
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
-// metodo path para armas rutas y nombre del archivo multimedia
-const path = require("path");
+
 // validations loadProdcuts
 const {validateArticulos, validatePartialArticulos} = require("../../schemas/articulosSchema")
-
-// configuracion de multer 
-const storage = multer.diskStorage({
-    destination : function (req,file,cb){
-        cb(null, path.join(__dirname, "../../public/img/product"));
-    },
-    filename : function (req,file,cb){
-        const ext = path.extname(file.originalname);
-        const newFilename = `${Date.now()}_img_product${ext}`;
-        cb(null, newFilename);
-    }
-})
-//! CAMBIAR
-
-// middleware de multer con la configuracion del archivo
-const upload = multer({storage});
+const { upload } = require("../middleware/multer");
 
 
 // home

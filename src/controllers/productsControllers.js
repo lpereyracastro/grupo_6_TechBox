@@ -21,10 +21,13 @@ const productsControllers = {
     productCreatePost: function(req,res){
         const result = validationResult(req);
         if (!result.isEmpty()) {
-            return res.status(422).json({ errors: result.array() });
+            return res.render("productCreate",{ errors: result.array() });
         }
         const validData = matchedData(req);
-    
+
+        console.log(req.file);
+        console.log(result);
+
         db.articulosModel.create({
             imagen: req.file.filename,
             ...validData
@@ -95,6 +98,7 @@ const productsControllers = {
     // renderiza el formulario de eliminacion
     deleteForm : function (req,res){
         const {id} = req.params;
+        console.log(id);
         return res.render("productDelete", {product: id})
     },
     // metodo encargado de la logica de eliminacion

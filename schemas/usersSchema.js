@@ -1,5 +1,6 @@
-const {body} = require('express-validator');
+const {body, checkSchema} = require('express-validator');
 const db = require('../databases/models');
+const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer');
 
 const validateUsers = [
     body('mail')
@@ -28,10 +29,17 @@ const validateUsers = [
     body('role')
     .optional(true)
         .isString()
-        .isLength({ min: 0, max: 10})
-
+        .isLength({ min: 0, max: 10}),
 
         
+    checkSchema({
+        'imagen': {
+            custom: {
+                options: (value, { req, path }) => ACCEPTED_TYPES.includes(req.file.mimetype) && req.file.size <= MAX_FILESIZE,
+                errorMessage: `Solo se aceptan los siguientes tipos: ${ACCEPTED_TYPES} y debe pesar menos de ${MAX_FILESIZE} Byte`,
+            }
+        }
+    })        
     ]
     
     // body('carrito_id')

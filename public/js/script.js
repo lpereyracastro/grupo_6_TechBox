@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 // nodos carruoselBanner
 const carrouselSlice = document.querySelector(".carrousel__slice");
 const carrousePunto = document.querySelectorAll(".carrousel__punto");

@@ -6,6 +6,7 @@ const multer  = require('multer');
 const { validationResult, matchedData } = require('express-validator');
 const {hashPassword, recoverPassword} = require("../middleware/passwordChecker");
 const {createCookie, getCookie} = require("../middleware/createCookie");
+const {ACCEPTED_TYPES, upload} = require("../middleware/multer");
 
 
 const usersControllers = {
@@ -74,19 +75,11 @@ const usersControllers = {
         return res.render("register");
     },
     // metodo encargado de la logica para guardar un registro
+
     registerStore : function (req,res){
-        // console.log(req.file, req.body)
-
-     // uploadSingleImage(req, res, (err) => {
-        //     if (err instanceof multer.MulterError) {
-        //         return res.render('register', {multerErr: `La imagen debe respetar estos formatos: ${ACCEPTED_TYPES}`})
-        //     }
-        //     })
-
+           
         const { password } = req.body;
         const resultValidation = validationResult(req);
-        console.log("result: ",resultValidation)
-
         if(resultValidation.errors.length > 0){
             return res.render("register",
                 {
@@ -94,7 +87,7 @@ const usersControllers = {
                     oldData : req.body,
                 }
         )}
-
+                    
         if(!hashPassword(password)){ return res.render("register", {passwordAuth: "La contraseña no puede tener muchos caracteres"});}
         
         db.carritoModel.create({
@@ -105,11 +98,13 @@ const usersControllers = {
                 name : req.body.name,
                 password : hashPassword(password),
                 carrito_id : result.dataValues.id_carrito,
-                imagen : req.body.imagen,
+                imagen : req.file.filename,
                 role: 1
             }).then(() => res.redirect("/user/userLogin"))    
         })
+        
     },
+
     // metodo encargado del deslogueo
     logout : function(req,res){
         res.clearCookie("LOGGED_ON");

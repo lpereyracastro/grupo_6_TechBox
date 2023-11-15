@@ -11,8 +11,7 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form action="/user/userRegister" method="POST" class="form">
-                                                     <!-- enctype='multipart/form-data' -->  
+            <form action="/user/userRegister" method="POST" class="form" enctype='multipart/form-data'>
                 <h4>Crear una cuenta de</h4>
                 <h2>TechBox</h2>
                 <div class="form__campos">
@@ -42,9 +41,9 @@
                         </p>
                     <% } %>
                     <input type="file" name="imagen">
-                    <% if(locals.multerErr) {%>
+                    <% if(locals.errors && errors.imagen) {%>
                         <p class="form__error">
-                            <%= multerErr %>
+                            <%=  errors.imagen.msg %>
                         </p>
                     <% } %>
                 </div>

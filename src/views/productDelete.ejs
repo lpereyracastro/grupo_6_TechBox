@@ -6,7 +6,7 @@
     <%- include('./partials/header') %>
     <main>
         <article class="form-login-register">
-            <form method="POST" action="/products/<%= product.articulos_id %>/delete?_method=DELETE" class="form" enctype="application/x-www-form-urlencoded">
+            <form method="POST" action="/products/<%= product %>/delete?_method=DELETE" class="form" enctype="application/x-www-form-urlencoded">
                 <h2>TechBox</h2>
                 <div class="form__campos">
                     <h4>Esta seguro de eliminar el producto <%= product.name %></h4>
@@ -20,7 +20,3 @@
 </body>
 <script src="/js/script.js"></script>
 </html>
-
-
-
-
