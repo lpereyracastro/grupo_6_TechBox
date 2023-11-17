@@ -6,7 +6,7 @@ const router = express.Router();
 
 // validations loadProdcuts
 const {validateArticulos, validatePartialArticulos} = require("../../schemas/articulosSchema")
-const { upload } = require("../middleware/multer");
+const { upload } = require("../middleware/multer/multerProducts");
 
 
 // home
@@ -17,16 +17,28 @@ router.get("/cart", productsControllers.productCart);
 router.get("/detail/:id", productsControllers.productDetail);
 
 router.get("/productCreate", productsControllers.productCreate)
-router.post("/productCreate", upload.single("imagen"),validateArticulos, productsControllers.productCreatePost)
+router.post("/productCreate", 
+    upload.single("imagen"),
+    validateArticulos, 
+    productsControllers.productCreatePost
+)
 
 // vista del formulario para cargar un producto
 router.get("/loadProduct", productsControllers.loadProduct);
 // ruta post para manejar los campos del formulario y la imagen que procesamos con multer
-router.post("/loadProduct", upload.single("imagen"),validateArticulos,productsControllers.storeLoadProduct);
+router.post("/loadProduct",
+    upload.single("imagen"),
+    validateArticulos,
+    productsControllers.storeLoadProduct
+ );
 
 // vista del formulario de edicion del producto
 router.get("/:id/edit", productsControllers.edit);
-router.put("/:id/edit", upload.single("imagen"),validateArticulos,productsControllers.storeEdit);
+router.put("/:id/edit", 
+    upload.single("imagen"),
+    validatePartialArticulos,
+    productsControllers.storeEdit
+);
 
 // eliminar un producto
 router.get("/:id/delete", productsControllers.deleteForm);

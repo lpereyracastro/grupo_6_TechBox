@@ -6,7 +6,7 @@ const router = Router();
 const usersControllers = require("../controllers/usersControllers");
 // validaciones userSchema
 const {validateUsers, validatePartialUsers} = require("../../schemas/usersSchema");
-const { upload } = require("../middleware/multer");
+const { upload } = require("../middleware/multer/multerUser");
 
 // ruta encargada de mostrar la vista de login
 router.get("/userLogin", usersControllers.login );

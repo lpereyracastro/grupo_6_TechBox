@@ -9,7 +9,7 @@ const MAX_FILESIZE = 3 * 1024 * 1024; //estos son MB, si le pasas 3 son maximo 3
 // variable storage encargada de 
 const storage = multer.diskStorage({
     destination : function(req,file,cb){
-        cb(null, path.join(__dirname, "../../public/img/users"));
+        cb(null, path.join(__dirname, "../../../public/img/users"));
     },
     filename : function(req,file,cb){
         const ext = path.extname(file.originalname);

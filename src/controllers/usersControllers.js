@@ -6,7 +6,7 @@ const multer  = require('multer');
 const { validationResult, matchedData } = require('express-validator');
 const {hashPassword, recoverPassword} = require("../middleware/passwordChecker");
 const {createCookie, getCookie} = require("../middleware/createCookie");
-const {ACCEPTED_TYPES, upload} = require("../middleware/multer");
+const {ACCEPTED_TYPES, upload} = require("../middleware/multer/multerUser");
 
 
 const usersControllers = {

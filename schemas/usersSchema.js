@@ -1,6 +1,6 @@
 const {body, checkSchema} = require('express-validator');
 const db = require('../databases/models');
-const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer');
+const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer/multerUser');
 
 const validateUsers = [
     body('mail')

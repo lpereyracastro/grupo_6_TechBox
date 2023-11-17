@@ -19,18 +19,21 @@ const productsControllers = {
     },
 
     productCreatePost: function(req,res){
-        const result = validationResult(req);
-        if (!result.isEmpty()) {
-            return res.render("productCreate",{ errors: result.array() });
-        }
-        const validData = matchedData(req);
-
-        console.log(req.file);
-        console.log(result);
+        const resultValidation = validationResult(req);
+        if(resultValidation.errors.length > 0){
+            return res.render("productCreate",
+                {
+                    errors : resultValidation.mapped(),
+                    oldData : req.body,
+                }
+        )}
 
         db.articulosModel.create({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            marca: req.body.marca,
             imagen: req.file.filename,
-            ...validData
         })
         .then(user => {
             return res.redirect("/products");
@@ -42,7 +45,9 @@ const productsControllers = {
         db.articulosModel.findOne({where: {
             articulos_id: id
         }}).then(articulo=>{
-            return res.render("productDetail",{product: articulo.dataValues});
+            return res.render("productDetail",{
+                product: articulo.dataValues
+            });
         })
     },
     // renderiza el carrito
@@ -57,7 +62,9 @@ const productsControllers = {
     storeLoadProduct : function(req, res){
         const result = validationResult(req);
         if (!result.isEmpty()) {
-            return res.status(422).render("loadProduct",{ errors: result.array() });
+            return res.status(422).render("loadProduct",{ 
+                errors: result.array() 
+            });
         }
         const validData = matchedData(req);
     
@@ -73,20 +80,34 @@ const productsControllers = {
         db.articulosModel.findOne({where: {
             articulos_id: id
         }}).then(articulo=>{
-            return res.render("productEdit", {product: articulo.dataValues});;
+            return res.render("productEdit", {product: articulo.dataValues,
+                articulos_id: articulo.dataValues.articulos_id
+            });
         })
     },
     // metodo encargado de la logica para editar un producto
     storeEdit : function(req,res){
+        console.log(req.body);
+        const {id} = req.params;
             const result = validationResult(req);
+            console.log(result);
             if (!result.isEmpty()) {
-                return res.status(422).render('loadProduct',{ errors: result.array() });
+                return res.render('productEdit',{
+                    product: req.body,
+                    errors: result.mapped(),
+                    articulos_id: id
+                });
             }
-            const validData = matchedData(req);
-            const {id} = req.params;
+            let imagenFile;
+            if(!req.file?.filename) imagenFile = "default.jpg"
+            if(req.file?.filename) imagenFile = req.file.filename; 
+
             db.articulosModel.update({
-                imagen: req.file.filename,
-                ...validData 
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                marca: req.body.marca,
+                imagen: imagenFile
             },{
                 where: {
                     articulos_id: id

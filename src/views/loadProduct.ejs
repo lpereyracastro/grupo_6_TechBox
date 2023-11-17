@@ -11,9 +11,9 @@
                 <h2>TechBox</h2>
                 <div class="form__campos">
                     <input type="text" name="productname" placeholder="Nombre del producto" value="<%= locals.oldData ? oldData.productname : null %>">
-                    <% if (locals.errors && errors.productname) { %>
+                    <% if (locals.errors && errors.name) { %>
                         <p class="form__error">
-                            <%= errors.productname.msg %>
+                            <%= errors.name.msg %>
                         </p>
                     <% } %>
                     <input type="text" name="description" placeholder="Descripcion del producto" value="<%= locals.oldData ? oldData.description : null %>">
@@ -28,11 +28,11 @@
                             <%= errors.price.msg %>
                         </p>
                     <% } %>
-                    <select name="category" id="category">
-                        <option value="hardware" selected>Hardware</option>
-                        <option value="software">software</option>
-                        <option value="perifericos">perifericos</option>
-                    </select>
+                    <select name="marca" id="category">
+                        <option value="amd">AMD</option>
+                        <option value="intel">Intel</option>
+                        <option value="other" selected>Otro</option>
+                     </select>
                     <input type="file" name="image" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.file : null %>">
                     <% if (locals.errors && errors.image) { %>
                         <p class="form__error">
@@ -46,11 +46,7 @@
             </form>
         </article>
     </main>
+    <%- include('./partials/footer') %>
+    <script src="/js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-

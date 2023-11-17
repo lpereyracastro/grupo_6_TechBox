@@ -1,4 +1,4 @@
-const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer');
+const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer/multerProducts');
 const {body, checkSchema} = require('express-validator');
 
 const validateArticulos = [
