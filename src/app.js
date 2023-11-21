@@ -34,14 +34,7 @@ const mainRoutes = require("./routes/mainRoutes.routes");
 const productsRoutes = require("./routes/productsRoutes.routes");
 const usersRoutes = require("./routes/usersRoutes.routes");
 const test = require("./routes/test.routes");
-
-//! models      OBVIAMENTE REQUERIRLOS EN LOS CONTROLADORES LO QUE SE VAN A USAR
-// const carrito = require("../databases/models/carrito.db.js");
-// const compras = require("../databases/models/compras.db");
-// const productosCompras = require("../databases/models/productos-compra.db.js");
-// const productos = require("../databases/models/productos.db.js");
-// const users = require("../databases/models/users.db.js");
-
+const APIRoutes = require("./routes/API.routes");
 
 // require metodo path
 const path = require("path");
@@ -66,6 +59,7 @@ app.use(express.json());
 app.use("/",mainRoutes);
 app.use("/products",productsRoutes);
 app.use("/user", usersRoutes);
+app.use("/api", APIRoutes);
 
 app.use("/test",test); //!TEST ROUTE
 

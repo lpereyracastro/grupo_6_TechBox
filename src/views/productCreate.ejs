@@ -9,6 +9,7 @@
             <form action="/products/productCreate" method="POST" class="form" enctype="multipart/form-data">
                 <h4>Añadir un producto</h4>
                 <h2>TechBox</h2>
+                <div class="inputValidators"></div>
                 <div class="form__campos">
                     <input type="text" name="name" placeholder="Nombre del producto">
                     <% if (locals.errors && errors.name) { %>
@@ -49,6 +50,7 @@
     </main>
     <%- include('./partials/footer') %>
     <script src="/js/script.js"></script>
+    <script src="/js/validations/inputValidators.js"></script>
 </body>
 </html>
 

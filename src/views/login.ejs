@@ -18,6 +18,7 @@
             <form action="/user/userLogin" method="POST" class="form">
                 <h4>Inicia sesión con una cuenta de</h4>
                 <h2>TechBox</h2>
+                <div class="inputValidators"></div>
                 <% if (locals.messageAuth) { %>
                     <p style="color: red;">
                         <%= messageAuth %>
@@ -69,6 +70,7 @@
     </main>
     <%- include('./partials/footer') %>
     <script src="/js/script.js"></script>
+    <script src="/js/validations/inputValidators.js"></script>
 </body>
 
 </html>
