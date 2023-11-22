@@ -10,7 +10,7 @@
 
             <% productos.forEach(product => { %>
                 <article class="productsPage_products">
-                    <img src="/img/product/<%= product.imagen %>" alt="" class="productsPage__img">
+                    <img src="/img/product/<%= product.imagen %>" alt="" onerror="this.src='/img/product/default.jpg'" class="productsPage__img ">
                     <section class="productPage__detail">
                         <h4><%= product.name %></h4>
                         <p><%= product.description %></p>

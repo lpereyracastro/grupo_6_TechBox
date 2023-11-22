@@ -1,9 +1,7 @@
 const db = require("../../databases/models")
-
-const {v4: uuidv4} = require("uuid")
 // express validator , validaciones
 const {validationResult,matchedData} = require("express-validator")
-
+const {getCookie} = require("../middleware/createCookie");
 
 
 const productsControllers = {
@@ -41,12 +39,15 @@ const productsControllers = {
     },
     // renderiza el detalle de un producto
     productDetail : function(req,res){
+        let scriptActivated = false;
+        if(getCookie(req.cookies.LOGGED_ON)) scriptActivated = true;
         const {id} = req.params;
         db.articulosModel.findOne({where: {
             articulos_id: id
         }}).then(articulo=>{
             return res.render("productDetail",{
-                product: articulo.dataValues
+                product: articulo.dataValues,
+                scriptActivated
             });
         })
     },

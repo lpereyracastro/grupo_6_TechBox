@@ -60,7 +60,16 @@ const validatePartialArticulos = [
     .optional(true)
     .isString().withMessage("La marca debe ser un texto")
     .isLength({ min: 1, max: 45}).withMessage("La marca debe tener entre 1 y 45 caracteres")
-    .notEmpty().withMessage('La marca no puede estar vacia')
+    .notEmpty().withMessage('La marca no puede estar vacia'),
+
+    checkSchema({
+        'imagen': {
+            custom: {
+                options: (value, { req, path }) => ACCEPTED_TYPES.includes(req.file.mimetype) && req.file.size <= MAX_FILESIZE,
+                errorMessage: `Solo se aceptan los siguientes tipos: ${ACCEPTED_TYPES} y debe pesar menos de ${MAX_FILESIZE} Byte`,
+            }
+        }
+    }) 
 ]
 
 module.exports = {validateArticulos, validatePartialArticulos};
