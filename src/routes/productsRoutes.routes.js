@@ -15,7 +15,7 @@ router.get("/",productsControllers.products);
 router.get("/cart", productsControllers.productCart);
 // detalle del producto
 router.get("/detail/:id", productsControllers.productDetail);
-// router.post("/detail/:id", productsControllers.productDetailCART);
+router.post("/detail/:id", productsControllers.productDetailPOST);
 
 router.get("/productCreate", productsControllers.productCreate)
 router.post("/productCreate", 

@@ -17,6 +17,7 @@
             <div class="productoImage">
                 <img src="/img/product/<%= product.imagen %>" alt="" onerror="this.src='/img/product/default.jpg'">
             </div>
+
             <div class="productoDetail">
                 <h2>
                     <%= product.name %>
@@ -41,14 +42,28 @@
                         Envio gratis y asegurado
                     </div>
                 </div>
-                <input type="button" class="producto-card carrito" value="Agregar al carro">
+
+                <% if (errormsg) { %>
+                    <h2><%= errormsg %></h2>
+                <% } %>
+                <% if (cookies) { %>
+                    <form method="post" action="/products/detail/<%=product.articulos_id%>">
+                        <input type="submit" class="producto-card" value="Agregar al carro">
+                    </form>
+                <% } else { %>
+                    <form>
+                        <input type="button" class="producto-card" value="Agregar al carro" onClick="this.value = 'No estas logeado!'">
+                    </form>
+                <% } %>
+
+                
             </div>
         </article>
     </main>
     <%- include('./partials/footer') %>
     <script src="/js/script.js"></script>
-    <% if (scriptActivated) { %>
-        <%= <script src="/js/validations/addCart.js"></script> %>
+    <% if (cookies) { %>
+        
     <% } %>
 </body>
 

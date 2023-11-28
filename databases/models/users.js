@@ -26,11 +26,6 @@ module.exports = function(sequelize,dataTypes){
             type:           dataTypes.STRING(255),
             allowNull:      false,
         },
-        carrito_id: {
-            type:           dataTypes.INTEGER,
-            unique:         true,
-            allowNull:      false
-        },
         imagen: {
             type:           dataTypes.STRING(255),
             defaultValue:   "default.jpg"
@@ -49,9 +44,9 @@ module.exports = function(sequelize,dataTypes){
     })
 
     userDB.associate = function (model) {
-        userDB.hasOne(model.carritoModel,{
-            as: "UserToCarrito", 
-            foreignKey: "carrito_id" 
+        userDB.belongsTo(model.carritoModel,{
+            as: "CarritoToUser", 
+            foreignKey: "user_id" 
         })
     }
     

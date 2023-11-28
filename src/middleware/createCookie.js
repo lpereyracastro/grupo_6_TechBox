@@ -11,7 +11,11 @@ function createCookie(req,res,cookieName,description){
 }
 
 function getCookie(parameter){
-    return JSON.parse(parameter);
+    try {
+        return JSON.parse(parameter);
+    } catch (e){
+        return false;
+    }
 }
 
 module.exports = {createCookie, getCookie, SALTROUNDS};

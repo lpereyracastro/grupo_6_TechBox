@@ -1,8 +1,10 @@
 const db = require("../../databases/models")
 // express validator , validaciones
 const {validationResult,matchedData} = require("express-validator")
-const {getCookie} = require("../middleware/createCookie");
+const {getCookie, createCookie} = require("../middleware/createCookie");
+const { v4 } = require("uuid");
 
+let cookies;
 
 const productsControllers = {
     // renderiza los productos
@@ -39,18 +41,55 @@ const productsControllers = {
     },
     // renderiza el detalle de un producto
     productDetail : function(req,res){
-        let scriptActivated = false;
-        if(getCookie(req.cookies.LOGGED_ON)) scriptActivated = true;
         const {id} = req.params;
+        cookies = false;
+        let resultCookieUser = getCookie(req.cookies.LOGGED_ON);
+
+        if(resultCookieUser) {
+            cookies = true;
+        } 
+
         db.articulosModel.findOne({where: {
             articulos_id: id
         }}).then(articulo=>{
             return res.render("productDetail",{
                 product: articulo.dataValues,
-                scriptActivated
+                cookies,
+                errormsg: false
             });
         })
     },
+    productDetailPOST : function(req,res){
+        const {id} = req.params;
+        cookies = false;
+        let resultCookieUser = getCookie(req.cookies.LOGGED_ON);
+
+        if(resultCookieUser) {
+            cookies = true;
+            Promise.all([
+                db.userModel.findOne({where:{mail:resultCookieUser.mail}}),
+                db.articulosModel.findAll({where:{articulos_id: id}})
+            ]).then(([usuarios,articulos]) => {
+                console.log(usuarios);
+                console.log("I KNOW WHAT YOU MEAN : ", articulos);
+                
+                
+            }).catch((e)=>{
+                console.log(e);
+                db.articulosModel.findOne({where: {
+                    articulos_id: id
+                }}).then(articulo=>{
+                    return res.render("productDetail",{
+                        product: articulo.dataValues,
+                        cookies,
+                        errormsg: "Ha ocurrido un error..."
+                    });
+                })
+            });
+        
+        } 
+    },
+
     // renderiza el carrito
     productCart : function(req,res){
         return res.render("productCart");

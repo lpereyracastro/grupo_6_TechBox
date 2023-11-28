@@ -16,6 +16,10 @@ module.exports = function(sequelize,dataTypes){
         cantidad: {
             type:           dataTypes.TINYINT(11),
             allowNull:      false
+        },
+        FK_user_id: {
+            type:           dataTypes.TINYINT(11),
+            allowNull:      false
         }
     }, {
         tableName: 'carrito',
@@ -24,9 +28,9 @@ module.exports = function(sequelize,dataTypes){
     })
 
     carritoDB.associate = function(models) {
-        carritoDB.belongsTo(models.userModel, {
-            as:"UserToCarrito",
-            foreignKey: 'carrito_id'
+        carritoDB.hasMany(models.userModel, {
+            as:"CarritoToUser",
+            foreignKey: 'user_id'
           });
 
         carritoDB.belongsToMany(models.articulosModel,{

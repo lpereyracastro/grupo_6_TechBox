@@ -90,18 +90,13 @@ const usersControllers = {
                     
         if(!hashPassword(password)){ return res.render("register", {passwordAuth: "La contraseña no puede tener muchos caracteres"});}
         
-        db.carritoModel.create({
-            cantidad: 0, 
-        }).then(result => {
-            db.userModel.create({
-                mail : req.body.mail,
-                name : req.body.name,
-                password : hashPassword(password),
-                carrito_id : result.dataValues.id_carrito,
-                imagen : req.file.filename,
-                role: 1
-            }).then(() => res.redirect("/user/userLogin"))    
-        })
+        db.userModel.create({
+            mail : req.body.mail,
+            name : req.body.name,
+            password : hashPassword(password),
+            imagen : req.file.filename,
+            role: 1
+        }).then(() => res.redirect("/user/userLogin"))    
         
     },
 
