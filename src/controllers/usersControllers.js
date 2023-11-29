@@ -67,7 +67,7 @@ const usersControllers = {
                     } else return res.redirect("/user/userLogin");
                 })
             }
-        } else return res.redirect("/user/userLogin");
+        } else return res.redirect("/user/userLogin"); 
        
     },
     // renderiza la vista del formulario para registrarse
