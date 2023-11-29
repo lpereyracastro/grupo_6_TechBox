@@ -20,6 +20,10 @@ module.exports = function(sequelize,dataTypes){
         FK_user_id: {
             type:           dataTypes.TINYINT(11),
             allowNull:      false
+        },
+        FK_articulo_id: {
+            type:           dataTypes.TINYINT(11),
+            allowNull:      false
         }
     }, {
         tableName: 'carrito',
@@ -32,6 +36,11 @@ module.exports = function(sequelize,dataTypes){
             as:"CarritoToUser",
             foreignKey: 'user_id'
           });
+
+        carritoDB.hasMany(models.articulosModel, {
+            as:"CarritoToArticulo",
+            foreignKey: 'articulos_id'
+        });
 
         carritoDB.belongsToMany(models.articulosModel,{
             through: "pivotCarrito",

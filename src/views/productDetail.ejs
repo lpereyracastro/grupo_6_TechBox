@@ -48,7 +48,11 @@
                 <% } %>
                 <% if (cookies) { %>
                     <form method="post" action="/products/detail/<%=product.articulos_id%>">
-                        <input type="submit" class="producto-card" value="Agregar al carro">
+                        <% if (isAdded) { %>
+                            <input type="submit" class="producto-card" value="¡Producto agregado!🔥">
+                        <% } else { %>
+                            <input type="submit" class="producto-card" value="Agregar al carro">
+                        <% } %>
                     </form>
                 <% } else { %>
                     <form>

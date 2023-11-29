@@ -55,7 +55,8 @@ const productsControllers = {
             return res.render("productDetail",{
                 product: articulo.dataValues,
                 cookies,
-                errormsg: false
+                errormsg: false,
+                isAdded: false
             });
         })
     },
@@ -70,9 +71,18 @@ const productsControllers = {
                 db.userModel.findOne({where:{mail:resultCookieUser.mail}}),
                 db.articulosModel.findAll({where:{articulos_id: id}})
             ]).then(([usuarios,articulos]) => {
-                console.log(usuarios);
-                console.log("I KNOW WHAT YOU MEAN : ", articulos);
-                
+                db.carritoModel.create({
+                    cantidad: 1,
+                    FK_articulo_id: articulos[0].dataValues.articulos_id,
+                    FK_user_id: usuarios.dataValues.user_id
+                }).then( result => {
+                    res.render(`productDetail`, {
+                        cookies,
+                        product: articulos[0].dataValues,
+                        isAdded: true,
+                        errormsg: false,
+                    })
+                })
                 
             }).catch((e)=>{
                 console.log(e);
@@ -82,7 +92,8 @@ const productsControllers = {
                     return res.render("productDetail",{
                         product: articulo.dataValues,
                         cookies,
-                        errormsg: "Ha ocurrido un error..."
+                        errormsg: "Ha ocurrido un error...",
+                        isAdded: false
                     });
                 })
             });
@@ -92,7 +103,52 @@ const productsControllers = {
 
     // renderiza el carrito
     productCart : function(req,res){
-        return res.render("productCart");
+        let resultCookieUser = getCookie(req.cookies.LOGGED_ON);
+        if(!resultCookieUser) return res.redirect('/user/userLogin');
+
+            db.userModel.findOne({where:{mail:resultCookieUser.mail}})
+            .then( resultUser => {
+                db.carritoModel.findAll({where:{FK_user_id: resultUser.dataValues.user_id}})
+                .then( resultCarrito => {
+                    if(!resultCarrito === undefined) return res.render("productCart", {articulos: false, articulosLength: 0});
+
+                    let obj = [];
+                    let articulosRawFormatted = resultCarrito.map(element => {
+
+                        db.articulosModel.findOne({
+                            where:{
+                                articulos_id: element.dataValues.FK_articulo_id
+                            }
+                        }).then( result => {
+                            obj = {
+                                articulosID: result.dataValues.articulos_id,
+                                name: result.dataValues.name,
+                                description: result.dataValues.description,
+                                price: result.dataValues.price,
+                                marca: result.dataValues.marca,
+                                imagen: result.dataValues.imagen,
+                                cantidad: element.dataValues.cantidad
+                            }
+                            return obj;
+                        })
+    
+                        return obj;
+                    });
+
+                    console.log(articulosRawFormatted);
+
+
+                    return res.render("productCart", {
+                        articulos: articulosFormatted,
+                        articulosLength: articulosFormatted.length
+                    })
+
+                })
+            })
+
+    
+
+        // res.render("productCart");
     },
     // renderiza el formulario para cargar un producto
     loadProduct : function(req,res){

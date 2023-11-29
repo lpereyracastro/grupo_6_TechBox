@@ -45,6 +45,11 @@ module.exports = function(sequelize,dataTypes){
             as: "carritoPivotArticulos",
             foreignKey: "articulos_id"
         })
+
+        articulosDB.belongsTo(models.carritoModel,{
+            as: "ArticuloToCarrito", 
+            foreignKey: "articulos_id" 
+        })
     };
 
     return articulosDB; 
