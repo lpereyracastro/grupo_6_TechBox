@@ -1,9 +1,10 @@
-const db = require("../../databases/models")
+const db = require("../../databases/models");
 // express validator , validaciones
-const {validationResult,matchedData} = require("express-validator")
+const {validationResult,matchedData} = require("express-validator");
 const {getCookie, createCookie} = require("../middleware/createCookie");
 const { v4 } = require("uuid");
 const { Op } = require("sequelize");
+const { marcas } = require("../../schemas/articulosSchema");
 
 let cookies;
 
@@ -184,22 +185,23 @@ const productsControllers = {
         db.articulosModel.findOne({where: {
             articulos_id: id
         }}).then(articulo=>{
-            return res.render("productEdit", {product: articulo.dataValues,
-                articulos_id: articulo.dataValues.articulos_id
+            return res.render("productEdit", {
+                product: articulo.dataValues,
+                articulos_id: articulo.dataValues.articulos_id,
+                marcas
             });
         })
     },
     // metodo encargado de la logica para editar un producto
     storeEdit : function(req,res){
-        console.log(req.body);
         const {id} = req.params;
             const result = validationResult(req);
-            console.log(result);
             if (!result.isEmpty()) {
                 return res.render('productEdit',{
                     product: req.body,
                     errors: result.mapped(),
-                    articulos_id: id
+                    articulos_id: id,
+                    marcas
                 });
             }
             let imagenFile;
@@ -223,7 +225,6 @@ const productsControllers = {
     // renderiza el formulario de eliminacion
     deleteForm : function (req,res){
         const {id} = req.params;
-        console.log(id);
         return res.render("productDelete", {product: id})
     },
     // metodo encargado de la logica de eliminacion

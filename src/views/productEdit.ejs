@@ -29,25 +29,15 @@
                             <%= errors.price.msg %>
                         </p>
                     <% } %>
-
-                    <!-- <input type="text" name="marca" placeholder="Marca del producto" value="<%= product.marca %>" value="<%= locals.oldData ? oldData.marca : null %>">
-                    <% if (locals.errors && errors.marca) { %>
-                        <p class="form__error">
-                            <%= errors.marca.msg %>
-                        </p>
-                    <% } %> -->
                     
                     <select name="marca" id="category">
-                        <% if (product.marca === 'amd') { %>
-                            <option value="AMD" selected>AMD</option>
-                            <option value="Intel">Intel</option>
-                            <option value="Logitech">Logitech</option>
-                            <option value="RedDragon">RedDragon</option>
-                            <option value="Asus">Asus</option>
-                            <option value="Gigabyte">Gigabyte</option>
-                            <option value="Other">Otro</option>
-                        <% } %>
-
+                        <% marcas.forEach(element => { %>
+                            <% if(element === product.marca){ %>
+                                <option value="<%= product.marca %>" selected><%= product.marca %></option>
+                            <% } else { %>
+                                <option value="<%= element %>"><%= element %></option> 
+                            <% } %>
+                        <% }); %>
                     </select>
                     <input type="file" name="imagen" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.imagen : null %>">
                     <% if (locals.errors && errors.imagen) { %>

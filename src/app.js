@@ -9,6 +9,7 @@ const cookies = require("cookie-parser");
 
 const sequelize = require('../databases/config/database');
 // requiere la configuracion de la base de datos :P
+const cors = require("cors");
 
 app.use(session(
     {
@@ -59,7 +60,7 @@ app.use(express.json());
 app.use("/",mainRoutes);
 app.use("/products",productsRoutes);
 app.use("/user", usersRoutes);
-app.use("/api", APIRoutes);
+app.use("/api", cors(), APIRoutes);
 
 app.use("/test",test); //!TEST ROUTE
 

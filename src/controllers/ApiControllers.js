@@ -1,5 +1,6 @@
 const db = require("../../databases/models");
-const articulos = require("../../databases/models/articulos");
+
+// http://localhost:3000/api?limit=10&offset=1
 
 const ApiControllers = {
     getAllUsers : function(req,res){

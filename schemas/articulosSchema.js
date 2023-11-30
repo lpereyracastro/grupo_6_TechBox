@@ -1,7 +1,7 @@
 const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer/multerProducts');
 const {body, checkSchema} = require('express-validator');
 
-const marcas = ["AMD","Intel","Logitech","RedDragon","Asus","Gigabyte","Other"];
+const marcas = ["AMD","Intel","Nvidia","Logitech","RedDragon","Asus","Gigabyte","Other"];
 
 const validateArticulos = [
     body('name')

@@ -31,10 +31,16 @@
                     <% } %>
                     
                     <select name="marca" id="category">
-                        <option value="amd">AMD             </option>
-                        <option value="intel">Intel         </option>
-                        <option value="other" selected>Otro </option>
+                        <option value="AMD">AMD             </option>
+                        <option value="Intel">Intel         </option>
+                        <option value="Other" selected>Otro </option>
                     </select>
+                    <% if (locals.errors && errors.marca) { %>
+                        <p class="form__error">
+                            <%= errors.marca.msg %>
+                        </p>
+                    <% } %>
+
                     <input type="file" name="imagen" placeholder="Imagen del producto" value="<%= locals.oldData ? oldData.imagen : null %>">
                     <% if (locals.errors && errors.imagen) { %>
                         <p class="form__error">
