@@ -26,8 +26,8 @@ const validateArticulos = [
         .exists().withMessage("La marca no puede estar vacia")
         .isString().withMessage("La marca debe ser un texto")
         .isLength({ min: 1, max: 45}).withMessage("La marca debe tener entre 1 y 45 caracteres")
-        .notEmpty().withMessage('La marca no puede estar vacia')
-        .isIn(marcas).withMessage('La marca no existe'),
+        .notEmpty().withMessage('La marca no puede estar vacia'),
+        /*.isIn(marcas).withMessage('La marca no existe'),*/
     
         checkSchema({
             'imagen': {
