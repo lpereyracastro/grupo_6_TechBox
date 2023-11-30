@@ -143,10 +143,6 @@ const productsControllers = {
                     })
                 })
             })
-
-    
-
-        // res.render("productCart");
     },
     productCartDELETE : function(req,res){
         const {id} = req.params
@@ -230,14 +226,21 @@ const productsControllers = {
     // metodo encargado de la logica de eliminacion
     delete : function (req,res){
         const {id} = req.params;
-        db.articulosModel.destroy({
+        db.articulosModel.findOne({
             where: {
                 articulos_id: id
             }
         }).then(articulo => {
-            return res.redirect("/products")
+            console.log(articulo);
+            db.carritoModel.destroy({
+                where: {
+                    FK_articulo_id: articulo.dataValues.articulos_id}
+                }).then( result => {
+                    db.articulosModel.destroy({where: {articulos_id: id}}).then( result => {
+                        return res.redirect("/products");
+                    })
+                })
         })
-
     }
 }
 
