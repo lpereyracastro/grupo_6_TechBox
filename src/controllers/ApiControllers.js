@@ -35,10 +35,8 @@ const ApiControllers = {
         if(!offset) offset = 0;
         if(!limit) limit = 10;
 
-        console.log(limit, offset);
         db.articulosModel.findAll({limit, offset})
         .then( articulos => {
-            console.log(articulos);
             let articulosFormatted = articulos.map(element => {
                 let obj = {
                     articulosID: element.dataValues.articulos_id,

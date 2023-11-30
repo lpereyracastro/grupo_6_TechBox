@@ -1,6 +1,8 @@
 const {ACCEPTED_TYPES, MAX_FILESIZE} = require('../src/middleware/multer/multerProducts');
 const {body, checkSchema} = require('express-validator');
 
+const marcas = ["AMD","Intel","Logitech","RedDragon","Asus","Gigabyte","Other"];
+
 const validateArticulos = [
     body('name')
         .exists().withMessage("El nombre no puede estar vacio")
@@ -24,7 +26,8 @@ const validateArticulos = [
         .exists().withMessage("La marca no puede estar vacia")
         .isString().withMessage("La marca debe ser un texto")
         .isLength({ min: 1, max: 45}).withMessage("La marca debe tener entre 1 y 45 caracteres")
-        .notEmpty().withMessage('La marca no puede estar vacia'),
+        .notEmpty().withMessage('La marca no puede estar vacia')
+        .isIn(marcas).withMessage('La marca no existe'),
     
         checkSchema({
             'imagen': {
@@ -72,4 +75,4 @@ const validatePartialArticulos = [
     }) 
 ]
 
-module.exports = {validateArticulos, validatePartialArticulos};
+module.exports = {validateArticulos, validatePartialArticulos, marcas};

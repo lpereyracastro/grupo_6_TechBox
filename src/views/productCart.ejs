@@ -18,39 +18,56 @@
                     Carritos de productos
                 </h2>
                 <% if(articulos) { %>
-                    <% articulos.forEach(element => { %>
+                    <% articulos.forEach( (element,index) => { %>
                         <div class="cart__product">
-                        <img src="/img/product/logitech-g-pro.jpg" alt="" class="cart__image">
+                        <img src="/img/product/<%= element.dataValues.imagen %>" alt="" class="cart__image" onerror="this.src='/img/product/default.jpg'">
                         <div class="cart__product-content">
                             <h5 class="cart__product-title">
-                                
+                                <%= element.dataValues.name %>
                             </h5>
                             <p class="cart__product-detail">
-                                teclado mecanico con swich blue opticos
+                                <%= element.dataValues.description %>  
+                            </p>
+                            <p class="cart__product-detail price">
+                                <% if(articulosCantidad[index] > 1) {%>
+                                    $<%= element.dataValues.price * articulosCantidad[index]%> (<%= articulosCantidad[index] %>)
+                                <%} else {%>
+                                    $<%= element.dataValues.price%>
+                                <%}%>
+
                             </p>
                             <div class="cart__product-button">
                                 <button>
-                                    Eliminar
+                                    <%= element.dataValues.marca %> 
                                 </button>
-                                <button>
-                                    Favorito🌟
-                                </button>
+                                <form action="/products/cart/<%= element.dataValues.articulos_id %>?_method=DELETE"" method="POST" enctype="application/x-www-form-urlencoded">
+                                    <button type="submit">Eliminar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                    <% }) %>
 
-                <% } %>
-
             </article>
             <article class="detailBuy">
                 <div class="detailBuy__product">
-                    <p>
-                        productos (<%= articulosLength %>)
-                    </p>
-                    <p>
-                        $23.760
-                    </p>
+                        <% if(articulos.length > 1) { %>
+                        <p>
+                            Productos (<%= articulosLength %>)
+                        </p>
+                        <p>
+                            <% let price = articulos.map( element => parseInt(element.dataValues.price)); %>          
+                            <% let finalPrice = price.reduce( (a,b,index) =>  a + (b * articulosCantidad[index]),0); %>
+                            $<%= finalPrice %> 
+                        </p>
+                        <% } else { %>
+                            <p>
+                                Productos (1)
+                            </p>
+                            <p>
+                                $<%= articulos[0].dataValues.price * articulosCantidad[0]%>
+                            </p>
+                        <% } %>
                 </div>
                 <div class="detailBuy__product">
                     <p>Envio</p>
@@ -60,20 +77,35 @@
                     <p>
                         Total
                     </p>
+
+                    <!-- I know the code seems like a spaghetti but i had no time left, could be a TON of improved -->
+
                     <p class="detailBut__price">
-                        $23.860
+                        <% if(articulos.length > 1) { %>
+                            <% let price = articulos.map( element => parseInt(element.dataValues.price)); %>          
+                            <% let finalPrice = price.reduce( (a,b,index) =>  a + (b * articulosCantidad[index]),0); %>
+                            $<%= finalPrice + 1000 %> 
+                        <% } else { %>
+                            $<%= parseInt(articulos[0].dataValues.price * articulosCantidad[0]) + 1000%>
+                        <% } %>
                     </p>
                 </div>
                 <section class="cart__compra">
-                    <button>
+                    <button class="buttonASD">
                         COMPRAR
                     </button>
+                    <canvas id="custom_canvas"></canvas>
                 </section>
             </article>
+            <% } else { %>
+                <h2>No hay productos en el carrito</h2>
+            <% } %>
         </section>
+
     </main>
     <%- include('./partials/footer') %>
     <script src="/js/script.js"></script>
+
 </body>
 
 </html>

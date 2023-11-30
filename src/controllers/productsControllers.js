@@ -3,6 +3,7 @@ const db = require("../../databases/models")
 const {validationResult,matchedData} = require("express-validator")
 const {getCookie, createCookie} = require("../middleware/createCookie");
 const { v4 } = require("uuid");
+const { Op } = require("sequelize");
 
 let cookies;
 
@@ -71,21 +72,22 @@ const productsControllers = {
                 db.userModel.findOne({where:{mail:resultCookieUser.mail}}),
                 db.articulosModel.findAll({where:{articulos_id: id}})
             ]).then(([usuarios,articulos]) => {
-                db.carritoModel.create({
-                    cantidad: 1,
-                    FK_articulo_id: articulos[0].dataValues.articulos_id,
-                    FK_user_id: usuarios.dataValues.user_id
-                }).then( result => {
-                    res.render(`productDetail`, {
+                db.carritoModel.findOrCreate({
+                    where:  {FK_articulo_id: articulos[0].dataValues.articulos_id },
+                    defaults:{cantidad: 1, FK_user_id: usuarios.dataValues.user_id}})
+                .then( ([carrito,created]) => {
+                    if(!created){
+                        db.carritoModel.update({cantidad: carrito.dataValues.cantidad + 1}, {where: {id_carrito: carrito.dataValues.id_carrito}});
+                    }
+                    return res.render(`productDetail`, {
                         cookies,
                         product: articulos[0].dataValues,
                         isAdded: true,
                         errormsg: false,
                     })
+                    
                 })
-                
             }).catch((e)=>{
-                console.log(e);
                 db.articulosModel.findOne({where: {
                     articulos_id: id
                 }}).then(articulo=>{
@@ -111,44 +113,50 @@ const productsControllers = {
                 db.carritoModel.findAll({where:{FK_user_id: resultUser.dataValues.user_id}})
                 .then( resultCarrito => {
                     if(!resultCarrito === undefined) return res.render("productCart", {articulos: false, articulosLength: 0});
+                    const arrayRaw = resultCarrito.map( element => element.dataValues.FK_articulo_id);
+                    
+                    let cantidad;
+                    let cantidadRaw;
 
-                    let obj = [];
-                    let articulosRawFormatted = resultCarrito.map(element => {
+                    try {
+                        if(resultCarrito.length > 1){
+                            cantidadRaw = resultCarrito.map( element => element.dataValues.cantidad);
+                            cantidad = cantidadRaw.reduce((a, b) => a + b, 0);
+                        } else {
+                            cantidad = resultCarrito[0].dataValues.cantidad;
+                            cantidadRaw = [resultCarrito[0].dataValues.cantidad];
+                        }
+                    } catch (error) {
+                        return res.render("productCart", {
+                            articulos: false,
+                            articulosCantidad: 0,
+                            articulosLength: 0 })
+                    }
+                   
 
-                        db.articulosModel.findOne({
-                            where:{
-                                articulos_id: element.dataValues.FK_articulo_id
-                            }
-                        }).then( result => {
-                            obj = {
-                                articulosID: result.dataValues.articulos_id,
-                                name: result.dataValues.name,
-                                description: result.dataValues.description,
-                                price: result.dataValues.price,
-                                marca: result.dataValues.marca,
-                                imagen: result.dataValues.imagen,
-                                cantidad: element.dataValues.cantidad
-                            }
-                            return obj;
-                        })
-    
-                        return obj;
-                    });
-
-                    console.log(articulosRawFormatted);
-
-
-                    return res.render("productCart", {
-                        articulos: articulosFormatted,
-                        articulosLength: articulosFormatted.length
+                    db.articulosModel.findAll({where:{articulos_id: { [Op.in]: arrayRaw }}}).then( result => {
+                        return res.render("productCart", {
+                        articulos: result,
+                        articulosCantidad: cantidadRaw,
+                        articulosLength: cantidad })
                     })
-
                 })
             })
 
     
 
         // res.render("productCart");
+    },
+    productCartDELETE : function(req,res){
+        const {id} = req.params
+        db.carritoModel.destroy({
+            where: {
+                FK_articulo_id: id
+            }
+        }).then( result => {
+            res.redirect("/products/cart")
+        })
+
     },
     // renderiza el formulario para cargar un producto
     loadProduct : function(req,res){

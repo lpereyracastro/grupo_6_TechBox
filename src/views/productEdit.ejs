@@ -39,17 +39,13 @@
                     
                     <select name="marca" id="category">
                         <% if (product.marca === 'amd') { %>
-                            <option value="amd" selected>AMD</option>
-                            <option value="intel">Intel</option>
-                            <option value="other">Otro</option>
-                        <% } else if (product.marca === 'intel') {  %>
-                            <option value="amd">AMD</option>
-                            <option value="intel" selected>Intel</option>
-                            <option value="other">Otro</option>
-                        <% } else { %>
-                            <option value="amd">AMD</option>
-                            <option value="intel">Intel</option>
-                            <option value="other" selected>Otro</option>
+                            <option value="AMD" selected>AMD</option>
+                            <option value="Intel">Intel</option>
+                            <option value="Logitech">Logitech</option>
+                            <option value="RedDragon">RedDragon</option>
+                            <option value="Asus">Asus</option>
+                            <option value="Gigabyte">Gigabyte</option>
+                            <option value="Other">Otro</option>
                         <% } %>
 
                     </select>
