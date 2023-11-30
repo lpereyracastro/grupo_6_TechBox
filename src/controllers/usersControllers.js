@@ -54,6 +54,7 @@ const usersControllers = {
     },
     // renderizamos la vista del perfil del ususario
     profile : function(req,res){
+        console.log(req.headers.cookie);
         if(req.headers.cookie !== undefined){
             let resultCookie = getCookie(req.cookies.LOGGED_ON)
             if(resultCookie) {
