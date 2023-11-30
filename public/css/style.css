@@ -131,8 +131,6 @@ body{
         align-items: center;
         border-bottom: 1px solid var(--verde-princ);
         z-index: 1;
-        position: sticky;
-        position: relative;
     }
 
     .header__menu-burger {
@@ -170,15 +168,19 @@ body{
         background-color: var(--verde-princ);
     }
 
+    .header__title{
+        display: block;
+        width: 30px;
+    }
     /* estilos del titulo */
     .header__title h1{
-        font-size: 20px;
-        min-width: 6rem;
+        font-size: 21px;
         width: 8ch;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         border-right: 3px solid var(--verde-princ);
         overflow: hidden;
-        animation: progressive-type 3s steps(8), indicador .5s step-end infinite 2s;
+        animation: progressive-type 2s steps(16) , indicador .8s step-end infinite alternate;
+        
     }
 
     @keyframes progressive-type {
